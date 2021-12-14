@@ -31,7 +31,7 @@ router.get('/questions/:id(\\d+)/answers', asyncHandler( async (req, res) => {
 }))
 
 //add an answer to a specific question.
-router.post('/questions/:id/add', answerValidators, csrfProtection, asyncHandler( async (req, res) => {
+router.post('/questions/:id(\\d+)/add', answerValidators, csrfProtection, asyncHandler( async (req, res) => {
     const { body } = req.body
 
     const answer = db.Answer.build({
