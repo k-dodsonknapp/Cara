@@ -4,15 +4,15 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const { sequelize } = require('./db/models');
-const { secret } = require('./config')
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const { restoreUser } = require('./auth')
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const questionsRouter = require('./routes/questions')
 const answersRouter = require('./routes/answers')
 const commentsRouter = require('./routes/comments')
+const { secret } = require('./config')
+const { restoreUser } = require('./auth')
 
 const app = express();
 
