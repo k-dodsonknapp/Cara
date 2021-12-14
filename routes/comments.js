@@ -6,6 +6,13 @@ const { csrfProtection, asyncHandler } = require('./utils');
 const { check, validationResult } = require('express-validator');
 const router = express.Router();
 
+const checkPermissions = (comment, currentUser) => {
+    if (comment.userId !== currentUser.id) {
+        const err = new Error('Invaild operation.');
+        err.status = 403; // Forbidden
+        throw err;
+    }
+};
 
 
 router.get('/comments/:id(\\d+)', asyncHandler(async (req, res) => {
@@ -21,7 +28,7 @@ const commentValidator = [
         .withMessage("Must have a something in the body.")
 ];
 
-router.get('/comments/add', csrfProtection, (req, res) => {
+router.get('/comments/add', checkPermissions, csrfProtection, (req, res) => {
     const comments = db.Comments.build();
     res.render('', {
         title: 'Add Park',
@@ -30,7 +37,9 @@ router.get('/comments/add', csrfProtection, (req, res) => {
     });
 });
 
-router.post('/comments/add)', csrfProtection, commentValidator, asyncHandler(async (req, res) => {
+router.post('/comments/add)', csrfProtection, commentValidator, checkPermissions, asyncHandler(async (req, res) => {
+    checkPermissions(answerToUpdate, res.locals.user);
+
     const { body } = req.body;
 
     const comment = db.Comments.build({ body });
@@ -52,10 +61,13 @@ router.post('/comments/add)', csrfProtection, commentValidator, asyncHandler(asy
 }));
 
 
-router.get('/comments/edit/:id(\\d+)', csrfProtection,
+router.get('/comments/:id(\\d+)/edit', csrfProtection, checkPermissions,
     asyncHandler(async (req, res) => {
         const commentId = parseInt(req.params.id, 10);
         const comment = await db.Park.findByPk(commentId);
+
+        checkPermissions(answerToUpdate, res.locals.user);
+
         res.render('park-edit', {
             title: '',
             comment,
@@ -64,8 +76,10 @@ router.get('/comments/edit/:id(\\d+)', csrfProtection,
     }));
 
 
-router.post('/comments/add)', csrfProtection, commentValidator, asyncHandler(async (req, res) => {
+router.post('/comments/:id(\\d+)/edit)', csrfProtection, commentValidator, asyncHandler(async (req, res) => {
     const { body } = req.body;
+
+    checkPermissions(answerToUpdate, res.locals.user);
 
     const comment = db.Comments.build({ body });
 
@@ -84,5 +98,18 @@ router.post('/comments/add)', csrfProtection, commentValidator, asyncHandler(asy
         })
     }
 }));
+
+router.get('/comment/:id(\\d+)/delete', csrfProtection,
+    asyncHandler(async (req, res) => {
+        const commentId = parseInt(req.params.id, 10);
+        const comment = await db.Attraction.findByPk(commentId);
+
+        checkPermissions(answerToUpdate, res.locals.user);
+        res.render('', {
+            title: 'Delete Comment',
+            comment,
+            csrfToken: req.csrfToken(),
+        });
+    }));
 
 module.exports = router;
