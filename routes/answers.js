@@ -20,4 +20,26 @@ router.get('/questions/:id/answers', asyncHandler( async (req, res) => {
     res.render('answers', { answer })
 }))
 
+router.post('/questions/:id', answerValidators, csrfProtection, asyncHandler( async (req, res) => {
+    const { body } = req.body
+
+    const answer = db.Answer.build({
+        body,
+    })
+
+    const validatorErrors = validationResult(req);
+
+    if(validatorErrors.isEmpty()) {
+        await answer.save();
+        res.redirect('/questions/:id')
+    } else {
+        const errors = validatorErrors.array().map((error) => error.msg);
+      res.render('book-add', {
+        title: 'Add an Answer',
+        errors,
+        csrfToken: req.csrfToken(),
+      });
+    }
+}))
+
 module.exports = router
