@@ -3,11 +3,12 @@ const router = express.Router();
 
 const { csrfProtection, asyncHandler } = require("./utils");
 const { check, validationResult } = require("express-validator");
-const { loginUser, restoreUser, logoutUser, requireAuth } = require("../auth")
+const { requireAuth } = require("../auth")
 
 const db = require("../db/models");
 const { Question } = db
 
+//ensures that the owner of the resource is the only one that can edit/delete
 const checkPermissions = (question, currentUser) => {
   if (question.userId !== currentUser.id) {
     const err = new Error("Illegal operation.");
@@ -54,7 +55,7 @@ router.post("/question/add",
 
     const validatorErrors = validationResult(req);
 
-    if (validatorErrors.isEmpty()) {
+    if (validatorErrors.isEmpty()) { 
       await question.save();
       res.redirect("/home");
     } else {
