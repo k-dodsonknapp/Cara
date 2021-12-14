@@ -5,6 +5,7 @@ mixin validationErrorSummary(errors)
       p The following error(s) occurred:
       ul
         each error in errors
+
           li= error
 
 mixin field(labelText, fieldName, fieldValue, fieldType = 'text', placeholder = null)
@@ -14,3 +15,4 @@ mixin field(labelText, fieldName, fieldValue, fieldType = 'text', placeholder = 
       textarea(id=fieldName name=fieldName rows='5')= fieldValue
     else
       input(type=fieldType id=fieldName name=fieldName value=fieldValue placeholder=placeholder)
+
