@@ -7,9 +7,13 @@ const loginUser = (req, res, user) => {
   req.session.save(()=> res.redirect('/home'))
 }
 
+const logoutUser = (req, res) => {
+  delete req.session.auth;
+  req.session.save(()=> res.redirect('/'))
+}
 const restoreUser = async (req, res, next) => {
 
-  console.log(req.session);
+  // console.log(req.session);
 
   if (req.session.auth) {
     const { userId } = req.session.auth;
@@ -39,9 +43,5 @@ const requireAuth = (req, res, next) => {
   return next();
 };
 
-const logoutUser = (req, res) => {
-  delete req.session.auth;
-  req.session.save(()=> res.redirect('/'))
-}
 
 module.exports = { loginUser, restoreUser, logoutUser, requireAuth }
