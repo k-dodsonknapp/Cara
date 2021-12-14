@@ -76,7 +76,7 @@ router.get('/comments/:id(\\d+)/edit', csrfProtection, checkPermissions,
     }));
 
 
-router.post('/comments/:id(\\d+)/edit)', csrfProtection, commentValidator, asyncHandler(async (req, res) => {
+router.post('/comments/:id(\\d+)/edit)', csrfProtection, commentValidator, checkPermissions, asyncHandler(async (req, res) => {
     const { body } = req.body;
 
     checkPermissions(answerToUpdate, res.locals.user);
@@ -99,7 +99,7 @@ router.post('/comments/:id(\\d+)/edit)', csrfProtection, commentValidator, async
     }
 }));
 
-router.get('/comment/:id(\\d+)/delete', csrfProtection,
+router.get('/comment/:id(\\d+)/delete', csrfProtection, checkPermissions,
     asyncHandler(async (req, res) => {
         const commentId = parseInt(req.params.id, 10);
         const comment = await db.Attraction.findByPk(commentId);
