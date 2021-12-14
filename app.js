@@ -40,11 +40,11 @@ app.use(
 // create Session table if it doesn't already exist
 store.sync();
 app.use(restoreUser)
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/questions', questionsRouter)
-app.use('/answers', answersRouter)
-app.user('/comments', commentsRouter);
+// app.use('/', indexRouter);
+// app.use('/users', usersRouter);
+app.use("/questions", questionsRouter);
+// app.use('/answers', answersRouter)
+// app.user('/comments', commentsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
