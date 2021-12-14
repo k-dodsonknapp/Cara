@@ -1,3 +1,33 @@
+
 h1 {
     color: #555555;
+    text-align: center;
+    font-size: 50px;
+    font-family: 'Courier New', Courier, monospace;
+}
+p{
+    text-align: center;
+}
+.form-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.login-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.center {
+    background-color: whitesmoke;
+    border: 2px solid rgb(170, 142, 17);
+    position: absolute;
+    top: 25%;
+    left: 12.5%;
+    width: 75%;
+    height: 50%;
+}
+body{
+    background-color: rgb(39, 75, 117);
 }

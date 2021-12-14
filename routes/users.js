@@ -1,20 +1,20 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
 const { User } = require('../db/models')
 const { check, validationResult } = require('express-validator');
-const { csrfProtection, asyncHandler } = require('./utils');
-const { loginUser } = require('../auth')
+const { csrfProtection, asyncHandler, bcrypt } = require('./utils');
+const { loginUser, logoutUser } = require('../auth')
+
+const router = express.Router();
 
 /* GET users listing. */
 router.get('/register', csrfProtection, asyncHandler(async function(req, res, next) {
   const user = await User.build();
-  res.render('/user-register', {
+  res.render('user-register', {
     title: 'register',
     user,
     csrfToken: req.csrfToken()
   });
 }));
-
 
 const userValidators = [
   check('username')
@@ -69,12 +69,15 @@ const userValidators = [
 router.post('/register', csrfProtection, userValidators, asyncHandler(async function (req, res) {
   const { username, email, password } = req.body;
   const hashedPassword = await bcrypt.hash(password, 12);
+
   const user = await User.build({
     username,
     email
   });
   const validatorCheck = validationResult(req);
+
   const errors = validatorCheck.array().map(error => error.msg);
+
   if (!errors[0]) {
     user.hashedPassword = hashedPassword;
     await user.save();
@@ -90,9 +93,9 @@ router.post('/register', csrfProtection, userValidators, asyncHandler(async func
   }
 }));
 
-router.get('/login', csrfProtection, asyncHandler(async function (req, res, next) {
+router.get('/', csrfProtection, asyncHandler(async function (req, res, next) {
   const user = await User.build();
-  res.render('user-login', {
+  res.render('login', {
     user,
     title: 'Login',
     csrfToken: req.csrfToken()
@@ -110,12 +113,46 @@ const userLoginValidators = [
             "'Login credentials invalid.'"
           );
         }
-      }
-      )
+      })
     }),
   check('password')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a password.')
 ];
+
+router.post('/', csrfProtection, userLoginValidators, asyncHandler(async function (req, res) {
+  const { email, password } = req.body;
+  const foundUser = await User.findOne({ where: { email } })
+
+  const user = {
+    email
+  };
+
+
+  const validatorCheck = validationResult(req);
+  const errors = validatorCheck.array().map(error => error.msg);
+
+  if (!errors[0]) {
+    const hashedPassword = foundUser.hashedPassword;
+    const passwordTest = await bcrypt.compare(password, hashedPassword);
+    if (passwordTest) {
+      loginUser(req, res, foundUser)
+    } else {
+      errors.push('Login credentials invalid.')
+    }
+  }
+  if (errors[0]) {
+    res.render('login', {
+      user,
+      title: 'Login',
+      errors,
+      csrfToken: req.csrfToken()
+    });
+  }
+}));
+
+router.post('/logout', (req, res) => {
+  logoutUser(req, res);
+});
 
 module.exports = router;
