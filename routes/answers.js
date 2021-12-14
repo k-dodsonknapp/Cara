@@ -7,6 +7,14 @@ const db = require('../db/models');
 const app = require('../app');
 
 
+const checkPermissions = (answer, currentUser) => {
+    if (answer.userId !== currentUser.id) {
+      const err = new Error('Eric just create an account');
+      err.status = 403; // Forbidden
+      throw err;
+    }
+  };
+
 const answerValidators = [
     check('body')
      .exists({ checkFalsy: true })
@@ -68,7 +76,7 @@ answerValidators, asyncHandler( async (req, res) => {
 
     checkPermissions(answerToUpdate, res.locals.user);
 
-    const{body} = req.body;
+    const { body } = req.body;
     const editedAnswer = { body };
 
     const validatorErrors = validationResult(req);
@@ -85,7 +93,18 @@ answerValidators, asyncHandler( async (req, res) => {
         csrfToken: req.csrfToken(),
       });
     }
-})
+}));
+
+router.post('/answer/:id(\\d+)/delete', requireAuth, csrfProtection,
+    asyncHandler(async (req, res) => {
+        const answerId = parseInt(req.params.id, 10)
+        const answer = await db.Answer.findByPk(answerId)
+
+        checkPermissions(answer, res.locals.user);
+
+        await answer.destroy();
+        res.redirect('/questions/:id(\\d+)/answers')
+    })
 )
 
 module.exports = router
