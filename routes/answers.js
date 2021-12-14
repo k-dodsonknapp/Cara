@@ -30,7 +30,7 @@ router.get('/questions/:id(\\d+)/answers', asyncHandler( async (req, res) => {
     res.render('answer-detail', { answer })
 }))
 
-//add an answer to a specific question
+//add an answer to a specific question.
 router.post('/questions/:id/add', answerValidators, csrfProtection, asyncHandler( async (req, res) => {
     const { body } = req.body
 
