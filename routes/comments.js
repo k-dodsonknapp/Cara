@@ -1,6 +1,5 @@
 const express = require('express');
-const req = require('express/lib/request');
-const { loginUser } = require('../auth')
+const { requireAuth } = require('../auth')
 const db = require('../db/models')
 const { csrfProtection, asyncHandler } = require('./utils');
 const { check, validationResult } = require('express-validator');
@@ -18,8 +17,8 @@ const checkPermissions = (comment, currentUser) => {
 router.get('/comments/:id(\\d+)', asyncHandler(async (req, res) => {
     const commentsId = parseInt(req.params.id, 10);
 
-    const comment = await db.Comment.findByPk(commentsId);
-    res.render('', {})
+    const comments = await db.Comment.findByPk(commentsId);
+    res.render('comment-details', { comments })
 }));
 
 const commentValidator = [
@@ -28,21 +27,21 @@ const commentValidator = [
         .withMessage("Must have a something in the body.")
 ];
 
-router.get('/comments/add', checkPermissions, csrfProtection, (req, res) => {
+router.get('/comments/add', requireAuth, csrfProtection, (req, res) => {
     const comments = db.Comments.build();
-    res.render('', {
-        title: 'Add Park',
+    res.render('comment-details', {
+        title: 'Add Comment',
         comments,
         csrfToken: req.csrfToken(),
     });
 });
 
 router.post('/comments/add)', csrfProtection, commentValidator, checkPermissions, asyncHandler(async (req, res) => {
-    checkPermissions(answerToUpdate, res.locals.user);
-
     const { body } = req.body;
 
     const comment = db.Comments.build({ body });
+    
+    checkPermissions(comment, res.locals.user);
 
     const validatorErrors = validationResult(req)
 
@@ -51,7 +50,7 @@ router.post('/comments/add)', csrfProtection, commentValidator, checkPermissions
         res.redirect("/home");
     } else {
         const errors = validatorErrors.array().map((error) => error.msg);
-        res.render("", {
+        res.render("comment-details", {
             title: "comment",
             comment,
             errors,
@@ -66,10 +65,10 @@ router.get('/comments/:id(\\d+)/edit', csrfProtection, checkPermissions,
         const commentId = parseInt(req.params.id, 10);
         const comment = await db.Park.findByPk(commentId);
 
-        checkPermissions(answerToUpdate, res.locals.user);
+        checkPermissions(comment, res.locals.user);
 
         res.render('park-edit', {
-            title: '',
+            title: 'comment-details',
             comment,
             csrfToken: req.csrfToken(),
         });
@@ -79,9 +78,9 @@ router.get('/comments/:id(\\d+)/edit', csrfProtection, checkPermissions,
 router.post('/comments/:id(\\d+)/edit)', csrfProtection, commentValidator, checkPermissions, asyncHandler(async (req, res) => {
     const { body } = req.body;
 
-    checkPermissions(answerToUpdate, res.locals.user);
-
     const comment = db.Comments.build({ body });
+
+    checkPermissions(comment, res.locals.user);
 
     const validatorErrors = validationResult(req)
 
@@ -90,7 +89,7 @@ router.post('/comments/:id(\\d+)/edit)', csrfProtection, commentValidator, check
         res.redirect("/home");
     } else {
         const errors = validatorErrors.array().map((error) => error.msg);
-        res.render("", {
+        res.render("comment-details", {
             title: "comment",
             comment,
             errors,
@@ -104,8 +103,9 @@ router.get('/comment/:id(\\d+)/delete', csrfProtection, checkPermissions,
         const commentId = parseInt(req.params.id, 10);
         const comment = await db.Attraction.findByPk(commentId);
 
-        checkPermissions(answerToUpdate, res.locals.user);
-        res.render('', {
+        checkPermissions(comment, res.locals.user);
+
+        res.render('comment-details', {
             title: 'Delete Comment',
             comment,
             csrfToken: req.csrfToken(),
