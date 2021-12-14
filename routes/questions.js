@@ -8,11 +8,12 @@ const { loginUser, restoreUser, logoutUser, requireAuth } = require("../auth")
 const db = require("../db/models");
 const { Question } = db
 
-const requireAuth = (req, res, next) => {
-  if (!res.locals.authenticated) {
-    return res.redirect("/user/login");
+const checkPermissions = (question, currentUser) => {
+  if (question.userId !== currentUser.id) {
+    const err = new Error("Illegal operation.");
+    err.status = 403; // Forbidden
+    throw err;
   }
-  return next();
 };
 
 //GET TEN COMMENTS - (BONUS order them by popularity)
@@ -48,7 +49,7 @@ router.post("/question/add",
   questionValidators,
   asyncHandler(async (req, res) => {
     const { title } = req.body;
-
+      
     const question = Question.build({ title });
 
     const validatorErrors = validationResult(req);
@@ -75,6 +76,8 @@ router.get("/questions/:id(\\d+)/edit", // renders edit form
   asyncHandler(async (req, res) => {
     const questionId = parseInt(req.params.id, 10);
     const question = await Question.findByPk(questionId);
+
+    checkPermissions(question, res.locals.user);
     //    res.send("Testing /questions/:id(\\d+)/edit route");
     res.render("question-edit", {
       title: "Edit Question",
@@ -94,8 +97,10 @@ router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
     const questionId = parseInt(req.params.id, 10);
     const questionToUpdate = await Question.findByPk(questionId);
 
+    checkPermissions(questionToUpdate, res.locals.user);
+
     const { title } = req.body;
-    const editedQuestion = { title };
+    const editedQuestion = title; //??? test
 
     const validatorErrors = validationResult(req);
 
@@ -107,7 +112,7 @@ router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
       res.render("question-edit", {
         title: "Edit Question",
         errors,
-        question: { editedQuestion, id: questionId },
+        question: { editedQuestion, id: questionId }, //??? test
         csrfToken: req.csrfToken(),
       });
     }
@@ -121,6 +126,9 @@ router.post("/questions/:id(\\d+)/delete",
   asyncHandler(async (req, res) => {
     const questionId = parseInt(req.params.id, 10);
     const question = await Question.findByPk(questionId);
+
+    checkPermissions(question, res.locals.user);
+
     await question.destroy();
     res.redirect("/questions");
   })
