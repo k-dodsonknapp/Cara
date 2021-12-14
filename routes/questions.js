@@ -12,11 +12,12 @@ const { Question } = db
 router.get( "/", asyncHandler(async (req, res) => {
     const questions = await Question.findAll({ limit: 10 });
     res.send("testing question / route ")
-    // res.render("question-detail", { title: "Questions", questions });
+    // res.render("question-list", { title: "Questions", questions });
   })
 );
 
-
+//GET A SPECIFIC QUESTION BY ID 
+// router.get("/question/:id(\\d+)", asyncHandler(async())
 
 
 
