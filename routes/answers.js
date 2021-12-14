@@ -15,8 +15,9 @@ const answerValidators = [
      .withMessage('Answer must be at least 15 characters long')
 ]
 
-router.get('/', asyncHandler( async (req, res) => {
-res.send('sldkjf;aisdjf')
+router.get('/questions/:id/answers', asyncHandler( async (req, res) => {
+    const answer = Answers.findAll()
+    res.render('answers', { answer })
 }))
 
 module.exports = router
