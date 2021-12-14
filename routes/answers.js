@@ -2,9 +2,8 @@ const express = require('express')
 const router = express.Router()
 const { csrfProtection, asyncHandler } = require('./utils')
 const { check, validationResult } = require('express-validator');
-const { loginUser, restoreUser, logoutUser, requireAuth } = require("../auth")
+const { requireAuth } = require("../auth")
 const db = require('../db/models');
-const app = require('../app');
 
 
 const checkPermissions = (answer, currentUser) => {
@@ -69,6 +68,7 @@ asyncHandler( async (req, res) => {
     })
 }))
 
+//Submit an edited answer
 router.post('/answer/:id(\\d+)/edit', requireAuth, csrfProtection,
 answerValidators, asyncHandler( async (req, res) => {
     const answerId = parseInt(req.params.id, 10);
