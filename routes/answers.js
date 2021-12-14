@@ -10,17 +10,21 @@ const app = require('../app');
 const answerValidators = [
     check('body')
      .exists({ checkFalsy: true })
-     .withMessage('Please enter an answer')
+     .withMessage('Please enter a valid answer')
      .isLength({ min: 15 })
      .withMessage('Answer must be at least 15 characters long')
 ]
 
-router.get('/questions/:id/answers', asyncHandler( async (req, res) => {
-    const answer = Answers.findAll()
-    res.render('answers', { answer })
+//gets all answers from a specific question
+router.get('/questions/:id(\\d+)/answers', asyncHandler( async (req, res) => {
+    const answer = db.Answers.findAll({
+        include: ['comments', 'questions']
+    })
+    res.render('answer-detail', { answer })
 }))
 
-router.post('/questions/:id', answerValidators, csrfProtection, asyncHandler( async (req, res) => {
+//add an answer to a specific question
+router.post('/questions/:id/add', answerValidators, csrfProtection, asyncHandler( async (req, res) => {
     const { body } = req.body
 
     const answer = db.Answer.build({
@@ -34,12 +38,54 @@ router.post('/questions/:id', answerValidators, csrfProtection, asyncHandler( as
         res.redirect('/questions/:id')
     } else {
         const errors = validatorErrors.array().map((error) => error.msg);
-      res.render('book-add', {
+      res.render('answer-form', {
         title: 'Add an Answer',
         errors,
         csrfToken: req.csrfToken(),
       });
     }
 }))
+
+//GET an edit answer form by answer id
+router.get('/answer/:id(\\d+)/edit', requireAuth, csrfProtection,
+asyncHandler( async (req, res) => {
+    const answerId = parseInt(req.params.id, 10);
+    const answer = await db.Answer.findByPk(answerId);
+
+    checkPermissions(answer, res.locals.user);
+
+    res.render('answer-edit', {
+        title: 'Edit Answer',
+        answer,
+        csrfToken: req.csrfToken(),
+    })
+}))
+
+router.post('/answer/:id(\\d+)/edit', requireAuth, csrfProtection,
+answerValidators, asyncHandler( async (req, res) => {
+    const answerId = parseInt(req.params.id, 10);
+    const answerToUpdate = await db.Answer.findByPk(answerId);
+
+    checkPermissions(answerToUpdate, res.locals.user);
+
+    const{body} = req.body;
+    const editedAnswer = { body };
+
+    const validatorErrors = validationResult(req);
+
+    if(validatorErrors.isEmpty()) {
+        await answerToUpdate.update(editedAnswer);
+        res.redirect('/questions/:id(\\d+)/answers')
+    } else {
+      const errors = validatorErrors.array().map((error) => error.msg);
+      res.render('answer-edit', {
+        title: 'Edit Answer',
+        answer: { ...editedAnswer, answerId },
+        errors,
+        csrfToken: req.csrfToken(),
+      });
+    }
+})
+)
 
 module.exports = router
