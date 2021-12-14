@@ -1,0 +1,16 @@
+extends layout.pug
+
+
+block content
+  +validationErrorSummary(errors)
+  form(action='/user/register' method='post')
+    input(type='hidden' name='_csrf' value=csrfToken)
+    +field('Username', 'username', user.userame)
+    +field('Email Address', 'email', user.email)
+    +field('Password', 'password', user.password, 'password')
+    +field('Confirm Password', 'confirmPassword', '', 'password')
+    div(class='py-4')
+      button(type='submit' class='btn btn-primary') Login
+      a(href='/' class='btn btn-warning ml-2') Cancel
+  div
+    p: a(href='/user/login') Already have an account?
