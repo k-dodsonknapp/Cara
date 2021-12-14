@@ -36,11 +36,11 @@ router.get('/comments/add', requireAuth, csrfProtection, (req, res) => {
     });
 });
 
-router.post('/comments/add)', csrfProtection, commentValidator, checkPermissions, asyncHandler(async (req, res) => {
+router.post('/comments/add', csrfProtection, commentValidator, checkPermissions, asyncHandler(async (req, res) => {
     const { body } = req.body;
 
     const comment = db.Comments.build({ body });
-    
+
     checkPermissions(comment, res.locals.user);
 
     const validatorErrors = validationResult(req)
@@ -75,7 +75,7 @@ router.get('/comments/:id(\\d+)/edit', csrfProtection, checkPermissions,
     }));
 
 
-router.post('/comments/:id(\\d+)/edit)', csrfProtection, commentValidator, checkPermissions, asyncHandler(async (req, res) => {
+router.post('/comments/:id(\\d+)/edit', csrfProtection, commentValidator, checkPermissions, asyncHandler(async (req, res) => {
     const { body } = req.body;
 
     const comment = db.Comments.build({ body });
