@@ -30,7 +30,7 @@ router.get("/question/:id(\\d+)",
  requireAuth,
  asyncHandler(async(req, res) => {
     const questionId = parseInt(req.params.id, 10)
-    const question = await Question.findByPk(questionId, {include:["answers", "comments"]})
+    const question = await Question.findByPk(questionId, {include:[]})
     // res.send("Testing /question/:id route")
     res.render('question-detail', { title: "Question Detail", question })
 }));
@@ -43,6 +43,7 @@ const questionValidators = [
     .withMessage("Question must not be more than 255 characters long.")
 ]
 
+// GET FORM TO ADD A QUESTION 
 router.get("/question/add", requireAuth,
   csrfProtection,
   questionValidators,
@@ -62,14 +63,14 @@ router.post("/question/add",
   asyncHandler(async (req, res) => {
 
     const { title, topicId } = req.body;
-    console.log(req.body)
+    console.log(res.locals.user.id)
      const topicNumId = parseInt(topicId, 10)
     const question = Question.build({
       userId: res.locals.user.id,
       topicNumId,
       title,
     });
-
+ 
     const validatorErrors = validationResult(req);
 
     if (validatorErrors.isEmpty()) {
