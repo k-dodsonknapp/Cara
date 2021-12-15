@@ -137,6 +137,7 @@ router.post('/', csrfProtection, userLoginValidators, asyncHandler(async functio
     const passwordTest = await bcrypt.compare(password, hashedPassword);
     if (passwordTest) {
       loginUser(req, res, foundUser)
+      return res.redirect("/home");
     } else {
       errors.push('Login credentials invalid.')
     }

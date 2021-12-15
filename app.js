@@ -7,6 +7,7 @@ const { sequelize } = require('./db/models');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const indexRouter = require('./routes/index');
+const homeRouter = require("./routes/home")
 const usersRouter = require('./routes/users');
 const questionsRouter = require('./routes/questions')
 const answersRouter = require('./routes/answers')
@@ -40,8 +41,9 @@ app.use(
 // create Session table if it doesn't already exist
 store.sync();
 app.use(restoreUser)
-// app.use('/', indexRouter);
-app.use('/', usersRouter);
+app.use('/', indexRouter);
+app.use(homeRouter) // --> /home 
+app.use('/users', usersRouter);
 app.use(questionsRouter)
 app.use(answersRouter)
 app.use(commentsRouter);
