@@ -18,6 +18,7 @@ module.exports = {
         references: {model: 'Users'}
       },
       topicsId: {
+        allowNull: false,
         type: Sequelize.INTEGER,
         references: {model: 'Topics'}
       },
