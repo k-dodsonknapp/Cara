@@ -8,10 +8,12 @@ html(lang="en")
     body
 
 
-        nav(class='#')
-            a(href='/' class='#') Cara
-            button(class='#' type='button')
-                span(class='#')
+        nav(class='#nav-container')
+            div(id="search-container")
+              form(action="/search" method="POST" class="search-box" id="search-box")
+                input(type="text" name="search-bar" id="search-bar" placeholder="search for a question")
+                input(type="submit" name="search-box" class="search-bar-submit-button" value="Search")
+            a(href='/' class='#') Logout
             #navbarNav(class='#')
                 ul(class='#')
                 li(class='#'): a(class='#' href='/questions') Questions
