@@ -7,7 +7,7 @@ const { loginUser, logoutUser } = require('../auth')
 const router = express.Router();
 
 /* GET users listing. */
-router.get('/register', csrfProtection, asyncHandler(async function(req, res, next) {
+router.get('/users/register', csrfProtection, asyncHandler(async function(req, res, next) {
   const user = await User.build();
   res.render('user-register', {
     title: 'register',
@@ -66,7 +66,7 @@ const userValidators = [
     }),
 ];
 
-router.post('/register', csrfProtection, userValidators, asyncHandler(async function (req, res) {
+router.post('/users/register', csrfProtection, userValidators, asyncHandler(async function (req, res) {
   const { username, email, password } = req.body;
   const hashedPassword = await bcrypt.hash(password, 12);
 
@@ -119,6 +119,7 @@ const userLoginValidators = [
     .exists({ checkFalsy: true })
     .withMessage('Please provide a password.')
 ];
+
 
 router.post('/', csrfProtection, userLoginValidators, asyncHandler(async function (req, res) {
   const { email, password } = req.body;

@@ -41,9 +41,9 @@ app.use(
 // create Session table if it doesn't already exist
 store.sync();
 app.use(restoreUser)
-app.use('/', indexRouter);
-app.use(homeRouter) // --> /home 
-app.use('/users', usersRouter);
+// app.use('/', indexRouter);
+app.use(homeRouter) // --> /home
+app.use('/', usersRouter);
 app.use(questionsRouter)
 app.use(answersRouter)
 app.use(commentsRouter);

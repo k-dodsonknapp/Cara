@@ -7,4 +7,5 @@ router.get('/', function(req, res) {
   res.render('index', { title: 'Cara' });
 });
 
+
 module.exports = router;
