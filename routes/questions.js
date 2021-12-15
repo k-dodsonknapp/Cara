@@ -16,7 +16,7 @@ const checkPermissions = (question, currentUser) => {
     throw err;
   }
 };
-
+console.log("i hate eric's console.logs")
 //GET TEN COMMENTS - (BONUS order them by popularity)
 router.get( "/questions", asyncHandler(async (req, res) => {
     const questions = await Question.findAll({ limit: 10 });
