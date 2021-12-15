@@ -31,12 +31,14 @@ router.get("/question/:id(\\d+)",
  asyncHandler(async(req, res) => {
     const questionId = parseInt(req.params.id, 10)
     const question = await Question.findByPk(questionId)
-    const answer = await Answer.findOne({
+    const answers = await Answer.findAll({
       where: { 
         questionId
-      }
+      },
+      limit: 5 
     })
-    res.render('question-detail', { title: "Question Detail", question, answer })
+
+    res.render('question-detail', { title: "Question Detail", question, answers })
 }));
 
 const questionValidators = [
