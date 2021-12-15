@@ -7,5 +7,6 @@ block content
     form(action=`/question/${question.id}/add` method='post')
         input(type='hidden' name='_csrf' value=csrfToken)
         +field('Answer', 'body', question.body)
-            button(type='submit') Answer this question
-            a(href='/question/:id') Cancel
+        div(class='#')
+          button(type='submit' class='#') Answer this question
+          a(href=`/question/${question.id}`) Cancel
