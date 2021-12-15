@@ -24,7 +24,7 @@ const answerValidators = [
 
 //gets all answers from a specific question
 router.get('/questions/:id(\\d+)/answers', asyncHandler( async (req, res) => {
-    const answer = db.Answers.findAll({
+    const answer = db.Answer.findAll({
         include: ['comments', 'questions']
     })
     res.render('answer-detail', { answer })
