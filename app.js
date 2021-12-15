@@ -43,7 +43,7 @@ store.sync();
 app.use(restoreUser)
 // app.use('/', indexRouter);
 app.use(homeRouter) // --> /home
-app.use('/', usersRouter);
+app.use(usersRouter);
 app.use(questionsRouter)
 app.use(answersRouter)
 app.use(commentsRouter);

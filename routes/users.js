@@ -135,7 +135,7 @@ router.post('/', csrfProtection, userLoginValidators, asyncHandler(async functio
 
   if (!errors[0]) {
     const hashedPassword = foundUser.hashedPassword;
-    const passwordTest = await bcrypt.compare(password, hashedPassword);
+    const passwordTest = await bcrypt.compare(password, foundUser.hashedPassword.toString());
     if (passwordTest) {
       loginUser(req, res, foundUser)
       return res.redirect("/home");
