@@ -43,15 +43,33 @@ const questionValidators = [
     .withMessage("Question must not be more than 255 characters long.")
 ]
 
+router.get("/question/add", requireAuth,
+  csrfProtection,
+  questionValidators,
+  asyncHandler(async (req, res) => { 
+     res.render("question-add-form", {
+       title: "Add Question",
+       csrfToken: req.csrfToken(),
+     });
+
+  }));
+
 //POST TO ADD A NEW QUESTION 
 router.post("/question/add",
   requireAuth,
   csrfProtection,
   questionValidators,
   asyncHandler(async (req, res) => {
-    const { title } = req.body;
-      
-    const question = Question.build({ title });
+    
+
+    const { title, topicId } = req.body;
+    console.log(req.body)
+     const topicNumId = parseInt(topicId, 10)
+    const question = Question.build({
+      userId: res.locals.user.id,
+      topicNumId,
+      title,
+    });
 
     const validatorErrors = validationResult(req);
 
@@ -60,15 +78,15 @@ router.post("/question/add",
       res.redirect("/home");
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
-      res.render("question-add", {
-        title: "Add Question",
-        question,
-        errors,
-        csrfToken: req.csrfToken(),
-      });
+    res.render("question-add-form", {
+         title: "Add Question",
+         question,
+         errors,
+         csrfToken: req.csrfToken(),
+       });
     }
-  })
-);
+      
+  }));
 
 //GET THE QUESTION BY ID TO EDIT THE QUESTION 
 router.get("/questions/:id(\\d+)/edit", // renders edit form
