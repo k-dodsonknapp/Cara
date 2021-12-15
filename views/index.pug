@@ -19,9 +19,9 @@ block content
       form(action='/' method='post')
         input(type='hidden' name='_csrf' value=csrfToken)
         div.email
-          +field('Email', 'email', user.email)
+          +field('Email', 'email', email)
         div.password
-          +field('Password', 'password', user.hashedPassword, 'password')
+          +field('Password', 'password', null, 'password')
         div.login-button
             button(type='submit') Login
         div.sign-up-link
