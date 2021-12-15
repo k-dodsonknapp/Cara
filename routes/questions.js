@@ -26,7 +26,7 @@ router.get( "/questions", asyncHandler(async (req, res) => {
 );
 
 //GET A SPECIFIC QUESTION BY ID - (when you click on a specific question)
-router.get("/question/:id(\\d+)", 
+router.get("/question/:id(\\d+)",
  requireAuth,
  asyncHandler(async(req, res) => {
     const questionId = parseInt(req.params.id, 10)
@@ -43,34 +43,52 @@ const questionValidators = [
     .withMessage("Question must not be more than 255 characters long.")
 ]
 
-//POST TO ADD A NEW QUESTION 
+router.get("/question/add", requireAuth,
+  csrfProtection,
+  questionValidators,
+  asyncHandler(async (req, res) => {
+     res.render("question-add-form", {
+       title: "Add Question",
+       csrfToken: req.csrfToken(),
+     });
+
+  }));
+
+//POST TO ADD A NEW QUESTION
 router.post("/question/add",
   requireAuth,
   csrfProtection,
   questionValidators,
   asyncHandler(async (req, res) => {
-    const { title } = req.body;
-      
-    const question = Question.build({ title });
+
+
+    const { title, topicId } = req.body;
+    console.log(req.body)
+     const topicNumId = parseInt(topicId, 10)
+    const question = Question.build({
+      userId: res.locals.user.id,
+      topicNumId,
+      title,
+    });
 
     const validatorErrors = validationResult(req);
 
-    if (validatorErrors.isEmpty()) { 
+    if (validatorErrors.isEmpty()) {
       await question.save();
       res.redirect("/home");
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
-      res.render("question-add", {
-        title: "Add Question",
-        question,
-        errors,
-        csrfToken: req.csrfToken(),
-      });
+    res.render("question-add-form", {
+         title: "Add Question",
+         question,
+         errors,
+         csrfToken: req.csrfToken(),
+       });
     }
-  })
-);
 
-//GET THE QUESTION BY ID TO EDIT THE QUESTION 
+  }));
+
+//GET THE QUESTION BY ID TO EDIT THE QUESTION
 router.get("/questions/:id(\\d+)/edit", // renders edit form
   requireAuth,
   csrfProtection,
@@ -89,7 +107,7 @@ router.get("/questions/:id(\\d+)/edit", // renders edit form
 );
 
 
-// POST THE EDIT MADE TO A QUESTION 
+// POST THE EDIT MADE TO A QUESTION
 router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
   requireAuth,
   csrfProtection,
@@ -120,7 +138,7 @@ router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
   })
 );
 
-// POST ROUTE TO DELETE THE QUESTION 
+// POST ROUTE TO DELETE THE QUESTION
 router.post("/questions/:id(\\d+)/delete",
   requireAuth,
   csrfProtection,
