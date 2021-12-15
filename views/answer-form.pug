@@ -4,8 +4,8 @@ include utils.pug
 
 block content
     +validationErrorSummary(errors)
-    form(action="/questions/:id(\\d+)/add" method='post')
+    form(action=`/question/${question.id}/add` method='post')
         input(type='hidden' name='_csrf' value=csrfToken)
-        +field('Answer', 'body', answer.body)
-        button(type='submit') Answer this question
-        a(href='/questions/:id') Cancel
+        +field('Answer', 'body', question.body)
+            button(type='submit') Answer this question
+            a(href='/question/:id') Cancel

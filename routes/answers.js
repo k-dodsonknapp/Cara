@@ -23,18 +23,30 @@ const answerValidators = [
 ]
 
 //gets all answers from a specific question
-router.get('/questions/:id(\\d+)/answers', asyncHandler( async (req, res) => {
+router.get('/question/:id(\\d+)/answers', asyncHandler( async (req, res) => {
     const answer = db.Answer.findAll({
         include: ['comments', 'questions']
     })
     res.render('answer-detail', { answer })
 }))
 
-//add an answer to a specific question.
-router.post('/questions/:id(\\d+)/add', answerValidators, csrfProtection, asyncHandler( async (req, res) => {
-    const { body } = req.body
+//get answer form
+router.get('/question/:id(\\d+)/add', csrfProtection, asyncHandler( async (req, res) => {
+    const questionId = parseInt(req.params.id, 10)
+    const question = await db.Question.findByPk(questionId)
+    res.render('answer-form', { title: 'Add Answer', question, csrfToken: req.csrfToken()  })
+}))
 
+//add an answer to a specific question.
+router.post('/question/:id(\\d+)/add', answerValidators, csrfProtection, asyncHandler( async (req, res) => {
+    const { body } = req.body
+    console.log(res.locals)
+    const questionId = parseInt(req.params.id, 10)
+    const question = await db.Question.findByPk(questionId)
+    console.log(res.locals.user.id)
     const answer = db.Answer.build({
+        userId: res.locals.user.id,
+        questionId: question.id,
         body,
     })
 
@@ -42,11 +54,12 @@ router.post('/questions/:id(\\d+)/add', answerValidators, csrfProtection, asyncH
 
     if(validatorErrors.isEmpty()) {
         await answer.save();
-        res.redirect('/questions/:id')
+        res.redirect(`/question/${questionId}`)
     } else {
         const errors = validatorErrors.array().map((error) => error.msg);
       res.render('answer-form', {
         title: 'Add an Answer',
+        question,
         errors,
         csrfToken: req.csrfToken(),
       });

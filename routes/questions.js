@@ -30,7 +30,7 @@ router.get("/question/:id(\\d+)",
  requireAuth,
  asyncHandler(async(req, res) => {
     const questionId = parseInt(req.params.id, 10)
-    const question = await Question.findByPk(questionId, {include:["answers", "comments"]})
+    const question = await Question.findByPk(questionId, {include:[]})
     // res.send("Testing /question/:id route")
     res.render('question-detail', { title: "Question Detail", question })
 }));
