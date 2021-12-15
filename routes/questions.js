@@ -50,7 +50,7 @@ router.post("/question/add",
   questionValidators,
   asyncHandler(async (req, res) => {
     const { title } = req.body;
-      
+      console.log(req.body)
     const question = Question.build({ title });
 
     const validatorErrors = validationResult(req);
