@@ -2,7 +2,8 @@ extends home
 
 block content 
   h3= question.title
-  h4= answer.body
+  each answer in answers 
+    h4= answer.body
 //-   div
 //-     ul
 //-       li= `Location: ${park.city}, ${park.provinceState} ${park.country}`
