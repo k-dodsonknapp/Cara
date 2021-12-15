@@ -6,7 +6,7 @@ const { check, validationResult } = require("express-validator");
 const { requireAuth } = require("../auth")
 
 const db = require("../db/models");
-const { Question } = db
+const { Question, Answer } = db
 
 //ensures that the owner of the resource is the only one that can edit/delete
 const checkPermissions = (question, currentUser) => {
@@ -30,9 +30,13 @@ router.get("/question/:id(\\d+)",
  requireAuth,
  asyncHandler(async(req, res) => {
     const questionId = parseInt(req.params.id, 10)
-    const question = await Question.findByPk(questionId, {include:[]})
-    // res.send("Testing /question/:id route")
-    res.render('question-detail', { title: "Question Detail", question })
+    const question = await Question.findByPk(questionId)
+    const answer = await Answer.findOne({
+      where: { 
+        questionId
+      }
+    })
+    res.render('question-detail', { title: "Question Detail", question, answer })
 }));
 
 const questionValidators = [
