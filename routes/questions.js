@@ -26,7 +26,7 @@ router.get( "/questions", asyncHandler(async (req, res) => {
 );
 
 //GET A SPECIFIC QUESTION BY ID - (when you click on a specific question)
-router.get("/question/:id(\\d+)", 
+router.get("/question/:id(\\d+)",
  requireAuth,
  asyncHandler(async(req, res) => {
     const questionId = parseInt(req.params.id, 10)
@@ -46,7 +46,7 @@ const questionValidators = [
 router.get("/question/add", requireAuth,
   csrfProtection,
   questionValidators,
-  asyncHandler(async (req, res) => { 
+  asyncHandler(async (req, res) => {
      res.render("question-add-form", {
        title: "Add Question",
        csrfToken: req.csrfToken(),
@@ -54,13 +54,13 @@ router.get("/question/add", requireAuth,
 
   }));
 
-//POST TO ADD A NEW QUESTION 
+//POST TO ADD A NEW QUESTION
 router.post("/question/add",
   requireAuth,
   csrfProtection,
   questionValidators,
   asyncHandler(async (req, res) => {
-    
+
 
     const { title, topicId } = req.body;
     console.log(req.body)
@@ -73,7 +73,7 @@ router.post("/question/add",
 
     const validatorErrors = validationResult(req);
 
-    if (validatorErrors.isEmpty()) { 
+    if (validatorErrors.isEmpty()) {
       await question.save();
       res.redirect("/home");
     } else {
@@ -85,10 +85,10 @@ router.post("/question/add",
          csrfToken: req.csrfToken(),
        });
     }
-      
+
   }));
 
-//GET THE QUESTION BY ID TO EDIT THE QUESTION 
+//GET THE QUESTION BY ID TO EDIT THE QUESTION
 router.get("/questions/:id(\\d+)/edit", // renders edit form
   requireAuth,
   csrfProtection,
@@ -107,7 +107,7 @@ router.get("/questions/:id(\\d+)/edit", // renders edit form
 );
 
 
-// POST THE EDIT MADE TO A QUESTION 
+// POST THE EDIT MADE TO A QUESTION
 router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
   requireAuth,
   csrfProtection,
@@ -138,7 +138,7 @@ router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
   })
 );
 
-// POST ROUTE TO DELETE THE QUESTION 
+// POST ROUTE TO DELETE THE QUESTION
 router.post("/questions/:id(\\d+)/delete",
   requireAuth,
   csrfProtection,
