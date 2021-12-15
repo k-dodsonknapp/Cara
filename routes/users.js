@@ -95,7 +95,7 @@ router.post('/users/register', csrfProtection, userValidators, asyncHandler(asyn
 
 router.get('/', csrfProtection, asyncHandler(async function (req, res, next) {
   const user = await User.build();
-  res.render('index', {
+  res.render('login', {
     user,
     title: 'Login',
     csrfToken: req.csrfToken()
@@ -144,7 +144,7 @@ router.post('/', csrfProtection, userLoginValidators, asyncHandler(async functio
     }
   }
   if (errors[0]) {
-    res.render('index', {
+    res.render('login', {
       user,
       title: 'Login',
       errors,
