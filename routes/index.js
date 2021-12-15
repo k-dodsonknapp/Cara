@@ -3,9 +3,9 @@ const router = express.Router();
 
 
 /* GET home page. */
-router.get('/', function(req, res) {
-  res.render('index', { title: 'Cara' });
-});
+// router.get('/', function(req, res) {
+//   res.render('index', { title: 'Cara' });
+// });
 
 
 module.exports = router;
