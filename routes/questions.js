@@ -61,7 +61,6 @@ router.post("/question/add",
   questionValidators,
   asyncHandler(async (req, res) => {
 
-
     const { title, topicId } = req.body;
     console.log(req.body)
      const topicNumId = parseInt(topicId, 10)
