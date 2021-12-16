@@ -45,19 +45,19 @@ router.get("/question/:id(\\d+)",
     //   },
     //   limit: 5,
     // });
-     if(answerId) {
+    //  if(answerId) {
        res.render("question-detail", {
          title: "Question Detail",
          question,
          answers,
         //  comments
        });
-     } else {
-        res.render('question-detail', {
-      title: "Question Detail",
-      question
-     })
-     }
+    //  } else {
+    //     res.render('question-detail', {
+    //   title: "Question Detail",
+    //   question
+    //  })
+    //  }
 
 
 

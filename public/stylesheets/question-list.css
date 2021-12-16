@@ -1,0 +1,18 @@
+* {
+    background-color: seashell;
+}
+
+.post-question {
+    display: flex;
+    justify-content: center;
+}
+
+.py-3 {
+    display: flex;
+    justify-content: center;
+}
+
+.display-question {
+    display: flex;
+    justify-content: center;
+}
