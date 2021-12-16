@@ -19,48 +19,25 @@ const checkPermissions = (question, currentUser) => {
 
 
 //GET A SPECIFIC QUESTION BY ID - (when you click on a specific question)
-//COMMENTS - need to display comments under each answer 
+//TESTED
+//COMMENTS - will be dynamic 
 router.get("/question/:id(\\d+)",
  requireAuth,
  asyncHandler(async(req, res) => {
-    const questionId = parseInt(req.params.id, 10)
+    const questionId = req.params.id
     const question = await Question.findByPk(questionId)
     const answers = await Answer.findAll({
       where: {
         questionId
       },
-      limit: 5
+      limit: 5,
+      order: [["createdAt","ASC"]]
     })
-
-    // let answerId = answers.id;
-
-    const answerId = await Answer.findOne({
-      where: {
-        questionId,
-      },
-    });
-    //  const comments = await Comment.findAll({
-    //   where: {
-    //     answersId: answerId,
-    //   },
-    //   limit: 5,
-    // });
-    //  if(answerId) {
        res.render("question-detail", {
          title: "Question Detail",
          question,
-         answers,
-        //  comments
+         answers
        });
-    //  } else {
-    //     res.render('question-detail', {
-    //   title: "Question Detail",
-    //   question
-    //  })
-    //  }
-
-
-
 }));
 
 const questionValidators = [
