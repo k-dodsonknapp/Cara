@@ -1,14 +1,14 @@
-extends home 
+extends home
 
-block content 
+block content
   h3= question.title
-  each answer in answers 
+  each answer in answers
     h4= answer.body
       div(class='py-3')
-        a(class='btn btn-success' href=`/comments/${answer.id}/add` role='button') Add Comment
+        a(class='btn btn-success' href=`/answer/${answer.id}/add` role='button') Add Comment
     each comment in comments
-      h5= comment.body 
-        
+      h5= comment.body
+
 //-   div
 //-     ul
 //-       li= `Location: ${park.city}, ${park.provinceState} ${park.country}`
@@ -43,6 +43,3 @@ block content
 //-               td: a(class='btn btn-primary' href=`/attraction/${attraction.id}` role='button') Details
 //-     else
 //-       p: em No attractions available for this park.
-
-
-    
