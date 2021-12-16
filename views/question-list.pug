@@ -16,7 +16,7 @@ block content
     tbody(class="quesions-row")
       each question in questions
         tr
-          td= question.title
+          td= ''
             div(class='py-3')
               a(class='display-question' href=`/question/${question.id}` role='button')  #{question.title}
             div(class='py-3')

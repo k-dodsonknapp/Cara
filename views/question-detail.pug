@@ -4,7 +4,7 @@ append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/question-detail.css")
 
-block content
+ if question
   div(class='q-text')
   h3= question.title
   if answer
@@ -13,6 +13,7 @@ block content
       h4= answer.body
         div(class='commentDiv')
           a(class='commentBtn btn' href=`/answer/${answer.id}/add` role='button') Add Comment
+
     //- each comment in comments
       h5= comment.body
 

@@ -1,0 +1,38 @@
+* {
+    background-color: seashell;
+    margin: 0;
+}
+
+h3 {
+    font-size: 30px;
+}
+
+h5 {
+    font-weight: bold;
+}
+
+a {
+    font-size: 20px;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.content-container {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    border: 2px solid red;
+    padding: 15px;
+    line-height: 30px;
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.comments {
+    padding-top: 30px;
+}
