@@ -1,3 +1,4 @@
+extends home.pug
 
 block content
   div(class='py-3')
@@ -10,5 +11,7 @@ block content
       each question in questions
         tr
           td= question.title
+            div(class='py-3')
+              a(class='btn btn-success' href=`/question/${question.id}` role='button')  #{question.title}
             div(class='py-3')
               a(class='btn btn-success' href=`/question/${question.id}/add` role='button') Add Answer
