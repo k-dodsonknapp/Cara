@@ -114,7 +114,7 @@ router.get('/comment/:id(\\d+)/delete', csrfProtection, checkPermissions,
 
         checkPermissions(comment, res.locals.user);
 
-        res.render('comment-details', {
+        res.render('answer-detail', {
             title: 'Delete Comment',
             comment,
             csrfToken: req.csrfToken(),
