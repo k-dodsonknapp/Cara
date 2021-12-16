@@ -16,16 +16,10 @@ const checkPermissions = (question, currentUser) => {
     throw err;
   }
 };
-console.log("i hate eric's console.logs")
-//GET TEN COMMENTS - (BONUS order them by popularity)
-router.get( "/questions", asyncHandler(async (req, res) => {
-    const questions = await Question.findAll({ limit: 10 });
-    // res.send("testing /questions route ")
-    res.render("question-list", { title: "Questions", questions });
-  })
-);
+
 
 //GET A SPECIFIC QUESTION BY ID - (when you click on a specific question)
+//TESTED 
 router.get("/question/:id(\\d+)",
  requireAuth,
  asyncHandler(async(req, res) => {
@@ -37,13 +31,29 @@ router.get("/question/:id(\\d+)",
       },
       limit: 5 
     }) 
-    const answerId = answers[0].id
-   const comments = await Comment.findAll({
-     where: {
-       answersId: answerId
-     },
-     limit: 5,
-   });
+    let answersId = answers[0].id;
+
+     const comments = await Comment.findAll({
+      where: {
+        answersId: answersId,
+      },
+      limit: 5,
+    });
+
+    // if (!answerId) {
+    //  res.render("question-detail", {
+    //    title: "Question Detail",
+    //    question,
+    //    comments,
+    //  });
+
+    // //  answerId = await Answer.findOne({
+    // //   where: {
+    // //     questionId,
+    // //   },
+    // // });
+    // }
+
     res.render('question-detail', { 
       title: "Question Detail", 
       question, 
@@ -73,7 +83,8 @@ router.get("/question/add", requireAuth,
 
   }));
 
-//POST TO ADD A NEW QUESTION
+//POST TO ADD A NEW QUESTION 
+//TESTED
 router.post("/question/add",
   requireAuth,
   csrfProtection,
@@ -115,7 +126,7 @@ router.get("/questions/:id(\\d+)/edit", // renders edit form
     const question = await Question.findByPk(questionId);
 
     checkPermissions(question, res.locals.user);
-    //    res.send("Testing /questions/:id(\\d+)/edit route");
+
     res.render("question-edit", {
       title: "Edit Question",
       question,
