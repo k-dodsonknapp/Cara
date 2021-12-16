@@ -13,12 +13,12 @@ const checkPermissions = (comment, currentUser) => {
     }
 };
 
-
-router.get('/comments/:id(\\d+)', asyncHandler(async (req, res) => {
+//gets an answer with all comments
+router.get('/answers/:id(\\d+)/comments', asyncHandler(async (req, res) => {
     const commentsId = parseInt(req.params.id, 10);
 
     const comments = await db.Comment.findByPk(commentsId);
-    res.render('comment-details', { comments })
+    res.render('answer-details', { comments })
 }));
 
 const commentValidator = [
@@ -27,14 +27,12 @@ const commentValidator = [
         .withMessage("Must have a something in the body.")
 ];
 
-router.get('/comments/add', requireAuth, csrfProtection, (req, res) => {
-    const comments = db.Comments.build();
-    res.render('comment-details', {
-        title: 'Add Comment',
-        comments,
-        csrfToken: req.csrfToken(),
-    });
-});
+//get comment form
+router.get('/answer/:id(\\d+)/add', csrfProtection, asyncHandler( async (req, res) => {
+    const answersId = parseInt(req.params.id, 10)
+    const answer = await db.Answer.findByPk(answersId)
+    res.render('comment-form', { title: 'Add Comment', answer, csrfToken: req.csrfToken()  })
+}))
 
 router.post('/comments/add', csrfProtection, commentValidator, checkPermissions, asyncHandler(async (req, res) => {
     const { body } = req.body;
