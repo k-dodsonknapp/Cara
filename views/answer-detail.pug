@@ -18,3 +18,4 @@ block content
                     h5 Comments:
                 each comment in comments
                     h4= comment.body
+                    button(type='submit' class='#' href=`/comment/${comment.id}/delete`) Delete
