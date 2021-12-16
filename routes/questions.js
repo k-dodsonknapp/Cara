@@ -168,17 +168,17 @@ router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
 );
 
 // POST ROUTE TO DELETE THE QUESTION
-router.post("/questions/:id(\\d+)/delete",
+router.delete("/questions/:id(\\d+)",
   requireAuth,
   csrfProtection,
   asyncHandler(async (req, res) => {
-    const questionId = parseInt(req.params.id, 10);
+    const questionId = req.params.id;
     const question = await Question.findByPk(questionId);
 
     checkPermissions(question, res.locals.user);
 
     await question.destroy();
-    res.redirect("/questions");
+    res.send();
   })
 );
 
