@@ -13,7 +13,6 @@ module.exports = {
         type: Sequelize.STRING(50)
       },
       userId: {
-        allowNull: false,
         type: Sequelize.INTEGER,
         references: {model: 'Users'}
       },
