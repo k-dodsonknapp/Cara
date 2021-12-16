@@ -3,6 +3,6 @@ extends question-detail.pug
 block content
     h3= answer.body
         div(class='py-3')
-        a(class='btn btn-success' href=`/comments/${answer.id}/add` role='button') Add Comment
+            a(class='btn btn-success' href=`/answers/${comment.id}/add` role='button') Add Comment
     each comment in comments
         h4= comment.body
