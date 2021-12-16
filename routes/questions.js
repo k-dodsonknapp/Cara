@@ -71,7 +71,7 @@ const questionValidators = [
     .withMessage("Question must not be more than 255 characters long.")
 ]
 
-// GET FORM TO ADD A QUESTION
+// GET FORM TO ADD A QUESTION --> TESTED
 router.get("/question/add", requireAuth,
   csrfProtection,
   questionValidators,
@@ -83,8 +83,7 @@ router.get("/question/add", requireAuth,
 
   }));
 
-//POST TO ADD A NEW QUESTION
-//TESTED
+//POST TO ADD A NEW QUESTION --> TESTED
 router.post("/question/add",
   requireAuth,
   csrfProtection,

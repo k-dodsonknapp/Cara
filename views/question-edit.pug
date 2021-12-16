@@ -1,5 +1,15 @@
+ 
+extends home.pug
 
 
 include utils.pug
 
 block content
+  +validationErrorSummary(errors)
+  form(action=`/questions/${question.id}/edit` method='post')
+    input(type='hidden' name='_csrf' value=csrfToken)
+    +field("Question", "title", title, fieldType = 'textarea')
+    +field("Topic", "topicId", topicId)
+    div(class='py-4')
+      button(type='submit' class='btn btn-primary') Edit Question
+      a(href='/' class='btn btn-warning ml-2') Cancel
