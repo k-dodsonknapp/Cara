@@ -7,12 +7,19 @@
     justify-content: center;
 }
 
+.questions-row {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 .py-3 {
     display: flex;
     justify-content: center;
+
 }
 
-.display-question {
+/* .display-question {
     display: flex;
     justify-content: center;
-}
+} */
