@@ -8,7 +8,7 @@ block content
   +validationErrorSummary(errors)
   form(action='/question/add' method='post')
     input(type='hidden' name='_csrf' value=csrfToken)
-    +field("Question", "title", title, fieldType = 'textarea') 
+    +field("Question", "title", null, fieldType = 'textarea')
     label(for="topicId") Topics
     select(name="topicId" required)
       each topic in topicsId

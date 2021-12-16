@@ -68,10 +68,9 @@ router.post("/question/add",
   csrfProtection,
   questionValidators,
   asyncHandler(async (req, res) => {
-
     const { title, topicId } = req.body;
-    console.log(res.locals.user.id)
-     const topicsId = parseInt(topicId, 10)
+    const topicsId = parseInt(topicId, 10)
+
     const question = Question.build({
       userId: res.locals.user.id,
       topicsId,
@@ -104,10 +103,11 @@ router.get("/questions/:id(\\d+)/edit", // renders edit form
     const question = await Question.findByPk(questionId);
 
     checkPermissions(question, res.locals.user);
-
+    const topicsIdArr = await Topic.findAll();
     res.render("question-edit", {
       title: "Edit Question",
       question,
+      topicsIdArr,
       csrfToken: req.csrfToken(),
     });
   })
@@ -125,21 +125,25 @@ router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
 
     checkPermissions(questionToUpdate, res.locals.user);
 
-    const { title, topicsId, userId } = req.body;
-    const editedQuestion = { title, topicsId, userId}; 
-
+    const { title, topicId, userId } = req.body;
+   
+    const editedQuestion = { title, topicsId: topicId , userId}; 
+     console.log(questionToUpdate)
+     console.log(editedQuestion)
     const validatorErrors = validationResult(req);
 
     if (validatorErrors.isEmpty()) {
       await questionToUpdate.update(editedQuestion);
-      // res.redirect(`/question/${questionId}`);
       res.redirect("/home")
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
+      console.log(editedQuestion)
       res.render("question-edit", {
         title: "Edit Question",
         errors,
-        question: { editedQuestion, id: questionId }, 
+        topicsId,
+        // question: { editedQuestion, id: questionId }, 
+        editedQuestion,
         csrfToken: req.csrfToken(),
       });
     }
