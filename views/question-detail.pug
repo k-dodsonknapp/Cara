@@ -7,6 +7,8 @@ block content
   if question
     div(class='q-text')
     h3= question.title
+    div(class='py-3')
+      a(class='btn btn-success' href=`/questions/${question.id}/edit` role='button') Edit Question 
     if answers
       div(class='answerDiv')
       each answer in answers
