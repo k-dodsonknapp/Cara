@@ -1,15 +1,14 @@
-
-extends home.pug 
-
+extends home.pug
 
 block content
   h3= question.title
-  each answer in answers
-    h4= answer.body
-      div(class='py-3')
-        a(class='btn btn-success' href=`/answer/${answer.id}/add` role='button') Add Comment
-    each comment in comments
-      h5= comment.body
+  if answers
+    each answer in answers
+      h4= answer.body
+        div(class='py-3')
+          a(class='btn btn-success' href=`/comments/${answer.id}/add` role='button') Add Comment
+    //- each comment in comments
+      h5= comment.body 
 
 //-   div
 //-     ul

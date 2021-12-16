@@ -19,48 +19,48 @@ const checkPermissions = (question, currentUser) => {
 
 
 //GET A SPECIFIC QUESTION BY ID - (when you click on a specific question)
-//TESTED 
+//TESTED
 router.get("/question/:id(\\d+)",
  requireAuth,
  asyncHandler(async(req, res) => {
     const questionId = parseInt(req.params.id, 10)
     const question = await Question.findByPk(questionId)
     const answers = await Answer.findAll({
-      where: { 
+      where: {
         questionId
       },
-      limit: 5 
-    }) 
-    let answersId = answers[0].id;
+      limit: 5
+    })
 
-     const comments = await Comment.findAll({
+    // let answerId = answers.id;
+
+    const answerId = await Answer.findOne({
       where: {
-        answersId: answersId,
+        questionId,
       },
-      limit: 5,
     });
-
-    // if (!answerId) {
-    //  res.render("question-detail", {
-    //    title: "Question Detail",
-    //    question,
-    //    comments,
-    //  });
-
-    // //  answerId = await Answer.findOne({
-    // //   where: {
-    // //     questionId,
-    // //   },
-    // // });
-    // }
-
-    res.render('question-detail', { 
-      title: "Question Detail", 
-      question, 
-      answers,
-      comments,
+    //  const comments = await Comment.findAll({
+    //   where: {
+    //     answersId: answerId,
+    //   },
+    //   limit: 5,
+    // });
+     if(answerId) {
+       res.render("question-detail", {
+         title: "Question Detail",
+         question,
+         answers,
+        //  comments
+       });
+     } else {
+        res.render('question-detail', {
+      title: "Question Detail",
+      question
      })
-    
+     }
+
+
+
 }));
 
 const questionValidators = [
@@ -71,7 +71,7 @@ const questionValidators = [
     .withMessage("Question must not be more than 255 characters long.")
 ]
 
-// GET FORM TO ADD A QUESTION 
+// GET FORM TO ADD A QUESTION
 router.get("/question/add", requireAuth,
   csrfProtection,
   questionValidators,
@@ -83,7 +83,7 @@ router.get("/question/add", requireAuth,
 
   }));
 
-//POST TO ADD A NEW QUESTION 
+//POST TO ADD A NEW QUESTION
 //TESTED
 router.post("/question/add",
   requireAuth,
@@ -99,7 +99,7 @@ router.post("/question/add",
       topicNumId,
       title,
     });
- 
+
     const validatorErrors = validationResult(req);
 
     if (validatorErrors.isEmpty()) {
