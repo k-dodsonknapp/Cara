@@ -7,12 +7,17 @@ const { Question } = db;
 
 
 //GET TEN COMMENTS - (BONUS order them by popularity)
-//TESTED 
+//TESTED
 router.get(
   "/home",
   asyncHandler(async (req, res) => {
-    const questions = await Question.findAll({ limit: 10 });
-    res.render("question-list", { questions, title: "Cara" });
+    const questions = await Question.findAll({
+      order: [['updatedAt', 'DESC']],
+      limit: 10 });
+    res.render("question-list", {
+      questions,
+      title: "Cara Homepage"
+    });
   })
 );
 
