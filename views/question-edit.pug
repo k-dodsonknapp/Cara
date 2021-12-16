@@ -8,7 +8,10 @@ block content
   form(action=`/questions/${question.id}/edit` method='post')
     input(type='hidden' name='_csrf' value=csrfToken)
     +field("Question", "title", question.title, fieldType = 'textarea')
-    +field("Topic", "topicId", question.topicId)
+    label(for="topicId") Topics
+    select(name="topicId" required)
+      each topic in topicsIdArr
+        option(value=topic.id)=topic.name 
     div(class='py-4')
       button(type='submit' class='btn btn-primary') Submit 
       a(href='/home' class='btn btn-warning ml-2') Cancel
