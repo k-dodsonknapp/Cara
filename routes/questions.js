@@ -20,47 +20,24 @@ const checkPermissions = (question, currentUser) => {
 
 //GET A SPECIFIC QUESTION BY ID - (when you click on a specific question)
 //TESTED
+//COMMENTS - will be dynamic 
 router.get("/question/:id(\\d+)",
  requireAuth,
  asyncHandler(async(req, res) => {
-    const questionId = parseInt(req.params.id, 10)
+    const questionId = req.params.id
     const question = await Question.findByPk(questionId)
     const answers = await Answer.findAll({
       where: {
         questionId
       },
-      limit: 5
+      limit: 5,
+      order: [["createdAt","ASC"]]
     })
-
-    // let answerId = answers.id;
-
-    const answerId = await Answer.findOne({
-      where: {
-        questionId,
-      },
-    });
-    //  const comments = await Comment.findAll({
-    //   where: {
-    //     answersId: answerId,
-    //   },
-    //   limit: 5,
-    // });
-    //  if(answerId) {
        res.render("question-detail", {
          title: "Question Detail",
          question,
-         answers,
-        //  comments
+         answers
        });
-    //  } else {
-    //     res.render('question-detail', {
-    //   title: "Question Detail",
-    //   question
-    //  })
-    //  }
-
-
-
 }));
 
 const questionValidators = [
@@ -71,7 +48,7 @@ const questionValidators = [
     .withMessage("Question must not be more than 255 characters long.")
 ]
 
-// GET FORM TO ADD A QUESTION
+// GET FORM TO ADD A QUESTION --> TESTED
 router.get("/question/add", requireAuth,
   csrfProtection,
   questionValidators,
@@ -83,8 +60,7 @@ router.get("/question/add", requireAuth,
 
   }));
 
-//POST TO ADD A NEW QUESTION
-//TESTED
+//POST TO ADD A NEW QUESTION --> TESTED
 router.post("/question/add",
   requireAuth,
   csrfProtection,
@@ -137,6 +113,7 @@ router.get("/questions/:id(\\d+)/edit", // renders edit form
 
 
 // POST THE EDIT MADE TO A QUESTION
+//TESTED 
 router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
   requireAuth,
   csrfProtection,
@@ -147,20 +124,21 @@ router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
 
     checkPermissions(questionToUpdate, res.locals.user);
 
-    const { title } = req.body;
-    const editedQuestion = title; //??? test
+    const { title, topicsId, userId } = req.body;
+    const editedQuestion = { title, topicsId, userId}; 
 
     const validatorErrors = validationResult(req);
 
     if (validatorErrors.isEmpty()) {
       await questionToUpdate.update(editedQuestion);
-      res.redirect(`/question/${questionId}`);
+      // res.redirect(`/question/${questionId}`);
+      res.redirect("/home")
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
       res.render("question-edit", {
         title: "Edit Question",
         errors,
-        question: { editedQuestion, id: questionId }, //??? test
+        question: { editedQuestion, id: questionId }, 
         csrfToken: req.csrfToken(),
       });
     }
@@ -175,10 +153,14 @@ router.delete("/questions/:id(\\d+)",
     const questionId = req.params.id;
     const question = await Question.findByPk(questionId);
 
-    checkPermissions(question, res.locals.user);
-
+    // checkPermissions(question, res.locals.user);
+    
     await question.destroy();
+
     res.send();
+
+    res.save();
+
   })
 );
 
