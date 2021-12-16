@@ -22,12 +22,13 @@ const answerValidators = [
      .withMessage('Answer must be at least 15 characters long')
 ]
 
+
 //gets all answers from a specific question
-router.get('/question/:id(\\d+)/answers', asyncHandler( async (req, res) => {
-    const answer = db.Answer.findAll({
-        include: ['comments', 'questions']
-    })
-    res.render('answer-detail', { answer })
+router.get('/answer/:id(\\d+)', csrfProtection, asyncHandler( async (req, res) => {
+    const answerId = req.params.id
+    const answer = await db.Answer.findByPk(answerId)
+    console.log(answer)
+    res.render('answer-detail', { title:`Answer Details`, answer, csrfToken: req.csrfToken() })
 }))
 
 //get answer form

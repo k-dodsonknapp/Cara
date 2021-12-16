@@ -14,11 +14,16 @@ const checkPermissions = (comment, currentUser) => {
 };
 
 //gets an answer with all comments
-router.get('/answers/:id(\\d+)/comments', asyncHandler(async (req, res) => {
-    const commentsId = parseInt(req.params.id, 10);
+router.get('/answer/:id(\\d+)/comments', asyncHandler(async (req, res) => {
+    const answersId = parseInt(req.params.id, 10);
+    const comments = await db.Comment.findAll({
+        where: {
+            answersId
+        }
+    });
 
-    const comments = await db.Comment.findByPk(commentsId);
-    res.render('answer-details', { comments })
+    console.log(comments)
+    res.render('answer-detail', { comments })
 }));
 
 const commentValidator = [
@@ -34,23 +39,29 @@ router.get('/answer/:id(\\d+)/add', csrfProtection, asyncHandler( async (req, re
     res.render('comment-form', { title: 'Add Comment', answer, csrfToken: req.csrfToken()  })
 }))
 
-router.post('/comments/add', csrfProtection, commentValidator, checkPermissions, asyncHandler(async (req, res) => {
+router.post('/answer/:id(\\d+)/add', csrfProtection, commentValidator, checkPermissions, asyncHandler(async (req, res) => {
     const { body } = req.body;
+    const answerId = parseInt(req.params.id, 10)
+    const answer = await db.Answer.findByPk(answerId)
+    // checkPermissions(comment, res.locals.user);
 
-    const comment = db.Comments.build({ body });
+    const comment = db.Comment.build({
+         userId: res.locals.user.id,
+         answerId: answer.id,
+         body,
+        });
 
-    checkPermissions(comment, res.locals.user);
 
     const validatorErrors = validationResult(req)
 
     if (validatorErrors.isEmpty()) {
         await comment.save();
-        res.redirect("/home");
+        res.redirect(`/answer/${answerId}/comments`);
     } else {
         const errors = validatorErrors.array().map((error) => error.msg);
-        res.render("comment-details", {
-            title: "comment",
-            comment,
+        res.render("comment-form", {
+            title: "Add a comment",
+            answer,
             errors,
             csrfToken: req.csrfToken(),
         })
