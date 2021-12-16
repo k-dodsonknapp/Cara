@@ -23,12 +23,18 @@ const answerValidators = [
 ]
 
 
-//gets all answers from a specific question
+
 router.get('/answer/:id(\\d+)', csrfProtection, asyncHandler( async (req, res) => {
-    const answerId = req.params.id
-    const answer = await db.Answer.findByPk(answerId)
+    const answersId = req.params.id
+    const answer = await db.Answer.findByPk(answersId)
+    const comments = await db.Comment.findAll({
+        where: {
+            answersId
+        }
+    })
+
     console.log(answer)
-    res.render('answer-detail', { title:`Answer Details`, answer, csrfToken: req.csrfToken() })
+    res.render('answer-detail', { title:`Answer Details`, answer, comments, csrfToken: req.csrfToken() })
 }))
 
 //get answer form
