@@ -103,7 +103,7 @@ answerValidators, asyncHandler( async (req, res) => {
 
     if(validatorErrors.isEmpty()) {
         await answerToUpdate.update(editedAnswer);
-        res.redirect('/questions/:id(\\d+)/answers')
+        res.redirect(`/question/${answerToUpdate.questionId}`)
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
       res.render('answer-edit', {
