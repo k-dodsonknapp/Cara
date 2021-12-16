@@ -19,7 +19,7 @@ const checkPermissions = (question, currentUser) => {
 
 
 //GET A SPECIFIC QUESTION BY ID - (when you click on a specific question)
-//TESTED
+//COMMENTS - need to display comments under each answer 
 router.get("/question/:id(\\d+)",
  requireAuth,
  asyncHandler(async(req, res) => {
@@ -136,6 +136,7 @@ router.get("/questions/:id(\\d+)/edit", // renders edit form
 
 
 // POST THE EDIT MADE TO A QUESTION
+//TESTED 
 router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
   requireAuth,
   csrfProtection,
@@ -146,20 +147,21 @@ router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
 
     checkPermissions(questionToUpdate, res.locals.user);
 
-    const { title } = req.body;
-    const editedQuestion = title; //??? test
+    const { title, topicsId, userId } = req.body;
+    const editedQuestion = { title, topicsId, userId}; 
 
     const validatorErrors = validationResult(req);
 
     if (validatorErrors.isEmpty()) {
       await questionToUpdate.update(editedQuestion);
-      res.redirect(`/question/${questionId}`);
+      // res.redirect(`/question/${questionId}`);
+      res.redirect("/home")
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
       res.render("question-edit", {
         title: "Edit Question",
         errors,
-        question: { editedQuestion, id: questionId }, //??? test
+        question: { editedQuestion, id: questionId }, 
         csrfToken: req.csrfToken(),
       });
     }
