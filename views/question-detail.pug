@@ -1,12 +1,13 @@
 extends home.pug
 
 block content
-  h3= question.title
-  if answers
-    each answer in answers
-      h4= answer.body
-        div(class='py-3')
-          a(class='btn btn-success' href=`/answer/${answer.id}/add` role='button') Add Comment
+  if question
+    h3= question.title
+    if answers
+      each answer in answers
+        h4= answer.body
+          div(class='py-3')
+            a(class='btn btn-success' href=`/answer/${answer.id}/add` role='button') Add Comment
     //- each comment in comments
       h5= comment.body
 
