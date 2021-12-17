@@ -94,7 +94,7 @@ router.post("/question/add",
 
   }));
 
-//GET THE QUESTION BY ID TO EDIT THE QUESTION --> TESTED 
+//GET THE QUESTION BY ID TO EDIT THE QUESTION --> TESTED
 router.get("/questions/:id(\\d+)/edit", // renders edit form
   requireAuth,
   csrfProtection,
@@ -115,7 +115,7 @@ router.get("/questions/:id(\\d+)/edit", // renders edit form
 
 
 
-// POST THE EDIT MADE TO A QUESTION --> TESTED 
+// POST THE EDIT MADE TO A QUESTION --> TESTED
 
 router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
   requireAuth,
@@ -124,15 +124,16 @@ router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
   asyncHandler(async (req, res) => {
     const questionId = parseInt(req.params.id, 10);
     const questionToUpdate = await Question.findByPk(questionId);
+    console.log(req.body)
 
     checkPermissions(questionToUpdate, res.locals.user);
 
 
     const { title, topicId, userId } = req.body;
-   
-    const editedQuestion = { title, topicsId: topicId , userId}; 
-     console.log(questionToUpdate)
-     console.log(editedQuestion)
+
+    const editedQuestion = { title, topicsId: topicId , userId};
+    //  console.log(questionToUpdate)
+    //  console.log(editedQuestion)
 
     const validatorErrors = validationResult(req);
 
@@ -147,7 +148,7 @@ router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
         errors,
 
         topicsId,
-        // question: { editedQuestion, id: questionId }, 
+        // question: { editedQuestion, id: questionId },
         editedQuestion,
 
         csrfToken: req.csrfToken(),
@@ -163,7 +164,6 @@ router.delete("/questions/:id(\\d+)",
   asyncHandler(async (req, res) => {
     const questionId = req.params.id;
     const question = await Question.findByPk(questionId);
-
     // checkPermissions(question, res.locals.user);
 
     await question.destroy();
