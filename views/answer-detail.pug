@@ -12,19 +12,28 @@ block content
         div(class="content-container")
             h5 Answer:
                 h3= answer.body
-                    div(class='py-3')
-                        a(class='add-comment-btn' href=`/answer/${answer.id}/add` role='button') Add Comment
+                    div(class='comment-btn')
+                        a(class='btn' href=`/answer/${answer.id}/add` role='button') Comment
                         //if comments
                 div(class='comments')
                     h5 Comments:
                 each comment in comments
                     div(class='comment-container')
-                        div(id=`container-${comment.userId}`)
-                            h4= comment.body
-                                p(class='author') - #{comment.User.username} 
+                        div(class=`comment-details`)
+                            h4(class='comment-text')= comment.body
+                                p(class='author') - #{comment.User.username}
                             br
                             button(type='submit' id=`delete-${comment.id}` class=`delete-button` href=`/comment/${comment.id}/delete`) Delete
-                            br
-                            a(type='submit' id=`#` href=`/comments/${comment.id}/edit`) Edit
-        script(src='/javascripts/comments.js')
 
+                            a(type='submit' class=`btn` href=`/comments/${comment.id}/edit`) Edit
+        script(src='/javascripts/comments.js')
+        div(class='topic-container')
+            h3(id='topic-header') TOPICS
+                div(class='topics')
+                    h4 a topic
+                    h4 a topic
+                    h4 a topic
+                    h4 a topic
+                    h4 a topic
+                    h4 a topic
+                    h4 a topic
