@@ -33,10 +33,12 @@ body{
 }
 
 #nav-header {
+    width: 100%;
     position: fixed;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    border-bottom: 1px solid black;
 }
 
 #signed-in {
@@ -45,12 +47,13 @@ body{
 #footer-container {
     position: fixed;
     left: 0;
-    height:60px;
+    height:50px;
     bottom: 0;
     width: 100%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    border-top: 1px solid black;
 }
 
 #developer-credits {
@@ -58,12 +61,17 @@ body{
     display: flex;
     justify-content: space-evenly;
     /* align-items: center; */
+    width: 100%;
 }
 .container {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: 40fr 1fr;
     column-gap: 40px;
-    padding-top: 80px;
+    padding-top: 60px;
     padding-bottom: 30px;
+}
+ li {
+    display: inline;
+    justify-content: space-evenly;
 }
