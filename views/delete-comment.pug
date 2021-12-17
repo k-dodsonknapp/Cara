@@ -1,0 +1,11 @@
+extends question-detail.pug
+
+block content
+  h3= comment.body
+  div(class='py-4')
+    p Proceed with deleting this comment?
+  div
+    form(action=`/comment/${comment.id}/delete` method='post')
+      input(type='hidden' name='_csrf' value=csrfToken)
+      button(class='#' type='submit') Delete comment
+      a(class='#' href=`/answer/${comment.answerId}` role='button') Cancel

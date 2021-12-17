@@ -5,6 +5,7 @@ append head
     link(rel="stylesheet" href="/stylesheets/answer-detail.css")
 
 
+
 block content
     if answer
       div(class='main-container')
@@ -17,5 +18,7 @@ block content
                 div(class='comments')
                     h5 Comments:
                 each comment in comments
-                    h4= comment.body
-                    button(type='submit' class='#' href=`/comment/${comment.id}/delete`) Delete
+                    div(id=`container-${comment.id}`)
+                        h4= comment.body
+                            button(type='submit' id=`delete-${comment.id}` class=`delete-button` href=`/comment/${comment.id}/delete`) Delete
+    script(src='/javascripts/comments.js')
