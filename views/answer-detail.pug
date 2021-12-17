@@ -10,6 +10,10 @@ block content
     if answer
         div(class='main-container')
             div(class='left-container')
+                div(class='topic-container')
+                    h3 TOPICS
+                    each topic in topics
+                        a(type='submit' class='topic-link' role='button' href=`/topic/${topic.id}/questions`)= topic.name
             div(class='middle-container')
                 div(class="content-container")
                     h5 Answer:
