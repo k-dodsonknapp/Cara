@@ -164,7 +164,6 @@ router.delete("/questions/:id(\\d+)",
   asyncHandler(async (req, res) => {
     const questionId = req.params.id;
     const question = await Question.findByPk(questionId);
-
     // checkPermissions(question, res.locals.user);
 
     await question.destroy();
