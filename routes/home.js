@@ -13,7 +13,7 @@ router.get(
   asyncHandler(async (req, res) => {
     const questions = await Question.findAll({
       order: [['updatedAt', 'DESC']],
-      limit: 16 });
+      limit: 25 });
     res.render("question-list", {
       questions,
       title: "Cara Homepage"
