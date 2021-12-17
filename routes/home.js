@@ -11,11 +11,15 @@ const { Question } = db;
 router.get(
   "/home",
   asyncHandler(async (req, res) => {
-    const questions = await Question.findAll({
+    const answers = await db.Answer.findAll({
+      include: {
+        model: Question
+      },
       order: [['updatedAt', 'DESC']],
       limit: 10 });
+      console.log(answers)
     res.render("question-list", {
-      questions,
+      answers,
       title: "Cara Homepage"
     });
   })
