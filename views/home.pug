@@ -5,17 +5,39 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title= title
+        link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css")
+        link(rel="stylesheet" href="/stylesheets/index.css")
+        title= "Carra"
     body
-
-
-        nav(class='#')
-            a(href='/' class='#') Cara
-            button(class='#' type='button')
-                span(class='#')
-            #navbarNav(class='#')
-                ul(class='#')
-                li(class='#'): a(class='#' href='/home') Questions
-            .container
+        nav#nav-header
+            ul(id="logo-title-div")
+              h1(class="carra-logo") Carra
+            ul(id="home-button-div" href="/home")
+              i(class="fas fa-home")
+            ul(id="topics-button-div")
+              i(class="fa fa-users"): a(href='/')
+            ul(id="answer-button-div")
+              i(class="fas fa-keyboard"): a(href='/')
+            ul(id="search-container")
+              form(action="/search/" method="POST" class="search-form" id="search-form")
+                input(type="text" name="text" class="search-bar" placeholder="Search")
+                input(type="submit" name="search-form" class="search-bar-submit-button" value="Search")
+            if locals.authenticated
+              ul(class="signed-in")
+                i(id="welcome-username") Welcome to your feed, #{user.username}!
+                button(type="submit" class="logout-button"): a(href='/') Log out
 
         block content
+
+        block footer
+            #footer
+              div(id="footer-container")
+                ul(id="developer-credits") Developers:
+                  li Aaron Short
+                    i(class="fab fa-github"): a(href="https://github.com/GoodWillHunting11")
+                  li Chris Ramos
+                    a(class="fab fa-github" href="https://github.com/otmcz")
+                  li Eric Cortez
+                    a(class="fab fa-github social-links" target="_blank" href="https://github.com/Eric-Cortez")
+                  li Kenneth Dodson-Knapp
+                    a(class="fab fa-github" href="https://github.com/k-dodsonknapp")
