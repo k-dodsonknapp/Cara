@@ -5,6 +5,11 @@
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+html,
+body {
+    height: 100%;
+}
+
 h3 {
     font-size: 30px;
     background-color: white;
@@ -30,6 +35,7 @@ h5 {
 .main-container {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 40fr 1fr;
     column-gap: 40px;
     height: 100%;
 }
@@ -42,7 +48,7 @@ h5 {
 .middle-container {
     /* border: 1px solid rgba(222,224,225, 80%); */
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
     border-radius: 4px;
   }
@@ -60,28 +66,8 @@ h5 {
     border: 1px solid rgba(222,224,225, 0.8);
     border-radius: 4px;
     padding: 15px;
-    min-width: 750px;
-    max-width: 750px;
     background-color: white;
 }
-
-.topic-container {
-    min-width: 200px;
-    max-width: 200px;
-    margin-right: 18%;
-}
-
-#topic-header{
-    display: flex;
-}
-
-.topics h4 {
-    line-height: 45px;
-    background-color: white;
-    padding-bottom: 15px;
-    padding-left: 10px;
-}
-
 
 .comments {
     padding-top: 30px;
