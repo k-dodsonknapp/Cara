@@ -44,14 +44,14 @@ router.post('/answer/:id(\\d+)/add', csrfProtection, commentValidator, asyncHand
     const answerId = parseInt(req.params.id, 10)
     const answer = await db.Answer.findByPk(answerId)
     // checkPermissions(comment, res.locals.user);
-    console.log(answer)
+    // console.log(answer)
     const comment = db.Comment.build({
         userId: res.locals.user.id,
         answersId: answer.id,
         body,
     });
 
-    console.log(comment)
+    // console.log(comment)
     const validatorErrors = validationResult(req)
 
     if (validatorErrors.isEmpty()) {
@@ -68,44 +68,49 @@ router.post('/answer/:id(\\d+)/add', csrfProtection, commentValidator, asyncHand
     }
 }));
 
-
-router.get('/comments/:id(\\d+)/edit', csrfProtection, checkPermissions,
+//Get the comment by Id to edit
+router.get('/comments/:id(\\d+)/edit', requireAuth, csrfProtection,
     asyncHandler(async (req, res) => {
         const commentId = parseInt(req.params.id, 10);
-        const comment = await db.Park.findByPk(commentId);
+        // console.log(commentId)
+        const comment = await db.Comment.findByPk(commentId);
 
-        checkPermissions(comment, res.locals.user);
+        // checkPermissions(comment, res.locals.user);
 
-        res.render('park-edit', {
-            title: 'comment-details',
+        res.render('comment-edit', {
+            title: 'Edit comment',
             comment,
             csrfToken: req.csrfToken(),
         });
+        // res.send("BASIC BITCH")
     }));
 
 
-router.post('/comments/:id(\\d+)/edit', csrfProtection, commentValidator, checkPermissions, asyncHandler(async (req, res) => {
-    const { body } = req.body;
+// router.post('/comments/:id(\\d+)/edit', csrfProtection, commentValidator, checkPermissions, asyncHandler(async (req, res) => {
+//     const commentId = parseInt(req.params.id, 10);
+//     const commentToUpdate = await db.Comment.findByPk(commentId);
 
-    const comment = db.Comments.build({ body });
+//     const { body } = req.body;
 
-    checkPermissions(comment, res.locals.user);
+//     const editedComment = { body }
 
-    const validatorErrors = validationResult(req)
+//     // checkPermissions(comment, res.locals.user);
 
-    if (validatorErrors.isEmpty()) {
-        await comment.update(comment);
-        res.redirect("/home");
-    } else {
-        const errors = validatorErrors.array().map((error) => error.msg);
-        res.render("comment-details", {
-            title: "comment",
-            comment,
-            errors,
-            csrfToken: req.csrfToken(),
-        })
-    }
-}));
+//     const validatorErrors = validationResult(req)
+
+//     if (validatorErrors.isEmpty()) {
+//         await commentToUpdate.update(editedComment);
+//         res.redirect("/home");
+//     } else {
+//         const errors = validatorErrors.array().map((error) => error.msg);
+//         res.render("comment-details", {
+//             title: "comment",
+//             comment: { editedComment, id: commentId },
+//             errors,
+//             csrfToken: req.csrfToken(),
+//         })
+//     }
+// }));
 
 // router.get('/comment/:id(\\d+)/delete', csrfProtection,
 //   asyncHandler(async (req, res) => {
@@ -133,11 +138,11 @@ router.post('/comments/:id(\\d+)/edit', csrfProtection, commentValidator, checkP
 router.delete(
     "/comment/:id(\\d+)",
     asyncHandler(async (req, res, next) => {
-        console.log("Delete Comment Route")
+        // console.log("Delete Comment Route")
         const commentId = parseInt(req.params.id, 10);
-        console.log(commentId);
+        // console.log(commentId);
         const comment = await db.Comment.findByPk(commentId);
-        console.log(comment);
+        // console.log(comment);
 
         await comment.destroy();
         res.json({ message: `Deleted comment with id of ${req.params.id}.` });

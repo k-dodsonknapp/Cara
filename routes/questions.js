@@ -20,7 +20,7 @@ const checkPermissions = (question, currentUser) => {
 
 //GET A SPECIFIC QUESTION BY ID - (when you click on a specific question)
 //TESTED
-//COMMENTS - will be dynamic 
+//COMMENTS - will be dynamic
 router.get("/question/:id(\\d+)",
  requireAuth,
  asyncHandler(async(req, res) => {
@@ -114,7 +114,9 @@ router.get("/questions/:id(\\d+)/edit", // renders edit form
 );
 
 
+
 // POST THE EDIT MADE TO A QUESTION --> TESTED 
+
 router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
   requireAuth,
   csrfProtection,
@@ -125,11 +127,13 @@ router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
 
     checkPermissions(questionToUpdate, res.locals.user);
 
+
     const { title, topicId, userId } = req.body;
    
     const editedQuestion = { title, topicsId: topicId , userId}; 
      console.log(questionToUpdate)
      console.log(editedQuestion)
+
     const validatorErrors = validationResult(req);
 
     if (validatorErrors.isEmpty()) {
@@ -141,9 +145,11 @@ router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
       res.render("question-edit", {
         title: "Edit Question",
         errors,
+
         topicsId,
         // question: { editedQuestion, id: questionId }, 
         editedQuestion,
+
         csrfToken: req.csrfToken(),
       });
     }
@@ -159,7 +165,7 @@ router.delete("/questions/:id(\\d+)",
     const question = await Question.findByPk(questionId);
 
     // checkPermissions(question, res.locals.user);
-    
+
     await question.destroy();
     res.save();
   })

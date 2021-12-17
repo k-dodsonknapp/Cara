@@ -21,6 +21,10 @@ block content
                     div(class='comment-container')
                         div(id=`container-${comment.userId}`)
                             h4= comment.body
-                                p(class='author') - #{comment.User.username}
+                                p(class='author') - #{comment.User.username} 
+                            br
                             button(type='submit' id=`delete-${comment.id}` class=`delete-button` href=`/comment/${comment.id}/delete`) Delete
+                            br
+                            a(type='submit' id=`#` href=`/comments/${comment.id}/edit`) Edit
         script(src='/javascripts/comments.js')
+
