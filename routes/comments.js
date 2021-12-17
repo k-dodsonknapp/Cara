@@ -177,7 +177,7 @@ router.delete(
         // console.log(commentId);
         const comment = await db.Comment.findByPk(commentId);
         // console.log(comment);
-
+        checkPermissions(comment, res.locals.user);
         await comment.destroy();
         res.json({ message: `Deleted comment with id of ${req.params.id}.` });
     })
