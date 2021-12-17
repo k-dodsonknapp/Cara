@@ -1,0 +1,18 @@
+extends home.pug
+
+append head
+
+    link(rel='stylesheet' href='/stylesheets/topic-questions.css')
+
+block content
+    if topic
+        div(class='main-container')
+            div(class='left-container') left
+                p stuff
+            div(class='middle-container') middle
+                each question in questions
+                    div(class='questions-container')
+                        h2 hello
+                        p #{question.title}
+            div(class='right-container') right
+                p right stuff

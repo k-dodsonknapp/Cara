@@ -11,6 +11,7 @@ const usersRouter = require('./routes/users');
 const questionsRouter = require('./routes/questions')
 const answersRouter = require('./routes/answers')
 const commentsRouter = require('./routes/comments')
+const topicRouter = require('./routes/topics')
 const { secret } = require('./config')
 const { restoreUser } = require('./auth')
 
@@ -45,6 +46,7 @@ app.use(usersRouter);
 app.use(questionsRouter)
 app.use(answersRouter)
 app.use(commentsRouter);
+app.use(topicRouter);
 
 
 

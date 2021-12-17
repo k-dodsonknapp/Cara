@@ -35,8 +35,9 @@ router.get('/answer/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) =>
             model: db.User
         }
     })
+    const topics = await db.Topic.findAll()
 
-    res.render('answer-detail', { title: `Answer Details`, answer, comments, csrfToken: req.csrfToken() })
+    res.render('answer-detail', { title: `Answer Details`, answer, topics, comments, csrfToken: req.csrfToken() })
 }))
 
 //get answer form
@@ -121,7 +122,7 @@ router.post('/answer/:id(\\d+)/delete', requireAuth, csrfProtection,
     asyncHandler(async (req, res) => {
         const answerId = parseInt(req.params.id, 10)
         const answer = await db.Answer.findByPk(answerId)
-        
+
         checkPermissions(answer, res.locals.user);
 
         await answer.destroy();
