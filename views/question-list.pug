@@ -23,9 +23,10 @@ block content
                   div(class='py-3')
                   a(class='btn display-answer' href=`/answer/${answer.id}` role='button') #{answer.body}
                   br
-                  button(type='submit' id=`delete-${answer.questionId}` class=`delete-button` href=`/question/${answer.questionId}`) Delete
-                  br
-                  a(class='btn btn-success' href=`/question/${answer.questionId}/add` role='button') Add Answer
+                  if locals.user.id === answer.userId
+                    button(type='submit' id=`delete-${answer.questionId}` class=`delete-button` href=`/question/${answer.questionId}`) Delete
+                    br
+                    a(class='btn btn-success' href=`/question/${answer.questionId}/add` role='button') Add Answer
             tr( class="spacer")
     div(class="right-container")
     footer

@@ -8,7 +8,7 @@ const db = require('../db/models');
 
 const checkPermissions = (answer, currentUser) => {
     if (answer.userId !== currentUser.id) {
-        const err = new Error('Eric just create an account');
+        const err = new Error('Please create an account');
         err.status = 403; // Forbidden
         throw err;
     }
