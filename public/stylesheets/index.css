@@ -33,10 +33,12 @@ body{
 }
 
 #nav-header {
+    width: 100%;
     position: fixed;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    border-bottom: 1px solid black;
 }
 
 #signed-in {
@@ -51,6 +53,7 @@ body{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    border-top: 1px solid black;
 }
 
 #developer-credits {
