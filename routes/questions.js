@@ -157,18 +157,24 @@ router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
   })
 );
 
-// POST ROUTE TO DELETE THE QUESTION
-router.delete("/questions/:id(\\d+)",
+
+
+router.delete(
+  "/question/:id(\\d+)",
   requireAuth,
-  csrfProtection,
   asyncHandler(async (req, res) => {
-    const questionId = req.params.id;
+    
+    const questionId = parseInt(req.params.id);
+    // console.log(questionId);
     const question = await Question.findByPk(questionId);
-    // checkPermissions(question, res.locals.user);
+    // console.log(question);
+    
 
     await question.destroy();
-    res.save();
+
+    res.json({ message: `Deleted question with id of ${req.params.id}.`});
   })
 );
+
 
 module.exports = router
