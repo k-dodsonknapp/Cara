@@ -5,6 +5,15 @@
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
+html, 
+body {
+    height: 100%;
+}
+
+th {
+    color: rgb(77, 75, 75);
+    font-family: Arial, Helvetica, sans-serif;
+}
 td {
     border: 1px solid rgba(222,224,225, 80%);
     border-radius: 4px;
@@ -15,10 +24,12 @@ td {
 .container {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    /* grid-row-start: span 2; */
+    grid-template-rows: 40fr 1fr;
     column-gap: 40px;
-
+    height: 100%;
+}
+footer {
+     grid-column-start: span 3;
 }
 .middle-container {
   /* border: 1px solid rgba(222,224,225, 80%); */
@@ -31,16 +42,20 @@ td {
 .left-container {
   border: 1px solid rgba(222,224,225, 80%);
   border-radius: 4px;
+  grid-row-start: span 2;
 }
 
 .right-container {
   border: 1px solid rgba(222,224,225, 80%);
   border-radius: 4px;
+  grid-row-start: span 2;
 }
 
 
 a {
     background-color: white;
+    text-decoration: none;
+    color: grey;
 }
 
 .spacer {
