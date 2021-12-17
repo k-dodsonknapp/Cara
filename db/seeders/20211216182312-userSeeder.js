@@ -14,7 +14,7 @@ module.exports = {
       {
         username: "car_guy1982",
         email: "ilovecars@car.com",
-        hashedPassword: bcrypt.hashSync("P@ssword", 10),
+        hashedPassword: bcrypt.hashSync("P@ssword ", 10),
         createdAt: new Date(),
         updatedAt: new Date(),
       },

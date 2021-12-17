@@ -33,10 +33,10 @@ const commentValidator = [
 ];
 
 //get comment form
-router.get('/answer/:id(\\d+)/add', csrfProtection, asyncHandler( async (req, res) => {
+router.get('/answer/:id(\\d+)/add', csrfProtection, asyncHandler(async (req, res) => {
     const answersId = parseInt(req.params.id, 10)
     const answer = await db.Answer.findByPk(answersId)
-    res.render('comment-form', { title: 'Add Comment', answer, csrfToken: req.csrfToken()  })
+    res.render('comment-form', { title: 'Add Comment', answer, csrfToken: req.csrfToken() })
 }))
 
 router.post('/answer/:id(\\d+)/add', csrfProtection, commentValidator, asyncHandler(async (req, res) => {
@@ -46,12 +46,12 @@ router.post('/answer/:id(\\d+)/add', csrfProtection, commentValidator, asyncHand
     // checkPermissions(comment, res.locals.user);
     console.log(answer)
     const comment = db.Comment.build({
-         userId: res.locals.user.id,
-         answersId: answer.id,
-         body,
-        });
+        userId: res.locals.user.id,
+        answersId: answer.id,
+        body,
+    });
 
-        console.log(comment)
+    console.log(comment)
     const validatorErrors = validationResult(req)
 
     if (validatorErrors.isEmpty()) {
@@ -107,18 +107,41 @@ router.post('/comments/:id(\\d+)/edit', csrfProtection, commentValidator, checkP
     }
 }));
 
-router.get('/comment/:id(\\d+)/delete', csrfProtection, checkPermissions,
-    asyncHandler(async (req, res) => {
+// router.get('/comment/:id(\\d+)/delete', csrfProtection,
+//   asyncHandler(async (req, res) => {
+//     const commentId = parseInt(req.params.id, 10);
+//     const comment = await db.Comments.findByPk(commentId);
+//     res.render('delete-comment', {
+//       title: 'Delete Comment',
+//       comment,
+//       csrfToken: req.csrfToken(),
+//     });
+//   }));
+
+// router.post('/comment/:id(\\d+)/delete', csrfProtection,
+//     asyncHandler(async (req, res) => {
+//         const commentId = parseInt(req.params.id, 10);
+//         const comment = await db.Comments.findByPk(commentId);
+//         // console.log(commentId)
+
+//         // checkPermissions(comment, res.locals.user);
+
+//         await comment.destroy();
+//         res.redirect(`/answer/${comment.answerId}`);
+//     }));
+
+router.delete(
+    "/comment/:id(\\d+)",
+    asyncHandler(async (req, res, next) => {
+        console.log("Delete Comment Route")
         const commentId = parseInt(req.params.id, 10);
-        const comment = await db.Attraction.findByPk(commentId);
+        console.log(commentId);
+        const comment = await db.Comment.findByPk(commentId);
+        console.log(comment);
 
-        checkPermissions(comment, res.locals.user);
-
-        res.render('answer-detail', {
-            title: 'Delete Comment',
-            comment,
-            csrfToken: req.csrfToken(),
-        });
-    }));
+        await comment.destroy();
+        res.json({ message: `Deleted comment with id of ${req.params.id}.` });
+    })
+);
 
 module.exports = router;
