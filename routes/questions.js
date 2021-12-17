@@ -6,7 +6,7 @@ const { check, validationResult } = require("express-validator");
 const { requireAuth } = require("../auth")
 
 const db = require("../db/models");
-const { Question, Answer, Comment } = db
+const { Question, Answer, Comment, Topic } = db
 
 //ensures that the owner of the resource is the only one that can edit/delete
 const checkPermissions = (question, currentUser) => {
@@ -53,26 +53,27 @@ router.get("/question/add", requireAuth,
   csrfProtection,
   questionValidators,
   asyncHandler(async (req, res) => {
+    const topicsId = await Topic.findAll();
      res.render("question-add-form", {
        title: "Add Question",
        csrfToken: req.csrfToken(),
+       topicsId
      });
 
   }));
 
-//POST TO ADD A NEW QUESTION --> TESTED
+// POST TO ADD A NEW QUESTION --> TESTED
 router.post("/question/add",
   requireAuth,
   csrfProtection,
   questionValidators,
   asyncHandler(async (req, res) => {
-
     const { title, topicId } = req.body;
-    console.log(res.locals.user.id)
-     const topicNumId = parseInt(topicId, 10)
+    const topicsId = parseInt(topicId, 10)
+
     const question = Question.build({
       userId: res.locals.user.id,
-      topicNumId,
+      topicsId,
       title,
     });
 
@@ -93,7 +94,7 @@ router.post("/question/add",
 
   }));
 
-//GET THE QUESTION BY ID TO EDIT THE QUESTION
+//GET THE QUESTION BY ID TO EDIT THE QUESTION --> TESTED 
 router.get("/questions/:id(\\d+)/edit", // renders edit form
   requireAuth,
   csrfProtection,
@@ -102,18 +103,20 @@ router.get("/questions/:id(\\d+)/edit", // renders edit form
     const question = await Question.findByPk(questionId);
 
     checkPermissions(question, res.locals.user);
-
+    const topicsIdArr = await Topic.findAll();
     res.render("question-edit", {
       title: "Edit Question",
       question,
+      topicsIdArr,
       csrfToken: req.csrfToken(),
     });
   })
 );
 
 
-// POST THE EDIT MADE TO A QUESTION
-//TESTED
+
+// POST THE EDIT MADE TO A QUESTION --> TESTED 
+
 router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
   requireAuth,
   csrfProtection,
@@ -124,21 +127,29 @@ router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
 
     checkPermissions(questionToUpdate, res.locals.user);
 
-    const { title, topicsId, userId } = req.body;
-    const editedQuestion = { title, topicsId, userId };
+
+    const { title, topicId, userId } = req.body;
+   
+    const editedQuestion = { title, topicsId: topicId , userId}; 
+     console.log(questionToUpdate)
+     console.log(editedQuestion)
 
     const validatorErrors = validationResult(req);
 
     if (validatorErrors.isEmpty()) {
       await questionToUpdate.update(editedQuestion);
-      // res.redirect(`/question/${questionId}`);
       res.redirect("/home")
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
+      console.log(editedQuestion)
       res.render("question-edit", {
         title: "Edit Question",
         errors,
-        question: { editedQuestion, id: questionId },
+
+        topicsId,
+        // question: { editedQuestion, id: questionId }, 
+        editedQuestion,
+
         csrfToken: req.csrfToken(),
       });
     }
