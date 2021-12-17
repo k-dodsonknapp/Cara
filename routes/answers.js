@@ -30,10 +30,12 @@ router.get('/answer/:id(\\d+)', csrfProtection, asyncHandler( async (req, res) =
     const comments = await db.Comment.findAll({
         where: {
             answersId
+        },
+        include: {
+            model: db.User
         }
     })
-
-    console.log(answer)
+    
     res.render('answer-detail', { title:`Answer Details`, answer, comments, csrfToken: req.csrfToken() })
 }))
 
