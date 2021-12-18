@@ -39,15 +39,18 @@ footer {
   flex-direction: column;
   border-radius: 4px;
   bottom: 100px;
+  margin-top: 25px;
 }
 
 .left-container {
+  margin-top: 25px;
   border: 1px solid rgba(222,224,225, 80%);
   border-radius: 4px;
   grid-row-start: span 2;
 }
 
 .right-container {
+  margin-top: 25px;
   border: 1px solid rgba(222,224,225, 80%);
   border-radius: 4px;
   grid-row-start: span 2;
