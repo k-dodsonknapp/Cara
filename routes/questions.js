@@ -163,12 +163,12 @@ router.delete(
   "/question/:id(\\d+)",
   requireAuth,
   asyncHandler(async (req, res) => {
-    
+
     const questionId = parseInt(req.params.id);
     // console.log(questionId);
     const question = await Question.findByPk(questionId);
     // console.log(question);
-    
+
 
     await question.destroy();
 
