@@ -3,8 +3,7 @@ const router = express.Router();
 
 const { asyncHandler } = require("./utils");
 const db = require("../db/models");
-const { Question } = db;
-
+const { Question, Topic, User } = db;
 
 //GET TEN COMMENTS - (BONUS order them by popularity)
 //TESTED
@@ -13,14 +12,21 @@ router.get(
   asyncHandler(async (req, res) => {
     const answers = await db.Answer.findAll({
       include: {
-        model: Question
+        model: Question,
       },
-      order: [['updatedAt', 'DESC']],
-      limit: 25 });
-      console.log(answers)
+      order: [["updatedAt", "DESC"]],
+      limit: 25,
+    });
+
+  const users = await User.findAll();
+
+    const topics = await Topic.findAll();
+
     res.render("question-list", {
+      topics,
       answers,
-      title: "Cara Homepage"
+      users,
+      title: "Cara Homepage",
     });
   })
 );
