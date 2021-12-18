@@ -9,7 +9,8 @@ block content
     div(class="left-container")
     div(class="middle-container")
       div(class='post-question')
-      a(class='btn btn-ask-quest' href='/question/add' role='button') What is your question or link?
+        //- img(src="img/Audi.jpg" alt="image of a car")
+        a(class='btn btn-ask-quest' href='/question/add' role='button') What is your question?
       table(class='table table-striped table-hover')
         thead(class='thead-dark')
           tr
@@ -21,12 +22,12 @@ block content
                   div(class='py-3')
                     a(class='btn display-question' href=`/question/${answer.questionId}` role='button')  #{answer.Question.title}
                   div(class='py-3')
-                  a(class='btn display-answer' href=`/answer/${answer.id}` role='button') #{answer.body}
+                    a(class='btn display-answer' href=`/answer/${answer.id}` role='button') #{answer.body}
                   br
                   if locals.user.id === answer.userId
-                    button(type='submit' id=`delete-${answer.questionId}` class=`delete-button` href=`/question/${answer.questionId}`) Delete
-                    br
-                    a(class='btn btn-success' href=`/question/${answer.questionId}/add` role='button') Add Answer
+                    div(class="display-answer")
+                      button(type='submit' id=`delete-${answer.questionId}` class=`delete-button` href=`/question/${answer.questionId}`) Delete
+                      a(class='btn btn-success' href=`/question/${answer.questionId}/add` role='button') Add Answer
             tr( class="spacer")
     div(class="right-container")
     footer

@@ -1,12 +1,17 @@
-extends question-detail.pug
+extends home.pug
+
+append head
+
+    link(rel="stylesheet" href="/stylesheets/answer-form.css")
+
 
 include utils.pug
 
 block content
     +validationErrorSummary(errors)
-    form(action=`/question/${question.id}/add` method='post')
+    form#form-group(action=`/question/${question.id}/add` method='post')
         input(type='hidden' name='_csrf' value=csrfToken)
         +field('Answer', 'body', question.body)
-        div(class='#')
-          button(type='submit' class='#') Answer this question
-          a(href=`/question/${question.id}`) Cancel
+          div(class='#')
+            button(type='submit' class='#') Answer this question
+            a(href=`/question/${question.id}`) Cancel
