@@ -30,8 +30,9 @@ block content
               td= ''
                 each user in users 
                   if answer.Question.userId === user.id
-                    img(src="./stylesheets/car.png", alt="This car image")
-                    h3 #{user.username}
+                    div(class="username-quest")
+                      img(src="./stylesheets/car.png", alt="This car image")
+                      h3 #{user.username}
                     div(class='py-3')
                       a(class='btn display-question' href=`/question/${answer.questionId}` role='button')  #{answer.Question.title}
                     div(class='py-3')
