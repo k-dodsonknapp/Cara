@@ -16,7 +16,7 @@ router.get(
         model: Question
       },
       order: [['updatedAt', 'DESC']],
-      limit: 10 });
+      limit: 25 });
       console.log(answers)
     res.render("question-list", {
       answers,

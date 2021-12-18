@@ -27,7 +27,7 @@ block content
                   if locals.user.id === answer.userId
                     div(class="display-answer")
                       button(type='submit' id=`delete-${answer.questionId}` class=`delete-button` href=`/question/${answer.questionId}`) Delete
-                      a(class='btn btn-success' href=`/question/${answer.questionId}/add` role='button') Add Answer
+                      a(class='btn btn-success' href=`/question/${answer.questionId}/add` role='button') Answer
             tr( class="spacer")
     div(class="right-container")
     footer
