@@ -1,18 +1,27 @@
 
 extends home.pug
 
+append head
+  link(rel="stylesheet" href="/stylesheets/question-form.css")
 
 include utils.pug
 
 block content
   +validationErrorSummary(errors)
-  form(action='/question/add' method='post')
-    input(type='hidden' name='_csrf' value=csrfToken)
-    +field("Question", "title", null, fieldType = 'textarea')
-    label(for="topicId") Topics
-    select(name="topicId" required)
-      each topic in topicsId
-        option(value=topic.id)=topic.name 
-    div(class='py-4')
-      button(type='submit' class='btn btn-primary') Add Question
-      a(href='/home' class='btn btn-warning ml-2') Cancel
+  div(class='main-container')
+    div(class='left-container')
+    div(class='middle-container')
+      div(class='content-container')
+        form(action='/question/add' method='post')
+          input(type='hidden' name='_csrf' value=csrfToken)
+          h2(id='header') What's on your mind?
+          +field(null, "title", null, fieldType = 'textarea')
+          div(class='selector-container')
+            div(class='topic-select-container')
+              h4 Topic
+              select(name="topicId" required)
+                each topic in topicsId
+                  option(value=topic.id)=topic.name
+              button(type='submit' class='submit-btn') Add Question
+              a(href='/home' class='cancel-btn') Cancel
+    div(class='right-container')
