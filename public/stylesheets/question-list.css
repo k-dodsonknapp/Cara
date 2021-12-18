@@ -130,6 +130,7 @@ div.display-answer {
 
 .display-answer {
  /* border: 1px solid red; */
+ background-color: white;
  padding: 7px;
 }
 
@@ -177,4 +178,16 @@ img {
     height: 40px;
     width: 40px;
     border-radius: 50%;
+}
+
+h3 {
+    background-color: white;
+    margin: 10px 10px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.username-quest {
+    display: flex;
+    background-color: white;
 }
