@@ -79,31 +79,43 @@ textarea {
     background-color: white;
 }
 
-.selector-container {
-    border: 2px solid red;
+.select-container {
+    /* border: 2px solid red; */
     display: flex;
     justify-content: center;
     background-color: white;
 }
 
 .topic-select-container {
-    margin-top: 15px;
-    margin-right: 45.5%;
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: center;
+    margin-top: 6%;
+    margin-bottom: 9%;
+    /* margin-right: 45.5%; */
+    display: flex;
+    /* flex-direction: column; */
     line-height: 25px;
     background-color: white;
-    border: 2px solid red;
+    /* border: 2px solid red; */
+    /* gap: 142%; */
+}
+
+#cancel {
+    /* display: flex; */
+    /* justify-content: flex-end; */
+    padding-top: 24px;
+    background-color: white;
+    margin-left: 210px;
 }
 
 .question-cancel-btn {
     margin-top: 3%;
-    margin-right: 41%;
+    /* margin-right: 41%; */
     display: flex;
     justify-content: center;
     background-color: white;
     margin-bottom: 5%;
+    margin-left: 40px;
+    /* bottom: 0px; */
+    padding-top: 20px;
 }
 
 .select {
@@ -115,6 +127,10 @@ textarea {
     background-color: white;
     display: flex;
     justify-content: center;
+}
+
+#topic {
+    background-color: white;
 }
 
 form {
