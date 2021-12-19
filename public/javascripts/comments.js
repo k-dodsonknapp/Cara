@@ -28,8 +28,7 @@ window.addEventListener("DOMContentLoaded", event => {
             e.stopPropagation();
             const res = await fetch(`/comment/${e.target.id.split('-')[1]}`, { method: "DELETE" })
             if (res) {
-                // e.target.parentNode.remove()
-                td.remove()
+                e.target.parentNode.remove()
             }
         });
     })
