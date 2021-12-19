@@ -1,21 +1,27 @@
 
-
+append head
+  link(rel="stylesheet", href="/stylesheets/user-register.css")
+  title= 'Register with Carra!'
 include utils.pug
 
 block content
-  div.center
-    h1 Register
-    +validationErrorSummary(errors)
-    form(action='/users/register' method='post')
-      input(type='hidden' name='_csrf' value=csrfToken)
-      div.username
-        +field('Username', 'username', user.username)
-      div.email
-        +field('Email', 'email', user.email)
-      div.password
-        +field('Password', 'password', user.hashedPassword, 'password')
-      div.confirmPassword
-        +field('Confirm Password', 'confirmPassword', '', 'password')
-      div.cancel-button
-        button(type='submit') Register
-        a(href='/') Cancel
+  div.main
+    div.left-container
+    div.center
+      div.register-card
+        h1 Get drivin' with Carra today!
+        +validationErrorSummary(errors)
+        form(action='/users/register' method='post')
+          input(type='hidden' name='_csrf' value=csrfToken)
+          div.username
+            +field('Username', 'username', user.username)
+          div.email
+            +field('Email', 'email', user.email)
+          div.password
+            +field('Password', 'password', user.hashedPassword, 'password')
+          div.confirmPassword
+            +field('Confirm Password', 'confirmPassword', '', 'password')
+          div.cancel-button
+            button(type='submit') Register
+            a(href='/') Cancel
+    div.right-container
