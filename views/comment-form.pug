@@ -11,7 +11,7 @@ block content
     div(class="middle-container")
       form(action=`/answer/${answer.id}/add` method='post')
         input(type='hidden' name='_csrf' value=csrfToken)
-        +field('Comment', 'body', answer.body, 'textarea')
+        +field('Comment', 'body', null , 'textarea')
         div(class='buttons')
           button(type='submit' class='#') Comment
           a#cancel-button(href=`/question/${answer.questionId}`) Cancel
