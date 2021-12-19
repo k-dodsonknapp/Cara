@@ -26,7 +26,8 @@ window.addEventListener("DOMContentLoaded", event => {
         // console.log(button)
         button.addEventListener("click", async (e) => {
 
-            // console.log("Event Listener")
+            console.log("Event Listener")
+            console.log(e.target.id.split("-")[1]);
             e.stopPropagation();
             const res = await fetch(`/comment/${e.target.id.split('-')[1]}`, { method: "DELETE" })
             if (res) {

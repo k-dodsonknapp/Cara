@@ -172,7 +172,7 @@ router.post('/comments/:id(\\d+)/edit', requireAuth, csrfProtection,
 router.delete(
     "/comment/:id(\\d+)",
     asyncHandler(async (req, res, next) => {
-        // console.log("Delete Comment Route")
+        console.log("Delete Comment Route")
         const commentId = parseInt(req.params.id, 10);
         // console.log(commentId);
         const comment = await db.Comment.findByPk(commentId);
@@ -180,7 +180,10 @@ router.delete(
         checkPermissions(comment, res.locals.user);
         await comment.destroy();
         res.json({ message: `Deleted comment with id of ${req.params.id}.` });
-    })
-);
+    }));
+
+
+
+
 
 module.exports = router;
