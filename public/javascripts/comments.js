@@ -24,11 +24,12 @@ window.addEventListener("DOMContentLoaded", event => {
     deleteButtonArr.forEach(button => {
 
         button.addEventListener("click", async (e) => {
-
+        const td = document.getElementsByTagName("td")
             e.stopPropagation();
             const res = await fetch(`/comment/${e.target.id.split('-')[1]}`, { method: "DELETE" })
             if (res) {
-                e.target.parentNode.remove();
+                // e.target.parentNode.remove()
+                td.remove()
             }
         });
     })
