@@ -33,7 +33,7 @@ block content
                 each user in users 
                   if question.userId === user.id
                     div(class="username-quest")
-                      img(src="./stylesheets/car.png", alt="This car image")
+                      img(src=`${img}`, alt="This car image")
                       h3 #{user.username}    
                     div(class='py-3')
                       a(class='btn display-question' href=`/question/${question.id}` role='button')  #{question.title}
