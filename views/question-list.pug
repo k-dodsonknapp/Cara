@@ -30,7 +30,6 @@ block content
               td= ''
                 if locals.user.id === question.id
                 button(type='submit' id=`delete-${question.id}` class=`delete-button` href=`/question/${question.id}`) Delete
-                  //-  i(class="fa fa-trash")
                 each user in users 
                   if question.userId === user.id
                     div(class="username-quest")
