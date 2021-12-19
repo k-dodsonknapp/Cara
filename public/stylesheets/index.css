@@ -41,6 +41,7 @@ body{
     justify-content: space-evenly;
     align-items: center;
     border-bottom: 1px solid black;
+    z-index: 1;
 }
 
 #signed-in {
@@ -122,4 +123,40 @@ ul {
 
 .names {
     font-size: 15px;
+}
+#logo-title-div {
+    padding: 0;
+    height: 10%;
+}
+
+.carra-logo {
+    margin: 0;
+
+}
+h4.comment-text {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+p.author {
+    display: flex;
+    align-content: flex-start;
+    padding-left: 10px;
+}
+
+div.left-container {
+    /* background-color: none; */
+    background-color: rgb(241,242,242);
+    margin-top: 19%;
+    border: none;
+    /* z-index: 0; */
+    position: static;
+
+}
+
+
+.topic-table {
+    border: none;
+    /* background-color: rgb(241,242,242); */
+    /* position: absolute; */
 }
