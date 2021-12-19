@@ -1,5 +1,5 @@
 * {
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     background-color: rgb(241,242,242);
     margin: 0;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -43,10 +43,14 @@ h5 {
 }
 
 .left-container {
-    margin-top: 80px;
+    border-radius: 10px;
     border: 1px solid rgba(222,224,225, 80%);
-    border-radius: 4px;
-}
+    height: 300px;
+    background-color: white;
+    margin-left: 20%;
+    position: sticky;
+    top: 86px;
+  }
 
 .topic-container {
     display: flex;
@@ -54,19 +58,22 @@ h5 {
 }
 
 .middle-container {
-    /* border: 1px solid rgba(222,224,225, 80%); */
-    margin-top: 80px;
+    margin-top: 86px;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
     border-radius: 4px;
-  }
+}
 
-
+/* NOT BELOW THIS LINE */
 .right-container {
-    margin-top: 80px;
-    border: 1px solid rgba(222,224,225, 80%);
+    margin-top: 86px;
     border-radius: 4px;
+}
+
+.right-content-container {
+    background-color: rgb(241,242,242);
+    height: 100%;
 }
 
  .content-container {
@@ -86,7 +93,6 @@ h5 {
     flex-direction: column-reverse;
     background-color: white;
 }
-
 .comment-container {
     display: flex;
     flex-direction: column;
@@ -124,4 +130,46 @@ h5 {
 
 .comment-btn {
     background-color: white;
+}
+
+/* ---------------------TOPIC-LIST----------------------------------- */
+
+#logo-title-div {
+
+}
+
+h1 {
+    margin-bottom: 80px;
+}
+
+th {
+    color: rgb(77, 75, 75);
+    font-family: Arial, Helvetica, sans-serif;
+}
+td {
+    border: 1px solid rgba(222,224,225, 80%);
+    border-radius: 8px;
+    background-color: white;
+    padding: 15px;
+}
+
+a {
+    background-color: white;
+    text-decoration: none;
+    color: grey;
+}
+
+.topic-table {
+    background-color: white;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.topic-th{
+   border-radius: 10px;
+   background-color: white;
+}
+tr.topic-row td {
+ border: none;
+ border-bottom: 1px solid rgba(222,224,225, 80%);
 }
