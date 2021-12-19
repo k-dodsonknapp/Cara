@@ -14,17 +14,20 @@ router.get(
       include: {
         model: Question,
       },
-      order: [["updatedAt", "DESC"]],
-      limit: 25,
+      order: [["createdAt", "ASC"]],
     });
-
+  
+  const questions = await Question.findAll({
+    order: [["createdAt", "DESC"]] 
+  })
+  console.log(questions)
   const users = await User.findAll();
-
-    const topics = await Topic.findAll();
+  const topics = await Topic.findAll();
 
     res.render("question-list", {
       topics,
       answers,
+      questions,
       users,
       title: "Cara Homepage",
     });
