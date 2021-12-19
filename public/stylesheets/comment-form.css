@@ -8,6 +8,14 @@ body {
     height: 100%;
 }
 
+.carra-logo {
+    margin: 0;
+}
+
+#nav-header {
+    height: 10%;
+}
+
 /* body {
     border: green 10px solid;
     margin: 0;
