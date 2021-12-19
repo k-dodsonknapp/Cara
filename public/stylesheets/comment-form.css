@@ -1,7 +1,5 @@
 * {
     background-color: rgb(241,242,242);
-    /* margin: 0; */
-    box-sizing: border-box;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
@@ -37,11 +35,13 @@ body {
 
 .left-container {
     margin-top: 40px;
+    margin-left: 0;
     border: 1px solid rgba(222,224,225, 80%);
     background-color: white;
     height: 100%;
     width: 100%;
     border-radius: 4px;
+    margin-right: 0px;
 }
 
 .middle-container {
