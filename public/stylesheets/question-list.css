@@ -143,13 +143,19 @@ div.display-answer {
 }
 
 button {
-    border:1px solid gray;
+    border:1px solid white;
     padding: 2px;
     border-radius: 3px;
     background-color: white;
     color: gray;
+    position: relative;
+    top: 5px;
+    left: 340px;
 }
 
+i {
+    color: gray;
+}
 /* td:hover {
     background-color: rgb(241,242,242);
 } */
