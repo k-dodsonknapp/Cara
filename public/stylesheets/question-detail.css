@@ -1,6 +1,6 @@
 
 * {
-    background-color: seashell;
+    background-color: rgb(241,242,242);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
@@ -8,3 +8,54 @@ h3 {
     font-size: 30px;
 }
 
+html,
+body {
+    height: 100%;     
+}
+
+nav {
+    height: 50px;
+}
+.container {
+   display: flex;
+   flex-direction: row;
+   height: 100%;
+}
+
+.left-container {
+  border-radius: 10px;
+  border: 1px solid rgba(222,224,225, 80%);
+  height: 300px;
+  background-color: white;
+  margin-left: 20%;
+  position: sticky;
+  top: 95px;
+}
+
+.quest-container {
+  border: 1px solid rgba(222,224,225, 80%);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 4px;
+  bottom: 100px;
+  margin-top: 25px; 
+  background-color: white;
+}
+.right-container {
+  margin-top: 25px;
+  border: 1px solid rgba(222,224,225, 80%);
+  border-radius: 4px;
+  grid-row-start: span 2;
+  background-color: white;
+  height: 100%;
+}
+
+#logo-title-div{
+    height: 50px;
+}
+
+.carra-logo {
+    height: 50px;
+    margin: 0px;
+}
