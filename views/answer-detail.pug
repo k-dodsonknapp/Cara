@@ -11,9 +11,15 @@ block content
         div(class='main-container')
             div(class='left-container')
                 div(class='topic-container')
-                    h3 TOPICS
-                    each topic in topics
-                        a(type='submit' class='topic-link' role='button' href=`/topic/${topic.id}/questions`)= topic.name
+                    table(class='topic-table')
+                        thead(class='thead-dark')
+                            tr
+                                th(scope='col' class="topic-th") TOPICS
+                        tbody(class="topic-row")
+                            each topic in topics
+                                tr(class="topic-row")
+                                    td= ''
+                                        a(type='submit' class='topic-link' role='button' href=`/topic/${topic.id}/questions`)= topic.name
             div(class='middle-container')
                 div(class="content-container")
                     h5 Answer:
@@ -35,3 +41,4 @@ block content
                                         a(type='submit' class=`btn` href=`/comments/${comment.id}/edit`) Edit
                 script(src='/javascripts/comments.js')
             div(class='right-container')
+                div(class='right-content-container')
