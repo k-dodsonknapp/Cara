@@ -23,8 +23,13 @@ window.addEventListener("DOMContentLoaded", event => {
 
     deleteButtonArr.forEach(button => {
 
+<<<<<<< HEAD
         button.addEventListener("click", async (e) => {
             
+=======
+            console.log("Event Listener")
+            console.log(e.target.id.split("-")[1]);
+>>>>>>> 5b5debfaf52040516eba0056048d2599ddc007c6
             e.stopPropagation();
             const res = await fetch(`/comment/${e.target.id.split('-')[1]}`, { method: "DELETE" })
             if (res) {

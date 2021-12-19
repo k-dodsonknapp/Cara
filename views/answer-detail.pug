@@ -36,8 +36,7 @@ block content
                                         p(class='author') - #{comment.User.username}
                                     br
                                     if locals.user.id === comment.userId
-                                        button(type='submit' class=`delete-button` href=`/comment/${comment.id}/delete`) Delete
-
+                                        button(type='submit' id=`delete-${comment.id}` class=`delete-button` href=`/comment/${comment.id}`) Delete
                                         a(type='submit' class=`btn` href=`/comments/${comment.id}/edit`) Edit
                 script(src='/javascripts/comments.js')
             div(class='right-container')
