@@ -2,25 +2,31 @@ extends home.pug
 
 append head
   link(rel="stylesheet" href="/stylesheets/question-detail.css")
-  
+
 
 block content
   div(class="main-container")
-    div(class="left-container") 
+    div(class="left-container")
     div(class="middle-container")
-      div(class="content-container")  
+      div(class="content-container")
         if question
           div(class='q-text')
-          h3= question.title
+          h4(id='question-id') Question:
+          h3(id='question-header')= question.title
           br
           if locals.user.id === question.userId
             div(class='py-3')
               a(class='btn btn-success' href=`/questions/${question.id}/edit` role='button') Edit Question
           if answers
             div(class='answerDiv')
+              div(class='answer-line')
+              h4(id='answer-id') Answers:
             each answer in answers
-                h4= answer.body
-                a(class='btn btn-success' href=`/answer/${answer.id}/edit` role='button') Edit Answer
-                  div(class='commentDiv')
-                    a(class='commentBtn btn' href=`/answer/${answer.id}/add` role='button') Add Comment
+                h3(id='answer-text')= answer.body
+                  div(class='button-div')
+                    div(class='commentDiv')
+                      a(id='adds-comment' href=`/answer/${answer.id}/add` role='button') Comment
+                    div(class='edit-answer-div')
+                      if locals.user.id === answer.userId
+                        a(id='edit-answer' href=`/answer/${answer.id}/edit` role='button') Edit Answer
     div(class="right-container")
