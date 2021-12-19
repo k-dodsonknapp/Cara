@@ -12,7 +12,7 @@ p{
 .form-group {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 .login-button {
     display: flex;
@@ -114,6 +114,10 @@ ul {
     background-color: rgb(39, 75, 117);
     color: white;
     margin-left: 10px;
+}
+
+.logout-button {
+    margin-left: 30px;
 }
 
 .names {
