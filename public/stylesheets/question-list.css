@@ -19,6 +19,8 @@ td {
     border-radius: 8px;
     background-color: white;
     padding: 15px;
+    display: flex;
+    flex-direction: column;
 }
 
 /* .container {
@@ -148,9 +150,6 @@ button {
     border-radius: 3px;
     background-color: white;
     color: gray;
-    position: relative;
-    top: 5px;
-    left: 340px;
 }
 
 i {
@@ -196,4 +195,15 @@ h3 {
 .username-quest {
     display: flex;
     background-color: white;
+}
+
+#delete-btn {
+    border: 1px solid red;
+}
+
+
+
+.delete-button {
+
+    align-self: end;
 }
