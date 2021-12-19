@@ -12,7 +12,9 @@ html(lang="en")
         nav#nav-header
             ul(id="logo-title-div")
               h1(class="carra-logo") Carra
+              
             ul(id="home-button-div" href="/home")
+            a(href="/home" id="home-btn") 
               i(class="fas fa-home")
             ul(id="topics-button-div")
               i(class="fa fa-users"): a(href='/')
@@ -33,11 +35,11 @@ html(lang="en")
             #footer
               div(id="footer-container")
                 ul(id="developer-credits") Developers:
-                  li Aaron Short
-                    a(class="fab fa-github" href="https://github.com/GoodWillHunting11")
-                  li Chris Ramos
-                    a(class="fab fa-github" href="https://github.com/otmcz")
-                  li Eric Cortez
-                    a(class="fab fa-github" href="https://github.com/Eric-Cortez")
-                  li Kenneth Dodson-Knapp
-                    a(class="fab fa-github" href="https://github.com/k-dodsonknapp")
+                  a(class="fab fa-github" href="https://github.com/GoodWillHunting11")
+                    li(class="names") Aaron Short
+                  a(class="fab fa-github" href="https://github.com/otmcz")
+                    li(class="names") Chris Ramos
+                  a(class="fab fa-github" href="https://github.com/Eric-Cortez")
+                    li(class="names") Eric Cortez
+                  a(class="fab fa-github" href="https://github.com/k-dodsonknapp")
+                    li(class="names") Kenneth Dodson-Knapp
