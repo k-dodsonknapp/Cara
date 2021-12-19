@@ -23,10 +23,11 @@ router.get('/topic/:id(\\d+)/questions', csrfProtection, requireAuth, asyncHandl
             topicsId
         }
     })
+    const topics = await db.Topic.findAll()
     console.log(questions)
     // checkPermissions(topic, res.locals.user)
 
-    res.render('topic-questions', { topic, questions })
+    res.render('topic-questions', { topics, topic, questions })
 }))
 
 
