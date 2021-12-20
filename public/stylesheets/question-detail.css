@@ -13,8 +13,8 @@ body {
 
 h4 {
     background-color: white;
-    display: flex;
-    justify-content: center;
+    /* display: flex;
+    justify-content: center; */
 }
 
 h3 {
@@ -162,4 +162,3 @@ h5 {
 .answer-line {
     border: solid 0.1px rgba(5, 5, 5, 0.2);
 }
-
