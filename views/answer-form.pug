@@ -19,7 +19,7 @@ block content
               +field( null, 'body', question.body, 'textarea')
               div(class='answer-cancel-btn')
                 div(class='button-div')
-                  button(type='submit' id='answer') Answer
+                  a(type='submit' id='answer' href=`/question/${question.id}/add`) Answer
                 div(class='anchor-div')
                   a( id='cancel' href=`/question/${question.id}`) Cancel
       div(class='right-container')

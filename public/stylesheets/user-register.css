@@ -1,0 +1,74 @@
+*{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.main {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    column-gap: 40px;
+    height: 100%;
+    margin: 0;
+    background-image: url("audi.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.register-card {
+    /* background-color: rgb(39, 75, 117,0.5); */
+    border-radius: 15px;
+}
+
+
+
+.center {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    /* height: 100%; */
+    /* background-color: silver; */
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px;
+}
+
+h1 {
+    margin: 25px;
+    color: silver;
+}
+
+label {
+    padding: 5px;
+    margin-right: 15px;
+    color: papayawhip;
+}
+
+input {
+    border-radius: 3px;
+    background-color: papayawhip;
+}
+
+a{
+    text-decoration: none;
+    color: papayawhip;
+}
+
+button {
+    border-radius: 4px;
+    background-color: papayawhip;
+    border-color: rgb(39, 75, 117);
+}
+
+.cancel-button {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 15px;
+}
+
+.register-card {
+    background-color: white;
+}

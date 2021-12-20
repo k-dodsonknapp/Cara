@@ -7,11 +7,30 @@ append head
 block content
     if topic
         div(class='main-container')
-            div(class='left-container') left
-                p stuff
-            div(class='middle-container') middle
-                each question in questions
-                    div(class='questions-container')
-                        p #{question.title}
-            div(class='right-container') right
-                p right stuff
+            div(class='left-container') 
+                div(class='topic-container')
+                    table(class='topic-table')
+                        thead(class='thead-dark')
+                            tr
+                                th(scope='col' class="topic-th") TOPICS
+                                    tbody(class="topic-row")
+                                    each current in topics
+                                        tr(class="topic-row")
+                                            td= ''
+                                                a(type='submit' class='topic-link' role='button' href=`/topic/${current.id}/questions`)= current.name
+            div(class='middle-container')
+                table(class='table table-striped table-hover')
+                    thead(class='thead-dark')
+                        tr
+                            th(scope='col') #{topic.name}
+                    tbody(class="quesions-row")
+                        each question in questions
+                            tr 
+                                td=''     
+                                    p #{question.title}
+                                        //- each answer in answers
+                                        //-     if answer.questionId === question.id
+                                        //-        p #{answer.body}
+                        tr( class="spacer")
+            div(class='right-container') 
+    

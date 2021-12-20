@@ -20,7 +20,7 @@ router.get(
   const questions = await Question.findAll({
     order: [["createdAt", "DESC"]] 
   })
-  console.log(questions)
+
   const users = await User.findAll();
   const topics = await Topic.findAll();
 
