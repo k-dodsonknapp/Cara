@@ -68,3 +68,7 @@ button {
     justify-content: space-evenly;
     padding: 15px;
 }
+
+.register-card {
+    background-color: white;
+}
