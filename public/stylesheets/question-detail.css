@@ -80,13 +80,28 @@ h5 {
     padding-right:10%;
 }
 
+.answer-author {
+    padding-left:10%;
+    padding-right:10%;
+    padding-top:2%;
+    padding-bottom: 1%;
+}
+
 #answer-text{
-    font-weight: 400;
+    font-weight: 500;
     background-color: white;
     padding-left:10%;
     padding-right: 10%;
     font-size: 20px;
-    padding-top: 20px;
+    /* padding-top: 20px; */
+    padding-bottom: 1.5%;
+}
+
+#comment-id {
+    padding-left: 18%;
+    padding-right: 18%;
+    font-weight: 400;
+    padding-bottom: 4%;
 }
 
 .button-div {
@@ -95,7 +110,7 @@ h5 {
     /* justify-content: center; */
     background-color: white;
     padding-top: 0px;
-    padding-bottom: 40px;
+    padding-bottom: 3%;
     /* padding-left:20px; */
     gap:2%;
 }
@@ -109,6 +124,7 @@ h5 {
     text-decoration: none;
     color: black;
     font-size: 16px;
+    font-weight: 550;
 }
 
 .commentDiv {
@@ -120,6 +136,7 @@ h5 {
     text-decoration: none;
     color: black;
     font-size: 16px;
+    font-weight: 550;
 }
 
 #question-id {
