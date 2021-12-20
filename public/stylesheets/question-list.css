@@ -85,8 +85,16 @@ a {
     border: 1px solid rgba(222,224,225, 80%);
     border-radius: 4px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+    /* justify-content: space-between; */
 }
+
+#user-img {
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
 /* .post-question {
     display: flex;
     justify-content: center;
@@ -182,7 +190,7 @@ tr.topic-row td {
 img {
     height: 40px;
     width: 40px;
-    border-radius: 50%;
+    background-color: rgba(255, 255, 255,0.7);
 }
 
 h3 {
