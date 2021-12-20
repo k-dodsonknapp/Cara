@@ -103,9 +103,10 @@ h5 {
 
 #comment-id {
     padding-left: 18%;
-    padding-right: 18%;
+    padding-right: 14%;
     font-weight: 400;
     padding-bottom: 4%;
+    font-size: 16px;
 }
 
 .button-div {
