@@ -10,9 +10,14 @@ body {
 }
 
 h3 {
-    font-size: 25px;
+    font-size: 18px;
     background-color: white;
     color: rgb(77, 75, 75);
+    margin: 10px;
+}
+
+h4 {
+    font-size: 12px;
 }
 
 h5 {
@@ -31,6 +36,7 @@ h5 {
     border-radius: 6px;
     padding: 0.65px 4px;
     background-color: rgb(241,242,242);
+    margin-top: 8px;
 }
 
 .main-container {
@@ -47,8 +53,8 @@ h5 {
     height: 300px;
     background-color: white;
     margin-left: 20%;
-    position: sticky;
-    top: 86px;
+    /* position: sticky;
+    top: 86px; */
   }
 
 .topic-container {
@@ -82,10 +88,11 @@ h5 {
     border-radius: 4px;
     padding: 15px;
     background-color: white;
+    margin-bottom: 50px;
 }
 
 .comments {
-    padding-top: 30px;
+    padding-top: 25px;
     padding-bottom: 13px;
     display: flex;
     flex-direction: column-reverse;
@@ -128,6 +135,7 @@ h5 {
 
 .comment-btn {
     background-color: white;
+    margin-top: 5px;
 }
 
 /* ---------------------TOPIC-LIST----------------------------------- */

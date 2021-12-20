@@ -30,13 +30,11 @@ h5 {
 
 
 .left-container {
-    margin-top: 100px;
+    margin-top: 5px;
      /* border: 1px solid rgba(222,224,225, 80%);  */
     border-radius: 4px;
     margin-left: 20%;
-    position: sticky;
-    top: 500px;
-    z-index: 0;
+ 
 } 
 
 nav {
@@ -86,9 +84,13 @@ div.topic-container {
 }
 
 .topic-table {
+    margin-top: 70px;
     background-color: white;
     width: 100%;
     border-radius: 10px;
+    position: sticky;
+    top: 500px; 
+    z-index: 0;
 }
 
 .topic-th{
