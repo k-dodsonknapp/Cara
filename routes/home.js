@@ -20,19 +20,12 @@ router.get(
   const questions = await Question.findAll({
     order: [["createdAt", "DESC"]] 
   })
-  console.log(questions)
+
   const users = await User.findAll();
   const topics = await Topic.findAll();
 
-  const imgs = [
-    "./stylesheets/car.png",
-    "./stylesheets/audi.png"
-  ];
-// img(src=`${img}` alt="This car image")
-
     res.render("question-list", {
       topics,
-      imgs, 
       answers,
       questions,
       users,

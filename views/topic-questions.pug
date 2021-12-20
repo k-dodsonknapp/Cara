@@ -28,6 +28,9 @@ block content
                             tr 
                                 td=''     
                                     p #{question.title}
+                                        //- each answer in answers
+                                        //-     if answer.questionId === question.id
+                                        //-        p #{answer.body}
                         tr( class="spacer")
             div(class='right-container') 
     

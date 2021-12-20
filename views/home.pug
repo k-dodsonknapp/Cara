@@ -24,8 +24,10 @@ html(lang="en")
               i(class="fas fa-keyboard"): a(href='/')
             ul(id="search-container")
               form(action="/search/" method="POST" class="search-form" id="search-form")
+              div(class="search")
                 input(type="text" name="text" class="search-bar" placeholder="Search")
-                input(type="submit" name="search-form" class="search-bar-submit-button" value="Search")
+                button(type="submit" name="search-form" class="search-bar-submit-button" value="Search"): a(id="search-btn" href='/topic/1/questions')
+                  i(class="fa fa-search")
             if locals.authenticated
               ul(class="signed-in")
                 i(id="welcome-username") Welcome to your feed, #{user.username}!
