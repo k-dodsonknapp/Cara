@@ -196,3 +196,20 @@ form {
 a#search-btn {
     background-color: rgb(39, 75, 117);
 }
+
+
+button {
+    background-color: white;
+    text-decoration: none;
+    border:1px solid white;
+    padding: 2px;
+    border-radius: 3px;
+    background-color: white;
+    color: gray;
+}
+
+a#logout {
+    text-decoration: none;
+    color: gray;
+    background-color: white;
+}

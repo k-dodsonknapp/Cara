@@ -31,7 +31,7 @@ html(lang="en")
             if locals.authenticated
               ul(class="signed-in")
                 i(id="welcome-username") Welcome to your feed, #{user.username}!
-                button(type="submit" class="logout-button"): a(href='/') Log out
+                button(type="submit" class="logout-button"): a(id="logout" href='/') Log out
 
         block content
 
