@@ -189,7 +189,7 @@ input {
   background-color: rgb(39, 75, 117);
 }
 
-form {
+form#search-form {
     background-color: rgb(39, 75, 117);
 }
 
