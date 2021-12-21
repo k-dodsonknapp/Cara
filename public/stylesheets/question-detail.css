@@ -105,8 +105,9 @@ h5 {
     padding-left: 18%;
     padding-right: 14%;
     font-weight: 400;
-    padding-bottom: 4%;
+    padding-bottom: 6%;
     font-size: 16px;
+
 }
 
 .button-div {
@@ -115,7 +116,7 @@ h5 {
     /* justify-content: center; */
     background-color: white;
     padding-top: 0px;
-    padding-bottom: 3%;
+    padding-bottom: 4.5%;
     padding-left: 2%;
     /* padding-left:20px; */
     gap:2%;
@@ -162,10 +163,15 @@ h5 {
 }
 
 .answerDiv {
-    padding-top:20px;
+    /* padding-top:20px; */
     background-color: white;
 }
 
 .answer-line {
     border: solid 0.1px rgba(5, 5, 5, 0.2);
+}
+
+#question-author {
+    padding-left: 10%;
+    padding-right: 10%;
 }
