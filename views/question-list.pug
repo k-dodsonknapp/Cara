@@ -12,7 +12,7 @@ block content
           thead(class='thead-dark')
             tr
               th(scope='col' class="topic-th") TOPICS
-          tbody(class="topic-row")    
+          tbody(class="topic-row")
             each topic in topics
               tr(class="topic-row")
                 td= ''
@@ -31,17 +31,17 @@ block content
               td= ''
                 if locals.user.id === question.id
                 button(type='submit' id=`delete-${question.id}` class=`delete-button` href=`/question/${question.id}`) Delete
-                each user in users 
+                each user in users
                   if question.userId === user.id
                     div(class="username-quest")
                       img(src="./stylesheets/img/flat-tire2.png", alt="This car image")
-                      h3 #{user.username}    
+                      h3 #{user.username}
                     div(class='py-3')
                       a(class='btn display-question' href=`/question/${question.id}` role='button')  #{question.title}
                 each answer in answers
                   if answer.questionId === question.id
                     div(class='py-3')
-                      a(class='btn display-answer' href=`/answer/${answer.id}` role='button') #{answer.body}
+                      a(class='btn display-answer' href=`/question/${answer.questionId}` role='button') #{answer.body}
                     if locals.user.id !== answer.userId
                       div(class="display-answer")
                         a(class='btn btn-success' href=`/question/${answer.questionId}/add` role='button') Answer
@@ -49,4 +49,3 @@ block content
     div(class="right-container")
     footer
     script(src='/javascripts/question-delete.js')
-

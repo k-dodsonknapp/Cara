@@ -56,7 +56,7 @@ router.post('/answer/:id(\\d+)/add', csrfProtection, commentValidator, asyncHand
 
     if (validatorErrors.isEmpty()) {
         await comment.save();
-        res.redirect(`/answer/${answerId}`);
+        res.redirect(`/question/${answer.questionId}`);
     } else {
         const errors = validatorErrors.array().map((error) => error.msg);
         res.render("comment-form", {

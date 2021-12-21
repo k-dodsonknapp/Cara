@@ -24,21 +24,40 @@ const answerValidators = [
 
 
 
-router.get('/answer/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
-    const answersId = req.params.id
-    const answer = await db.Answer.findByPk(answersId)
-    const comments = await db.Comment.findAll({
-        where: {
-            answersId
-        },
-        include: {
-            model: db.User
-        }
-    })
-    const topics = await db.Topic.findAll()
+router.get("/question/:id(\\d+)",
+ requireAuth,
+ asyncHandler(async(req, res) => {
+    const questionId = req.params.id
+    const question = await Question.findByPk(questionId, {
+      include: {
+        model:User
+      }
+    });
 
-    res.render('answer-detail', { title: `Answer Details`, answer, topics, comments, csrfToken: req.csrfToken() })
-}))
+    const answers = await Answer.findAll({
+      where: {
+        questionId
+      },
+      limit: 5,
+      order: [["createdAt","ASC"]],
+      include: {
+        model: User
+      }
+    });
+
+    const comments = await Comment.findAll({
+      include: {
+        model: User
+      }
+    })
+
+       res.render("question-detail", {
+         title: "Question Detail",
+         question,
+         answers,
+         comments
+       });
+}));
 
 //get answer form
 router.get('/question/:id(\\d+)/add', csrfProtection, asyncHandler(async (req, res) => {
