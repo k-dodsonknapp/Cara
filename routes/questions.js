@@ -25,7 +25,12 @@ router.get("/question/:id(\\d+)",
  requireAuth,
  asyncHandler(async(req, res) => {
     const questionId = req.params.id
-    const question = await Question.findByPk(questionId)
+    const question = await Question.findByPk(questionId, {
+      include: {
+        model:User
+      }
+    });
+
     const answers = await Answer.findAll({
       where: {
         questionId
@@ -35,7 +40,8 @@ router.get("/question/:id(\\d+)",
       include: {
         model: User
       }
-    })
+    });
+    
     const comments = await Comment.findAll()
        res.render("question-detail", {
          title: "Question Detail",
