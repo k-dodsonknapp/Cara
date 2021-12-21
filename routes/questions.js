@@ -41,8 +41,13 @@ router.get("/question/:id(\\d+)",
         model: User
       }
     });
+
+    const comments = await Comment.findAll({
+      include: {
+        model: User
+      }
+    })
     
-    const comments = await Comment.findAll()
        res.render("question-detail", {
          title: "Question Detail",
          question,

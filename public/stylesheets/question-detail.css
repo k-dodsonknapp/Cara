@@ -88,7 +88,7 @@ h5 {
     padding-left:10%;
     padding-right:10%;
     padding-top:2%;
-    padding-bottom: 1%;
+    padding-bottom: 1.25%;
 }
 
 #answer-text{
@@ -174,4 +174,25 @@ h5 {
 #question-author {
     padding-left: 10%;
     padding-right: 10%;
+    padding-top: 2%;
+}
+
+.comment-author {
+    padding-left:18%;
+    font-size: 15px;
+}
+
+#line {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+
+.seperate-answer-line {
+    border:1px solid rgba(5, 5, 5, 0.2);
+    width: 90%;
+}
+
+.comment-section {
+    background-color: white;
 }

@@ -34,5 +34,12 @@ block content
                           a(id='edit-answer' href=`/answer/${answer.id}/edit` role='button') Edit Answer
                     each comment in comments
                       if comment.answersId === answer.id
-                        h4(id='comment-id')= comment.body
+                        div(class='comment-section')
+                            h4(class='comment-author')=comment.User.username
+                            h4(id='comment-id')= comment.body
+                            if locals.user.id === comment.userId
+                              button(type='submit' id=`delete-${comment.id}` class=`delete-button` href=`/comment/${comment.id}`) Delete
+                    div(id='line')
+                      div(class='seperate-answer-line')
+      script(src='/javascripts/comments.js')
     div(class="right-container")
