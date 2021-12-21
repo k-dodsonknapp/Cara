@@ -24,7 +24,9 @@ block content
               div(class='answer-line')
               h4(id='answer-id') Answers:
             each answer in answers
-                h4(class='answer-author')=answer.User.username
+                div(class='answerImgDiv')
+                  h4(class='answer-author')=answer.User.username
+                  img(src="../stylesheets/img/flat-tire2.png" alt="This car image")
                 h3(id='answer-text')= answer.body
                     div(class='button-div')
                       div(class='commentDiv')

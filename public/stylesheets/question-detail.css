@@ -196,3 +196,22 @@ h5 {
 .comment-section {
     background-color: white;
 }
+
+
+img {
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255, 255, 255,0.7);  
+}   
+h4.answer-author {
+  padding: 6px 5px;
+}
+
+.answerImgDiv {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    background-color: white;
+    padding-left: 10%;
+    margin-top: 5px;
+}
