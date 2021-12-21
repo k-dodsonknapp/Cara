@@ -105,7 +105,6 @@ h5 {
     padding-left: 18%;
     padding-right: 14%;
     font-weight: 400;
-    padding-bottom: 6%;
     font-size: 16px;
 
 }
@@ -195,4 +194,41 @@ h5 {
 
 .comment-section {
     background-color: white;
+}
+
+.edit-delete-comment-div {
+    display: flex;
+    background-color: white;
+    gap: 10px;
+}
+
+.delete-button {
+    background-color: white;
+    padding-left: 19%;
+    padding-bottom: 6%;
+    font-weight: 600;
+    padding-top: 0.55%;
+}
+
+.edit-comment-btn {
+    background-color: white;
+    text-decoration: none;
+    color: gray;
+    font-size: 13px;
+    padding-top: 0.9%;
+    font-weight: 600;
+}
+
+.answer-button {
+    padding-top: 2%;
+    background-color: white;
+    text-decoration: none;
+    color: gray;
+    padding-right: 10%;
+}
+
+.author-div {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
 }
