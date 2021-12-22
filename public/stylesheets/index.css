@@ -89,7 +89,7 @@ body{
 
 
 
-a#home-btn {
+.nav-btn {
  text-decoration: none;
  color: white;
  background-color: rgb(39, 75, 117);
@@ -207,6 +207,9 @@ button {
     padding: 2px;
     border-radius: 3px;
     background-color: white;
+    color: gray;
+}
+.fa-sign-out {
     color: gray;
 }
 

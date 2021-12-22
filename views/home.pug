@@ -16,12 +16,13 @@ html(lang="en")
               a(id="carra-logo" class="carra-logo" href="/home") Carra
 
             ul(id="home-button-div" href="/home")
-            a(href="/home" id="home-btn")
+            a(href="/home" class="nav-btn")
               i(class="fas fa-home")
             ul(id="topics-button-div")
               i(class="fa fa-users"): a(href='/')
-            ul(id="answer-button-div")
-              i(class="fas fa-keyboard"): a(href='/')
+            ul(id="answer-button-div" href="/question/add")
+              a(href='/question/add' class= "nav-btn")
+                i(class="fas fa-keyboard") 
             ul(id="search-container")
               form(action="/search/" method="POST" class="search-form" id="search-form")
               div(class="search")
@@ -32,7 +33,6 @@ html(lang="en")
               ul(class="signed-in")
                 i(id="welcome-username") Welcome to your feed, #{user.username}!
                 button(type="submit" class="logout-button"): a(id="logout" href='/') Log out
-
         block content
 
         block footer

@@ -159,3 +159,8 @@ form {
 select {
     border-radius: 3px;
 }
+
+
+a {
+    text-decoration: none;
+}
