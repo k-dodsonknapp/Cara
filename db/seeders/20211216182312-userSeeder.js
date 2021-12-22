@@ -14,7 +14,7 @@ module.exports = {
       {
         username: "car_guy1982",
         email: "ilovecars@car.com",
-        hashedPassword: bcrypt.hashSync("P@ssword ", 10),
+        hashedPassword: bcrypt.hashSync("P@ssword", 10),
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -24,22 +24,32 @@ module.exports = {
         hashedPassword: bcrypt.hashSync("P@ssword", 10),
         createdAt: new Date(),
         updatedAt: new Date(),
-      }, {
+      },
+      {
         username: "beater_truck76",
         email: "beaternum1@truck.com",
         hashedPassword: bcrypt.hashSync("P@ssword", 10),
         createdAt: new Date(),
         updatedAt: new Date(),
-      }, {
+      },
+      {
         username: "subaruChick90",
         email: "ilovesubarus@car.com",
         hashedPassword: bcrypt.hashSync("P@ssword", 10),
         createdAt: new Date(),
         updatedAt: new Date(),
-      }, {
+      },
+      {
         username: "goingtogettowed",
         email: "towedcar@car.com",
         hashedPassword: bcrypt.hashSync("P@ssword", 10),
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        username: "Demo",
+        email: "demoUser@demoUser.com",
+        hashedPassword: bcrypt.hashSync("DemoUser123!", 10),
         createdAt: new Date(),
         updatedAt: new Date(),
       },

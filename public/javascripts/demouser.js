@@ -4,8 +4,8 @@ window.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const email = document.querySelector('#email');
       const password = document.querySelector('#password');
-      email.setAttribute('value', 'demolition@demolition.com');
-      password.setAttribute('value', 'Demolition123!');
+      email.setAttribute('value', 'demoUser@demoUser.com');
+      password.setAttribute('value', 'DemoUser123!');
       const login = document.getElementById('login-button');
       const event = new MouseEvent('click');
       login.dispatchEvent(event);
