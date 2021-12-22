@@ -100,12 +100,14 @@ router.get('/answer/:id(\\d+)/edit', requireAuth, csrfProtection,
     asyncHandler(async (req, res) => {
         const answerId = parseInt(req.params.id, 10);
         const answer = await db.Answer.findByPk(answerId);
+        const question = await db.Question.findByPk(answer.questionId)
 
         checkPermissions(answer, res.locals.user);
 
         res.render('answer-edit', {
             title: 'Edit Answer',
             answer,
+            question,
             csrfToken: req.csrfToken(),
         })
     }))
