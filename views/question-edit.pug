@@ -1,17 +1,25 @@
 extends home.pug
 
+append head
+  link(rel="stylesheet", href="/stylesheets/question-edit.css")
 
 include utils.pug
 
 block content
   +validationErrorSummary(errors)
-  form(action=`/questions/${question.id}/edit` method='post')
-    input(type='hidden' name='_csrf' value=csrfToken)
-    +field("Question", "title", question.title, fieldType = 'textarea')
-    label(for="topicId") Topics
-    select(name="topicId" required)
-      each topic in topicsIdArr
-        option(value=topic.id)=topic.name 
-    div(class='py-4')
-      button(type='submit' class='btn btn-primary') Submit 
-      a(href='/home' class='btn btn-warning ml-2') Cancel
+  div.main-container
+    div.left-container
+    div.middle-container
+      div.content-container
+        form(action=`/questions/${question.id}/edit` method='post')
+          input(type='hidden' name='_csrf' value=csrfToken)
+          +field("Question", "title", question.title, fieldType = 'textarea')
+          div.topics-dropdown
+            label(for="topicId" id="topics-label2") Topics
+              select(name="topicId" required)
+                each topic in topicsIdArr
+                  option(value=topic.id)= topic.name
+            div.submit-cancel-btns
+              button(type='submit' class='submit-button') Submit
+              a(href='/home' class='cancel-button') Cancel
+    div.right-container
