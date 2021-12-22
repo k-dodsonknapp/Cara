@@ -7,7 +7,7 @@ append head
 block content
     if topic
         div(class='main-container')
-            div(class='left-container') 
+            div(class='left-container')
                 div(class='topic-container')
                     table(class='topic-table')
                         thead(class='thead-dark')
@@ -25,12 +25,8 @@ block content
                             th(scope='col') #{topic.name}
                     tbody(class="quesions-row")
                         each question in questions
-                            tr 
-                                td=''     
-                                    p #{question.title}
-                                        //- each answer in answers
-                                        //-     if answer.questionId === question.id
-                                        //-        p #{answer.body}
+                            tr
+                                td=''
+                                    a(href=`/question/${question.id}` class='click-question') #{question.title}
                         tr( class="spacer")
-            div(class='right-container') 
-    
+            div(class='right-container')
