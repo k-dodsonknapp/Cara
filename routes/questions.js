@@ -69,11 +69,11 @@ router.get("/question/add", requireAuth,
   csrfProtection,
   questionValidators,
   asyncHandler(async (req, res) => {
-    const topicsId = await Topic.findAll();
+    const allTopicsId = await Topic.findAll();
     res.render("question-add-form", {
       title: "Add Question",
       csrfToken: req.csrfToken(),
-      topicsId
+      allTopicsId,
     });
 
   }));
@@ -86,7 +86,6 @@ router.post("/question/add",
   asyncHandler(async (req, res) => {
     const { title, topicId } = req.body;
     const topicsId = parseInt(topicId, 10)
-
     const question = Question.build({
       userId: res.locals.user.id,
       topicsId,
@@ -94,14 +93,19 @@ router.post("/question/add",
     });
 
     const validatorErrors = validationResult(req);
+    const errors = validatorErrors.array().map((error) => error.msg);
+    console.log(errors)
 
     if (validatorErrors.isEmpty()) {
       await question.save();
       res.redirect("/home");
-    } else {
-      const errors = validatorErrors.array().map((error) => error.msg);
+    } 
+    if (errors[0]) {
+    
+      const allTopicsId = await Topic.findAll();
       res.render("question-add-form", {
         title: "Add Question",
+        allTopicsId,
         question,
         errors,
         csrfToken: req.csrfToken(),

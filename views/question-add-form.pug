@@ -7,7 +7,7 @@ append head
 include utils.pug
 
 block content
-  +validationErrorSummary(errors)
+  //- +validationErrorSummary(errors)
   div(class='main-container')
     div(class='left-container')
     div(class='middle-container')
@@ -15,13 +15,14 @@ block content
         form(action='/question/add' method='post')
           input(type='hidden' name='_csrf' value=csrfToken)
           h2(id='header') What's on your mind?
+          +validationErrorSummary(errors)
           +field(null, "title", null, fieldType = 'textarea')
           div(class='select-container')
             div(class='topic-select-container')
               div(id='topic')
                 h4 Topic
                 select(name="topicId" required)
-                  each topic in topicsId
+                  each topic in allTopicsId
                     option(value=topic.id)=topic.name
               div(id='cancel')
                 button(type='submit' class='submit-btn') Add Question
