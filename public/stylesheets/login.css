@@ -137,7 +137,7 @@ button {
 }
 
 button:hover {
-    background-color: blue;
+    background-color: #1956C4;
 }
 
 a {
@@ -150,7 +150,7 @@ a {
 }
 
 a:hover { 
-    border-color: blue;
+    border-color: #1956C4;
 }
 
 #demo-button {

@@ -9,8 +9,8 @@ block content
     div.left-container
     div.center
       div.register-card
-                  h1 Carra
                   h2 Create Your Account 
+                  h2.quote  Get driving with Carra today
                   +validationErrorSummary(errors)
                   form(action='/users/register' method='post')
                     input(type='hidden' name='_csrf' value=csrfToken)
