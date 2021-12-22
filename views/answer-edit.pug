@@ -1,12 +1,24 @@
 extends question-detail.pug
 
+append head
+
+    link(rel="stylesheet" href="/stylesheets/answer-form.css")
+
 include utils.pug
 
 block content
     +validationErrorSummary(errors)
-    form(action=`/answer/${answer.id}/edit` method='post')
-        input(type='hidden' name='_csrf' value=csrfToken)
-        +field('Answer', 'body', answer.body)
-        div(class='#')
-          button(type='submit' class='#') Submit
-          a(href=`/question/${answer.questionId}`) Cancel
+    div(class='main-container')
+      div(class='left-container')
+      div(class='middle-container')
+        div(class='content-container')
+          form(action=`/answer/${answer.id}/edit` method='post')
+              input(type='hidden' name='_csrf' value=csrfToken)
+              h2(id='header') #{question.title}
+              +field( null, 'body', answer.body, 'textarea')
+              div(class='answer-cancel-btn')
+                div(class='button-div')
+                  button(type='submit' id='answer' href=`/question/${question.id}/edit`) Submit
+                div(class='anchor-div')
+                  a(href=`/question/${answer.questionId}` id='cancel') Cancel
+      div(class='right-container')
