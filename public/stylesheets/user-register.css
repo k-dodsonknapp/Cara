@@ -57,7 +57,6 @@ label {
 }
 
 input {
-    border-radius: 3px;
     background-color: white;
     background: transparent;
     border: none;
@@ -161,3 +160,4 @@ a:hover {
     font-size: 20px;
     margin: 0;
 }
+
