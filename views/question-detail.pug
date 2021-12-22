@@ -21,21 +21,23 @@ block content
           if locals.user.id === question.userId
             div(class='py-3')
               a(class='btn btn-success' href=`/questions/${question.id}/edit` role='button') Edit Question
+              button(id=`delete-${question.id}` class=`question-delete-button` href=`/question/${question.id}` type="submit") Delete Question
           if answers
             div(class='answerDiv')
               div(class='answer-line')
               h4(id='answer-id') Answers:
             each answer in answers
+              div.answerDiv
                 div(class='answerImgDiv')
-                  h4(class='answer-author')=answer.User.username
+                  h4(class='answer-author')= answer.User.username
                   img(src="../stylesheets/img/flat-tire2.png" alt="This car image")
                 h3(id='answer-text')= answer.body
                     div(class='button-div')
                       div(class='commentDiv')
                         a(id='adds-comment' href=`/answer/${answer.id}/add` role='button') Comment
-                      div(class='edit-answer-div')
                         if locals.user.id === answer.userId
                           a(id='edit-answer' href=`/answer/${answer.id}/edit` role='button') Edit Answer
+                          button(id=`delete-${answer.id}` class=`answer-delete-button` href=`/answer/${answer.id}/delete` type="submit") Delete Answer
                     each comment in comments
                       if comment.answersId === answer.id
                         div(class='comment-section')
@@ -46,5 +48,5 @@ block content
                               a(type='submit' class=`edit-comment-btn` href=`/comments/${comment.id}/edit`) Edit
                     div(id='line')
                       div(class='seperate-answer-line')
-      script(src='/javascripts/comments.js')
+      script(src='/javascripts/delete-content.js')
     div(class="right-container")

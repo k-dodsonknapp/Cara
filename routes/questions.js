@@ -47,7 +47,7 @@ router.get("/question/:id(\\d+)",
         model: User
       }
     })
-    
+
        res.render("question-detail", {
          title: "Question Detail",
          question,
@@ -189,6 +189,7 @@ router.delete(
     await question.destroy();
 
     res.json({ message: `Deleted question with id of ${req.params.id}.`});
+    res.redirect('/home')
   })
 );
 

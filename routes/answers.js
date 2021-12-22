@@ -139,15 +139,16 @@ router.post('/answer/:id(\\d+)/edit', requireAuth, csrfProtection,
         }
     }));
 
-router.post('/answer/:id(\\d+)/delete', requireAuth, csrfProtection,
-    asyncHandler(async (req, res) => {
+router.delete('/answer/:id(\\d+)/delete',
+    asyncHandler(async (req, res, next) => {
         const answerId = parseInt(req.params.id, 10)
         const answer = await db.Answer.findByPk(answerId)
 
         checkPermissions(answer, res.locals.user);
 
         await answer.destroy();
-        res.redirect('/questions/:id(\\d+)/answers')
+        // res.redirect('/questions/:id(\\d+)/answers')
+        res.json({ message: `Deleted Answer with id of ${req.params.id}.` });
     })
 )
 
