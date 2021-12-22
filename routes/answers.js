@@ -18,7 +18,7 @@ const answerValidators = [
     check('body')
         .exists({ checkFalsy: true })
         .withMessage('Please enter a valid answer')
-        .isLength({ min: 15 })
+        .isLength({ min: 5 })
         .withMessage('Answer must be at least 15 characters long')
 ]
 
