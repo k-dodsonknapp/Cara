@@ -13,6 +13,7 @@
     height: 100%;
 }
 
+
 .left-container {
     margin-top: 80px;
     border: 1px solid rgba(222,224,225, 80%);
@@ -23,6 +24,15 @@
     margin-left: 10%;
 }
 
+.middle-container {
+    /* border: 1px solid rgba(222,224,225, 80%); */
+    margin-top: 80px;
+    display: flex;
+    /* justify-content: flex-start; */
+    flex-direction: column;
+    border-radius: 4px;
+    bottom: 100px;
+}
 
 .middle-container {
     /* border: 1px solid rgba(222,224,225, 80%); */
@@ -37,17 +47,11 @@
 .content-container {
     border: 1px solid rgba(222,224,225, 0.8);
     border-radius: 8px;
-    padding: 15px;
+    padding: 4rem 6rem;
     background-color: white;
     padding-bottom: 12%;
 }
 
-.right-container {
-    margin-top: 80px;
-    /* border: 1px solid rgba(222,224,225, 80%); */
-    /* border-radius: 4px; */
-    /* background-color: white; */
-}
 
 .form-group {
     display: flex;
@@ -58,48 +62,30 @@
     /* padding-bottom: 8%; */
 }
 
-textarea#title {
+.submit-button,
+.cancel-button {
+    margin: 0 2em;
+    font-size: 1rem;
+    text-decoration: none;
+    color: rgb(66, 66, 66);
+}
+
+textarea#body {
     width: 30rem;
     height: 10rem;
     resize: none;
     border-radius: 8px;
 }
 
+
 label {
     margin-bottom: 3rem;
     font-size: 2rem;
 }
 
-#topics-label {
-    font-size: 1rem;
-}
-
-
-.topics-dropdown {
+.submit-cancel-btns{
     display: flex;
-    justify-content: space-between;
-    background-color: white;
-    margin: 0;
-}
-
-#topics-label2 {
-    margin: 0 2rem;
-    font-size: 1rem;
-    /* padding: 1rem; */
-    display: flex;
-    justify-content: space-around;
-}
-
-.submit-button,
-.cancel-button {
-    margin: 0 2em;
-    font-size: 1rem;
-    text-decoration: none;
-    color: rgb(121, 121, 121);
-}
-
-select {
-    margin: 0 2em;
+    justify-content: center;
 }
 
 .py-4,

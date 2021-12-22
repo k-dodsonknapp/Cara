@@ -140,6 +140,11 @@ h5 {
 
 .commentDiv {
     background-color: white;
+    padding: 1rem 0 0 1rem;
+}
+
+#edit-answer {
+    padding: 0 2rem 0 0;
 }
 
 #adds-comment {
@@ -195,7 +200,7 @@ h5 {
 
 .seperate-answer-line {
     border:1px solid rgba(5, 5, 5, 0.2);
-    width: 90%;
+    width: 100%;
 }
 
 .comment-section {
@@ -228,19 +233,17 @@ h4.answer-author {
 
 .delete-button {
     background-color: white;
-    padding-left: 19%;
-    padding-bottom: 6%;
     font-weight: 600;
-    padding-top: 0.55%;
+    padding: 0 2rem 5px 0;
+    font-size: 13px;
 }
 
 .edit-comment-btn {
+    padding-top: 3px;
     background-color: white;
     text-decoration: none;
     color: gray;
     font-size: 13px;
-    padding-top: 1%;
-    padding-left: 1%;
     font-weight: 600;
 }
 
@@ -273,4 +276,12 @@ h4.answer-author {
 
 .question-delete-button {
     padding-right: 1rem;
+}
+
+
+#comment-div {
+    background-color: white;
+    display: flex;
+    margin-left: 8.25rem;
+    padding: 0;
 }

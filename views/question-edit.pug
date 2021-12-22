@@ -13,7 +13,7 @@ block content
       div.content-container
         form(action=`/questions/${question.id}/edit` method='post')
           input(type='hidden' name='_csrf' value=csrfToken)
-          +field("Question", "title", question.title, fieldType = 'textarea')
+          +field("Edit Your Question", "title", question.title, fieldType = 'textarea')
           div.topics-dropdown
             label(for="topicId" id="topics-label2") Topics
               select(name="topicId" required)
