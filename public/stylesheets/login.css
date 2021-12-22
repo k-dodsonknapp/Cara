@@ -1,0 +1,158 @@
+*{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 20px;
+    height: 100%;
+    margin: 0;
+    background-image: url("car.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.center {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.left-container {
+    height: 100%;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px;
+}
+
+h1 {
+    margin: 25px;
+    margin-top: 0px;
+    color: white;
+    font-weight: 200;
+    font-size: 50px;
+    text-align: center;
+}
+
+h2 {
+    margin: 25px;
+    margin-top: 0px;
+    color: white;
+    font-weight: 100;
+    text-align: center;
+}
+
+label {
+    padding: 5px;
+    margin-top: 8px;
+    color:  white;
+}
+
+input {
+    border-radius: 3px;
+    background-color: white;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid gray;
+    color: white;
+    /* border: 0px;
+    padding: 0px;*/
+    font-size: 18px;
+    font-style: normal;
+    text-decoration: none;
+    text-transform: none; 
+    line-height: 24px;
+    letter-spacing: 0px;
+    box-sizing: border-box;
+    width: 200px;
+    height: 34px; 
+} 
+
+input:focus {
+    outline: none;
+}
+
+a{
+    text-decoration: none;
+    color: rgba(255, 255, 255,0.7); 
+}
+
+button {
+    border-radius: 4px;
+    background-color: white
+    border-color: rgba(255, 255, 255,0.7); 
+}
+
+.cancel-button {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 15px;
+}
+
+div.login {
+    background-color: rgba(0, 0,0, 60%); 
+    height: 50%;
+    box-shadow: 0 0 20px 20px rgba(0, 0,0, 60%); 
+    height: initial !important;
+    overflow: initial !important
+}
+
+li,
+ p { 
+    color: gray;
+}
+
+
+div.login-button {
+ display: flex;
+ justify-content: center;
+ margin-bottom: 5px;
+}
+
+div.sign-up-link {
+ margin-top: 5px;
+ display: flex;
+ justify-content: center;
+}
+
+button {
+    padding: 0 100px;
+    button-font-family: "Gilroy",sans-serif;
+    height: 35px;
+    font-size: 16px;
+    border-radius: 2em;
+    margin: 2px;
+    background-color: rgb(39, 75, 117);
+    color: white;
+    border: none;
+    outline: none;
+}
+
+button:hover {
+    background-color: #5893CE;
+}
+
+a {
+    padding: 6px 55px;
+    button-font-family: "Gilroy",sans-serif;
+    height: 40px;
+    font-size: 16px;
+    border-radius: 2em;
+    border: 3px solid white;
+}
+
+a:hover { 
+    border-color: blue;
+}
+
+#demo-button {
+    margin-bottom: 12px;
+}
