@@ -34,7 +34,7 @@
 }
 
 h1 {
-    margin: 25px;
+    margin: 10px;
     margin-top: 0px;
     color: white;
     font-weight: 200;
@@ -82,12 +82,13 @@ input:focus {
 
 a{
     text-decoration: none;
-    color: rgba(255, 255, 255,0.7); 
+    color: white;
+    margin:2px;
 }
 
 button {
     border-radius: 4px;
-    background-color: white
+    background-color: white;
     border-color: rgba(255, 255, 255,0.7); 
 }
 
@@ -108,4 +109,55 @@ button {
 li,
  p { 
     color: gray;
+}
+
+div.cancel-button {
+ display: flex;
+ justify-content: center;
+ margin-bottom: 5px;
+ flex-direction: column;
+}
+
+button {
+    padding: 0 100px;
+    button-font-family: "Gilroy",sans-serif;
+    height: 35px;
+    font-size: 16px;
+    border-radius: 2em;
+    margin: 2px;
+    background-color: rgb(39, 75, 117);
+    color: white;
+    border: none;
+    outline: none;
+    margin-bottom: 10px;;
+}
+
+button:hover {
+    background-color: #1956C4;
+}
+
+a {
+    padding: 5px;
+    button-font-family: "Gilroy",sans-serif;
+    height: 20px;
+    font-size: 16px;
+    border-radius: 2em;
+    border: 3px solid white;
+    text-align: center;
+
+}
+
+a:hover { 
+    border-color: #1956C4;
+
+}
+    
+#demo-button {
+    margin-bottom: 12px;
+}
+
+
+.quote {
+    font-size: 20px;
+    margin: 0;
 }
