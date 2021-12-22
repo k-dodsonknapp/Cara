@@ -106,6 +106,7 @@ h5 {
     padding-right: 14%;
     font-weight: 400;
     font-size: 16px;
+    padding-bottom: 2%;
 
 }
 
@@ -177,6 +178,7 @@ h5 {
 }
 
 .comment-author {
+    padding-top: 3%;
     padding-left:18%;
     font-size: 15px;
 }
@@ -199,8 +201,8 @@ h5 {
 img {
     height: 40px;
     width: 40px;
-    background-color: rgba(255, 255, 255,0.7);  
-}   
+    background-color: rgba(255, 255, 255,0.7);
+}
 h4.answer-author {
   padding: 6px 5px;
 }
@@ -233,7 +235,8 @@ h4.answer-author {
     text-decoration: none;
     color: gray;
     font-size: 13px;
-    padding-top: 0.9%;
+    padding-top: 1%;
+    padding-left: 1%;
     font-weight: 600;
 }
 

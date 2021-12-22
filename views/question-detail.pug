@@ -42,9 +42,8 @@ block content
                             h4(class='comment-author')=comment.User.username
                             h4(id='comment-id')= comment.body
                             if locals.user.id === comment.userId
-                              div(class='edit-delete-comment-div')
-                                button(type='submit' id=`delete-${comment.id}` class=`delete-button` href=`/comment/${comment.id}`) Delete
-                                a(type='submit' class=`edit-comment-btn` href=`/comments/${comment.id}/edit`) Edit
+                              button(type='submit' id=`delete-${comment.id}` class=`delete-button` href=`/comment/${comment.id}`) Delete
+                              a(type='submit' class=`edit-comment-btn` href=`/comments/${comment.id}/edit`) Edit
                     div(id='line')
                       div(class='seperate-answer-line')
       script(src='/javascripts/comments.js')
