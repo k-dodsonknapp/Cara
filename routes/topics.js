@@ -36,11 +36,12 @@ router.get(
     console.log(answers)
     // checkPermissions(topic, res.locals.user)
 
-    res.render("topic-questions", { 
-        answers,
-        topics,
-         topic, 
-         questions });
+    res.render("topic-questions", {
+      answers,
+      topics,
+      topic,
+      questions
+    });
   })
 );
 

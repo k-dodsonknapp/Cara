@@ -75,14 +75,14 @@ router.get('/comments/:id(\\d+)/edit', requireAuth, csrfProtection,
         // console.log(commentId)
         const comment = await db.Comment.findByPk(commentId);
 
-        // checkPermissions(comment, res.locals.user);
+        checkPermissions(comment, res.locals.user);
 
         res.render('comment-edit', {
             title: 'Edit comment',
             comment,
             csrfToken: req.csrfToken(),
         });
-        // res.send("BASIC BITCH")
+
     }));
 
 
@@ -92,7 +92,7 @@ router.post('/comments/:id(\\d+)/edit', requireAuth, csrfProtection,
         const commentToUpdate = await db.Comment.findByPk(commentId);
         const answer = await db.Answer.findByPk(commentToUpdate.answersId)
         const question = await db.Question.findByPk(answer.questionId)
-        
+
         checkPermissions(commentToUpdate, res.locals.user);
 
         const { body } = req.body;
@@ -114,29 +114,6 @@ router.post('/comments/:id(\\d+)/edit', requireAuth, csrfProtection,
         }
     }));
 
-// router.get('/comment/:id(\\d+)/delete', csrfProtection,
-//   asyncHandler(async (req, res) => {
-//     const commentId = parseInt(req.params.id, 10);
-//     const comment = await db.Comments.findByPk(commentId);
-//     res.render('delete-comment', {
-//       title: 'Delete Comment',
-//       comment,
-//       csrfToken: req.csrfToken(),
-//     });
-//   }));
-
-// router.post('/comment/:id(\\d+)/delete', csrfProtection,
-//     asyncHandler(async (req, res) => {
-//         const commentId = parseInt(req.params.id, 10);
-//         const comment = await db.Comments.findByPk(commentId);
-//         // console.log(commentId)
-
-//         // checkPermissions(comment, res.locals.user);
-
-//         await comment.destroy();
-//         res.redirect(`/answer/${comment.answerId}`);
-//     }));
-
 router.delete(
     "/comment/:id(\\d+)",
     asyncHandler(async (req, res, next) => {
@@ -149,9 +126,5 @@ router.delete(
         await comment.destroy();
         res.json({ message: `Deleted comment with id of ${req.params.id}.` });
     }));
-
-
-
-
 
 module.exports = router;

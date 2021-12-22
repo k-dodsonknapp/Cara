@@ -22,12 +22,12 @@ const checkPermissions = (question, currentUser) => {
 //TESTED
 //COMMENTS - will be dynamic
 router.get("/question/:id(\\d+)",
- requireAuth,
- asyncHandler(async(req, res) => {
+  requireAuth,
+  asyncHandler(async (req, res) => {
     const questionId = req.params.id
     const question = await Question.findByPk(questionId, {
       include: {
-        model:User
+        model: User
       }
     });
 
@@ -36,7 +36,7 @@ router.get("/question/:id(\\d+)",
         questionId
       },
       limit: 5,
-      order: [["createdAt","ASC"]],
+      order: [["createdAt", "ASC"]],
       include: {
         model: User
       }
@@ -48,16 +48,16 @@ router.get("/question/:id(\\d+)",
       }
     })
 
-       res.render("question-detail", {
-         title: "Question Detail",
-         question,
-         answers,
-         comments
-       });
-}));
+    res.render("question-detail", {
+      title: "Question Detail",
+      question,
+      answers,
+      comments
+    });
+  }));
 
 const questionValidators = [
-    check("title")
+  check("title")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a value for question.")
     .isLength({ max: 255 })
@@ -70,11 +70,11 @@ router.get("/question/add", requireAuth,
   questionValidators,
   asyncHandler(async (req, res) => {
     const topicsId = await Topic.findAll();
-     res.render("question-add-form", {
-       title: "Add Question",
-       csrfToken: req.csrfToken(),
-       topicsId
-     });
+    res.render("question-add-form", {
+      title: "Add Question",
+      csrfToken: req.csrfToken(),
+      topicsId
+    });
 
   }));
 
@@ -100,12 +100,12 @@ router.post("/question/add",
       res.redirect("/home");
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
-    res.render("question-add-form", {
-         title: "Add Question",
-         question,
-         errors,
-         csrfToken: req.csrfToken(),
-       });
+      res.render("question-add-form", {
+        title: "Add Question",
+        question,
+        errors,
+        csrfToken: req.csrfToken(),
+      });
     }
 
   }));
@@ -147,7 +147,7 @@ router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
 
     const { title, topicId, userId } = req.body;
 
-    const editedQuestion = { title, topicsId: topicId , userId};
+    const editedQuestion = { title, topicsId: topicId, userId };
     //  console.log(questionToUpdate)
     //  console.log(editedQuestion)
 
@@ -188,7 +188,7 @@ router.delete(
 
     await question.destroy();
 
-    res.json({ message: `Deleted question with id of ${req.params.id}.`});
+    res.json({ message: `Deleted question with id of ${req.params.id}.` });
     res.redirect('/home')
   })
 );
