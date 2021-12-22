@@ -145,15 +145,17 @@ form {
 
 .submit-btn {
     margin-right: 8px;
-    border: 1px solid black;
     border-radius: 5px;
+    font-size: 13px;
 }
 
 .cancel-btn {
     background-color: white;
     text-decoration: none;
     color: black;
+    font-size: 13px;
 }
-/* .topic-title {
 
-} */
+select {
+    border-radius: 3px;
+}
