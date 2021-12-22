@@ -73,11 +73,12 @@ a {
    height: 5px;
 }
 
-
-
 .py-3 {
     background-color: white;
+    display: flex;
+    flex-direction: column;
 }
+
 .btn-ask-quest {
     background-color:white;
     padding: 20px;
@@ -87,22 +88,12 @@ a {
     display: flex;
     justify-content: flex-end;
     flex-direction: row-reverse;
-    /* justify-content: space-between; */
 }
 
 #user-img {
     margin-right: 10px;
     border-radius: 50%;
 }
-
-/* .post-question {
-    display: flex;
-    justify-content: center;
-    background-color: white;
-    border: 1px solid rgba(222,224,225, 80%);
-    border-radius: 4px;
-    height: 75px;
-} */
 
 .questions-row {
     display: flex;
@@ -117,29 +108,13 @@ a {
     margin: 0px 0px;
 }
 
-
-
-
 .display-question {
   margin: 8px;
   color: #282829;
   font-weight: 600;
 }
 
-
-/*
-div.display-answer {
- margin: 20px;
- padding: 15px;
- text-align: left;
- display: flex;
- justify-content: flex-end;
- background-color:white;
-
-} */
-
 .display-answer {
- /* border: 1px solid red; */
  background-color: white;
  padding: 7px;
 }
@@ -172,6 +147,7 @@ div.topic-container {
    border-radius: 10px;
    background-color: white;
 }
+
 tr.topic-row td {
  border: none;
  border-bottom: 1px solid rgba(222,224,225, 80%);
@@ -207,4 +183,3 @@ h3 {
     align-self: end;
     flex-direction: column;
 }
-
