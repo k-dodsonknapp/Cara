@@ -90,8 +90,9 @@ router.post('/comments/:id(\\d+)/edit', requireAuth, csrfProtection,
     commentValidator, asyncHandler(async (req, res) => {
         const commentId = parseInt(req.params.id, 10);
         const commentToUpdate = await db.Comment.findByPk(commentId);
+        const answer = await db.Answer.findByPk(commentToUpdate.answersId)
+        const question = await db.Question.findByPk(answer.questionId)
         
-
         checkPermissions(commentToUpdate, res.locals.user);
 
         const { body } = req.body;
@@ -101,7 +102,7 @@ router.post('/comments/:id(\\d+)/edit', requireAuth, csrfProtection,
 
         if (validatorErrors.isEmpty()) {
             await commentToUpdate.update(editedComment);
-            res.redirect(`/question/${commentToUpdate.answersId}`)
+            res.redirect(`/question/${question.id}`)
         } else {
             const errors = validatorErrors.array().map((error) => error.msg);
             res.render('comment-edit', {

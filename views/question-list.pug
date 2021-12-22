@@ -36,15 +36,15 @@ block content
                         h3 #{user.username}
                       div(class='py-3')
                         a(class='btn display-question' href=`/question/${question.id}` role='button')  #{question.title}
+                        if locals.user.id !== question.userId
+                          div(class="display-answer")
+                            a(class='btn btn-success' href=`/question/${question.id}/add` role='button') Answer Question
                         if locals.user.id === question.userId
                           button(type='submit' id=`delete-${question.id}` class=`delete-button` href=`/question/${question.id}`) Delete Question
                   each answer in answers
                     if answer.questionId === question.id
                       div(class='py-3')
                         a(class='btn display-answer' href=`/question/${answer.questionId}` role='button') #{answer.body}
-                      if locals.user.id !== answer.userId
-                        div(class="display-answer")
-                          a(class='btn btn-success' href=`/question/${answer.questionId}/add` role='button') Answer Question
             tr( class="spacer")
     div(class="right-container")
     footer
