@@ -14,13 +14,13 @@ block content
           h4(id='question-id') Question:
           h3(id='question-header')= question.title
           div(class='author-div')
-            h4(id='question-author')= question.User.username
+            h4(id='question-author')= `-${question.User.username}`
             if locals.user.id !== question.userId
               a(class='answer-button' href=`/question/${question.id}/add` role='button') Answer
           br
           if locals.user.id === question.userId
             div(class='py-3')
-              a(class='btn btn-success' href=`/questions/${question.id}/edit` role='button') Edit Question
+              a(class='edit-question-btn' href=`/questions/${question.id}/edit` type="submit") Edit Question
               button(id=`delete-${question.id}` class=`question-delete-button` href=`/question/${question.id}` type="submit") Delete Question
           if answers
             div(class='answerDiv')
@@ -34,18 +34,20 @@ block content
                 h3(id='answer-text')= answer.body
                     div(class='button-div')
                       div(class='commentDiv')
-                        a(id='adds-comment' href=`/answer/${answer.id}/add` role='button') Comment
+                        if answer.userId !== locals.user.id
+                          a(id='adds-comment' href=`/answer/${answer.id}/add` role='button') Comment
                         if locals.user.id === answer.userId
-                          a(id='edit-answer' href=`/answer/${answer.id}/edit` role='button') Edit Answer
+                          a(id='edit-answer' href=`/answer/${answer.id}/edit` type="submit") Edit Answer
                           button(id=`delete-${answer.id}` class=`answer-delete-button` href=`/answer/${answer.id}/delete` type="submit") Delete Answer
                     each comment in comments
                       if comment.answersId === answer.id
                         div(class='comment-section')
                             h4(class='comment-author')=comment.User.username
                             h4(id='comment-id')= comment.body
-                            if locals.user.id === comment.userId
-                              button(type='submit' id=`delete-${comment.id}` class=`delete-button` href=`/comment/${comment.id}`) Delete
-                              a(type='submit' class=`edit-comment-btn` href=`/comments/${comment.id}/edit`) Edit
+                            div#comment-div
+                              if locals.user.id === comment.userId
+                                button(type='submit' id=`delete-${comment.id}` class=`delete-button` href=`/comment/${comment.id}`) Delete
+                                a(type='submit' class=`edit-comment-btn` href=`/comments/${comment.id}/edit`) Edit
                     div(id='line')
                       div(class='seperate-answer-line')
       script(src='/javascripts/delete-content.js')

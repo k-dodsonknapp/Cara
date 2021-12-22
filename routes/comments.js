@@ -86,44 +86,11 @@ router.get('/comments/:id(\\d+)/edit', requireAuth, csrfProtection,
     }));
 
 
-// POST TO EDIT A COMMENT
-// router.post('/comments/:id(\\d+)/edit',
-// requireAuth,
-// csrfProtection,
-// commentValidator,
-// asyncHandler(async (req, res) => {
-//     const commentId = parseInt(req.params.id, 10);
-//     const commentToUpdate = await db.Comment.findByPk(commentId);
-//     // console.log(commentToUpdate)
-
-//     console.log(req.body)
-//     checkPermissions(commentToUpdate, res.locals.user);
-
-//     const { body } = req.body;
-//     // console.log(req.body);
-//     const editedComment = { body }
-//     // console.log(editedComment)
-
-//     const validatorErrors = validationResult(req)
-
-//     if (validatorErrors.isEmpty()) {
-//         await commentToUpdate.update(editedComment);
-//         // console.log("hello")
-//         res.redirect(`/answer/${commentToUpdate.answersId}`);
-//     } else {
-//         const errors = validatorErrors.array().map((error) => error.msg);
-//         res.render("comment-edit", {
-//             title: "comment",
-//             editedComment,
-//             errors,
-//             csrfToken: req.csrfToken(),
-//         })
-//     }
-// }));
 router.post('/comments/:id(\\d+)/edit', requireAuth, csrfProtection,
     commentValidator, asyncHandler(async (req, res) => {
         const commentId = parseInt(req.params.id, 10);
         const commentToUpdate = await db.Comment.findByPk(commentId);
+        
 
         checkPermissions(commentToUpdate, res.locals.user);
 
@@ -134,7 +101,7 @@ router.post('/comments/:id(\\d+)/edit', requireAuth, csrfProtection,
 
         if (validatorErrors.isEmpty()) {
             await commentToUpdate.update(editedComment);
-            res.redirect(`/answer/${commentToUpdate.answersId}`)
+            res.redirect(`/question/${commentToUpdate.answersId}`)
         } else {
             const errors = validatorErrors.array().map((error) => error.msg);
             res.render('comment-edit', {

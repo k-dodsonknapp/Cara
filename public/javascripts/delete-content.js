@@ -11,8 +11,8 @@ window.addEventListener("DOMContentLoaded", event => {
             const res = await fetch(`/comment/${e.target.id.split('-')[1]}`, { method: "DELETE" })
             console.log(res)
             if (res) {
-                window.alert("Are you sure you want to delete your answer?")
-                e.target.parentNode.remove()
+                window.alert("Are you sure you want to delete your comment?")
+                e.target.parentNode.parentNode.remove()
             }
         });
     });
