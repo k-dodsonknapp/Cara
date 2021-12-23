@@ -15,9 +15,11 @@ h4 {
 }
 
 h3 {
-    font-size: 25px;
+    font-size: 15px;
     background-color: white;
     color: rgb(77, 75, 75);
+    padding-top: 10%;
+    padding-left: 20%;
 }
 
 h5 {
@@ -123,4 +125,36 @@ label {
     padding-left: 3%;
     padding-right: 2%;
     padding-top: 2%;
+}
+
+ a {
+     text-decoration: none;
+ }
+
+
+ button#answer,
+ a#cancel {
+    margin-left: 3px;
+    font-size: 13px;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 15px;
+    color: gray;
+    background-color:rgba(33,38,44,15%);
+    border: 1px solid rgba(163,170,178,80%);
+    width: 100%;
+    font-size: 14px;
+}
+
+
+button#answer:hover,
+a#cancel:hover {
+    background-color:white;;
+    color: gray;
+    
+}
+
+a#cancel {
+    margin-top: 5px;
+    padding: 5px;
 }

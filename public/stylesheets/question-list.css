@@ -119,13 +119,6 @@ a {
  padding: 7px;
 }
 
-.btn-success {
-    border:1px solid gray;
-    padding: 1px 1px;
-    border-radius: 3px;
-    margin-left: 3px;
-    font-size: 13px;
-}
 
 i {
     color: gray;
@@ -171,10 +164,6 @@ h3 {
     background-color: white;
 }
 
-#delete-btn {
-    border: 1px solid red;
-}
-
 
 
 .delete-button {
@@ -183,10 +172,28 @@ h3 {
     align-self: end;
     flex-direction: column;
 }
+a.btn-success {
+    padding: 10px;
+    margin: 10px;
+    margin-left: 3px;
+    font-size: 13px;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 15px;
+    color: gray;
+    background-color:rgba(33,38,44,15%);
+    border: 1px solid rgba(163,170,178,80%);
+    width: 100%;
+    font-size: 14px;
+}
 
-
-@media (max-width: 600px) {
+a.btn-success:hover {
+    background-color:white;;
+    color: gray;
+    text-align: center;
+}
+/* @media (max-width: 600px) {
     body {
         color: red;
     }
-}
+} */

@@ -285,3 +285,8 @@ h4.answer-author {
     margin-left: 8.25rem;
     padding: 0;
 }
+
+a {
+    text-decoration: none;
+}
+
