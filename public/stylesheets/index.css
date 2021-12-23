@@ -3,10 +3,11 @@
     color: rgb(185, 185, 185);
     text-align: center;
     font-size: 50px;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Titillium Web', sans-serif;
     background-color: rgb(39, 75, 117);
     text-decoration: none;
     font-weight: 600;
+    margin-left: 10%;
 }
 p{
     text-align: center;
