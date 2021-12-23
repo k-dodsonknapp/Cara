@@ -290,6 +290,8 @@ h4.answer-author {
 a {
     text-decoration: none;
 }
+
+a#adds-comment,
  a#edit-answer,
  button.answer-delete-button,
  a.answer-button {
@@ -305,8 +307,10 @@ a {
 }
 
 
-a#adds-comment:hover,
-a#answer-button:hover {
+ a#adds-comment:hover,
+ a#edit-answer:hover,
+ button.answer-delete-button:hover,
+ a.answer-button:hover  {
     background-color:white;;
     color: gray;
     
