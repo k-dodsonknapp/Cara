@@ -8,7 +8,7 @@
     column-gap: 20px;
     height: 100%;
     margin: 0;
-    background-image: url("audi.png");
+    background-image: url("register.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -57,14 +57,11 @@ label {
 }
 
 input {
-    border-radius: 3px;
     background-color: white;
     background: transparent;
     border: none;
     border-bottom: 1px solid gray;
     color: white;
-    /* border: 0px;
-    padding: 0px;*/
     font-size: 18px;
     font-style: normal;
     text-decoration: none;
@@ -161,3 +158,4 @@ a:hover {
     font-size: 20px;
     margin: 0;
 }
+

@@ -17,7 +17,7 @@ block content
         p A place to share knowledge and a better understanding of cars
 
         div.login-box
-          h1 Login
+          h2 Login
           +validationErrorSummary(errors)
           form(action='/' method='post')
             input(type='hidden' name='_csrf' value=csrfToken)
@@ -30,6 +30,6 @@ block content
             div.login-button
                 button#demo-button(type='submit') Demo
             div.sign-up-link
-              p: a(href='/users/register') Sign up with email
+               a(href='/users/register') Sign up with email
     div.right-container      
     script(src='/javascripts/demouser.js')

@@ -8,7 +8,7 @@
     column-gap: 20px;
     height: 100%;
     margin: 0;
-    background-image: url("car.png");
+    background-image: url("audi.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -57,7 +57,6 @@ label {
 }
 
 input {
-    border-radius: 3px;
     background-color: white;
     background: transparent;
     border: none;
@@ -105,8 +104,7 @@ div.login {
     overflow: initial !important
 }
 
-li,
- p { 
+li { 
     color: gray;
 }
 
@@ -134,25 +132,45 @@ button {
     color: white;
     border: none;
     outline: none;
+    width: 90%;
 }
 
 button:hover {
     background-color: #1956C4;
+    width: 100%;
 }
 
-a {
-    padding: 6px 55px;
-    button-font-family: "Gilroy",sans-serif;
-    height: 40px;
-    font-size: 16px;
-    border-radius: 2em;
-    border: 3px solid white;
-}
 
 a:hover { 
     border-color: #1956C4;
+    width: 60%;
 }
 
 #demo-button {
     margin-bottom: 12px;
 }
+
+.password { 
+    margin-bottom: 7%;
+}
+
+p {
+    text-align: center;
+    padding: 0 10% 5%;
+    color: gray;
+}
+
+a {
+    padding: 5px 18%;
+    button-font-family: "Gilroy",sans-serif;
+    height: 20px;
+    font-size: 16px;
+    border-radius: 2em;
+    border: 3px solid white;
+    text-align: center;
+    width: 50%;
+    color: white;
+}
+
+
+

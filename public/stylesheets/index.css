@@ -3,10 +3,11 @@
     color: rgb(185, 185, 185);
     text-align: center;
     font-size: 50px;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Titillium Web', sans-serif;
     background-color: rgb(39, 75, 117);
     text-decoration: none;
     font-weight: 600;
+    margin-left: 10%;
 }
 p{
     text-align: center;
@@ -89,7 +90,7 @@ body{
 
 
 
-a#home-btn {
+.nav-btn {
  text-decoration: none;
  color: white;
  background-color: rgb(39, 75, 117);
@@ -119,9 +120,6 @@ ul {
     margin-left: 10px;
 }
 
-.logout-button {
-    margin-left: 30px;
-}
 
 .names {
     font-size: 15px;
@@ -200,18 +198,41 @@ a#search-btn {
 }
 
 
-button {
-    background-color: white;
-    text-decoration: none;
-    border:1px solid white;
-    padding: 2px;
-    border-radius: 3px;
-    background-color: white;
+
+
+.fa-sign-out {
     color: gray;
 }
 
 a#logout {
     text-decoration: none;
+    color:rgb(163,170,178);
+    background-color:transparent;
+    border: none;
+    font-size: 14px;
+    margin: 3px;
+    width: 100%;
+}
+
+.logout-button {
+    margin-left: 30px;
+}
+
+button {
+    text-decoration: none;
+    padding: 2px;
+    border-radius: 3px;
     color: gray;
-    background-color: white;
+    background-color:rgba(33,38,44,20%);
+    border: 1px solid rgba(163,170,178,80%);
+}
+
+
+button:hover {
+    background-color:rgba(255,255,255,70%);
+}
+
+a#logout:hover {
+    color: white;
+    text-align: center;
 }
