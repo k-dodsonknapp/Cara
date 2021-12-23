@@ -145,6 +145,10 @@ tr.topic-row td {
  border: none;
  border-bottom: 1px solid rgba(222,224,225, 80%);
 }
+tr.topic-row {
+    background-color:white;
+}
+
 
 img {
     height: 40px;
@@ -197,3 +201,13 @@ a.btn-success:hover {
         color: red;
     }
 } */
+
+tr.topic-row td {
+ border: none;
+ border-radius: 0;
+ margin: 0;
+ border-bottom: 1px solid rgba(222,224,225, 80%);
+}
+tr.topic-row {
+    background-color:white;
+}
