@@ -18,7 +18,7 @@ h3 {
     font-size: 15px;
     background-color: white;
     color: rgb(77, 75, 75);
-    padding-top: 10%;
+    padding-top: 3%;
     padding-left: 20%;
 }
 
@@ -60,6 +60,7 @@ h5 {
     border: 1px solid rgba(222,224,225, 0.8);
     border-radius: 8px;
     padding: 15px;
+    margin: 75px 0;
     background-color: white;
 }
 
@@ -74,7 +75,7 @@ textarea {
     display: flex;
     justify-content: center;
     width: 60%;
-    margin-top: 3%;
+    margin-top: 2%;
     font-size: 20px;
     border-radius: 3px;
     resize: none;
@@ -95,7 +96,7 @@ label {
     display: flex;
     justify-content: center;
     gap: 22px;
-    padding-top: 4%;
+    padding-top: 6%;
     padding-bottom: 8%;
 }
 
@@ -115,16 +116,14 @@ label {
 }
 
 #answer {
-    border-radius: 4px;
+    border-radius: 2px;
 }
 
 #header {
     background-color: white;
     display: flex;
     justify-content: center;
-    padding-left: 3%;
-    padding-right: 2%;
-    padding-top: 2%;
+    padding: 4% 2% 0 3%
 }
 
  a {
@@ -132,7 +131,7 @@ label {
  }
 
 
- 
+
 
 div.anchor-div {
     padding-top: 5px;
@@ -156,7 +155,7 @@ div.anchor-div {
 button#answer:hover {
     background-color:white;;
     color: gray;
-    
+
 }
 ul,
 p {

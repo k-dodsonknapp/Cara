@@ -58,7 +58,8 @@ h5 {
 .content-container {
     border: 1px solid rgba(222,224,225, 0.8);
     border-radius: 8px;
-    padding: 15px;
+    padding: 5% 0 0;
+    margin: 10% 5% 10% 2%;
     background-color: white;
 }
 
@@ -73,8 +74,8 @@ h5 {
 textarea {
     display: flex;
     justify-content: center;
-    width: 55%;
-    margin-top: 3%;
+    width: 65%;
+    margin-top: 5%;
     font-size: 20px;
     border-radius: 3px;
     resize: none;

@@ -182,9 +182,7 @@ h5 {
 }
 
 #question-author {
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-top: 2%;
+    padding: 1% 10% 0;
 }
 
 .comment-author {
@@ -249,11 +247,22 @@ h4.answer-author {
 }
 
 .answer-button {
-    padding-top: 2%;
-    background-color: white;
+    /* padding-top: 2%; */
+    /* background-color: white; */
+    /* text-decoration: none; */
+    /* color: gray; */
+    /* padding-right: 10%; */
+
+    /* align-content: center; */
+    margin-left: 3px;
+    font-size: 13px;
     text-decoration: none;
+    padding: 5px 12px 5px 12px;
+    border-radius: 15px;
     color: gray;
-    padding-right: 10%;
+    background-color:rgba(33,38,44,15%);
+    border: 1px solid rgba(163,170,178,80%);
+    font-size: 14px;
 }
 
 .author-div {
@@ -290,11 +299,13 @@ h4.answer-author {
 a {
     text-decoration: none;
 }
-
+ /* a.answer-button */
 a#adds-comment,
  a#edit-answer,
  button.answer-delete-button,
- a.answer-button {
+ .delete-button,
+ .edit-comment-btn
+ {
     margin-left: 3px;
     font-size: 13px;
     text-decoration: none;
@@ -310,10 +321,15 @@ a#adds-comment,
  a#adds-comment:hover,
  a#edit-answer:hover,
  button.answer-delete-button:hover,
- a.answer-button:hover  {
+ a.answer-button:hover,
+ .edit-comment-btn:hover  {
     background-color:white;;
     color: gray;
-    
+
 }
 
 
+.delete-button,
+.edit-comment-btn {
+    font-weight: 500
+}
