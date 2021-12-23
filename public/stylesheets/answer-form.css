@@ -132,8 +132,14 @@ label {
  }
 
 
- button#answer,
- a#cancel {
+ 
+
+div.anchor-div {
+    padding-top: 5px;
+}
+
+
+ button#answer {
     margin-left: 3px;
     font-size: 13px;
     text-decoration: none;
@@ -147,36 +153,7 @@ label {
 }
 
 
-button#answer:hover,
-a#cancel:hover {
-    background-color:white;;
-    color: gray;
-    
-}
-
-a#cancel {
-    margin-top: 5px;
-    padding: 5px;
-}
-
-
- button#answer,
- a#cancel {
-    margin-left: 3px;
-    font-size: 13px;
-    text-decoration: none;
-    padding: 5px;
-    border-radius: 15px;
-    color: gray;
-    background-color:rgba(33,38,44,15%);
-    border: 1px solid rgba(163,170,178,80%);
-    width: 100%;
-    font-size: 14px;
-}
-
-
-button#answer:hover,
-a#cancel:hover {
+button#answer:hover {
     background-color:white;;
     color: gray;
     
