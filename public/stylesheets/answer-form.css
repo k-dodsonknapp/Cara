@@ -38,17 +38,12 @@ h5 {
 
 .left-container {
     margin-top: 80px;
-    /* border: 1px solid rgba(222,224,225, 80%); */
-    /* border-radius: 8px; */
-    /* grid-row-start: span 2; */
     height: 40%;
-    /* background-color: white; */
     margin-left: 10%;
   }
 
 
 .middle-container {
-    /* border: 1px solid rgba(222,224,225, 80%); */
     margin-top: 86px;
     display: flex;
     justify-content: flex-start;
@@ -65,9 +60,6 @@ h5 {
 
 .right-container {
     margin-top: 80px;
-    /* border: 1px solid rgba(222,224,225, 80%); */
-    /* border-radius: 4px; */
-    /* background-color: white; */
 }
 
 textarea {
@@ -144,7 +136,7 @@ div.anchor-div {
     font-size: 13px;
     text-decoration: none;
     padding: 5px;
-    border-radius: 15px;
+    border-radius: 4px;
     color: gray;
     background-color:rgba(33,38,44,15%);
     border: 1px solid rgba(163,170,178,80%);
