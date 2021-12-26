@@ -98,3 +98,17 @@ textarea,
 .form-group{
     background-color: white;
 }
+
+ul,
+p, 
+h3 {
+    background-color: white;
+}
+
+.error-li {
+    color: black;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}

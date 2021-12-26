@@ -151,8 +151,6 @@ router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
     const { title, topicId, userId } = req.body;
 
     const editedQuestion = { title, topicsId: topicId, userId };
-    //  console.log(questionToUpdate)
-    //  console.log(editedQuestion)
     const topicsIdArr = await Topic.findAll();
     const validatorErrors = validationResult(req);
 
@@ -161,7 +159,6 @@ router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
       res.redirect("/home")
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
-      console.log(editedQuestion)
       res.render("question-edit", {
         title: "Edit Question",
         errors,
