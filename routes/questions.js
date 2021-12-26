@@ -144,7 +144,6 @@ router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
   asyncHandler(async (req, res) => {
     const questionId = parseInt(req.params.id, 10);
     const questionToUpdate = await Question.findByPk(questionId);
-    console.log(req.body)
 
     checkPermissions(questionToUpdate, res.locals.user);
 
@@ -154,7 +153,7 @@ router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
     const editedQuestion = { title, topicsId: topicId, userId };
     //  console.log(questionToUpdate)
     //  console.log(editedQuestion)
-
+    const topicsIdArr = await Topic.findAll();
     const validatorErrors = validationResult(req);
 
     if (validatorErrors.isEmpty()) {
@@ -166,11 +165,9 @@ router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
       res.render("question-edit", {
         title: "Edit Question",
         errors,
-
-        topicsId,
-        // question: { editedQuestion, id: questionId },
+        topicsIdArr,
+        question: { editedQuestion, id: questionId },
         editedQuestion,
-
         csrfToken: req.csrfToken(),
       });
     }

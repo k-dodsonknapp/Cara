@@ -267,6 +267,7 @@ h4.answer-author {
     background-color: white;
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 5px;
 }
 
 .edit-question-btn {
@@ -316,4 +317,25 @@ a#adds-comment,
     
 }
 
+
+
+a.edit-question-btn,
+button.question-delete-button {
+    margin-left: 3px;
+    font-size: 13px;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 15px;
+    color: gray;
+    background-color:rgba(33,38,44,15%);
+    border: 1px solid rgba(163,170,178,80%);
+    font-size: 14px;
+}
+
+ 
+a.edit-question-btn:hover,
+button.question-delete-button {
+    background-color:white;;
+    color: gray;
+}
 
