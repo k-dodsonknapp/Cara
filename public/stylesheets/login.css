@@ -132,18 +132,16 @@ button {
     color: white;
     border: none;
     outline: none;
-    width: 90%;
+    width: 85%;
 }
 
 button:hover {
     background-color: #1956C4;
-    width: 100%;
 }
 
 
 a:hover { 
     border-color: #1956C4;
-    width: 60%;
 }
 
 #demo-button {
@@ -168,7 +166,7 @@ a {
     border-radius: 2em;
     border: 3px solid white;
     text-align: center;
-    width: 50%;
+    width: 45%;
     color: white;
 }
 
