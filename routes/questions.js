@@ -99,9 +99,9 @@ router.post("/question/add",
     if (validatorErrors.isEmpty()) {
       await question.save();
       res.redirect("/home");
-    } 
+    }
     if (errors[0]) {
-    
+
       const allTopicsId = await Topic.findAll();
       res.render("question-add-form", {
         title: "Add Question",
@@ -133,8 +133,6 @@ router.get("/questions/:id(\\d+)/edit", // renders edit form
   })
 );
 
-
-
 // POST THE EDIT MADE TO A QUESTION --> TESTED
 
 router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
@@ -146,7 +144,6 @@ router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
     const questionToUpdate = await Question.findByPk(questionId);
 
     checkPermissions(questionToUpdate, res.locals.user);
-
 
     const { title, topicId, userId } = req.body;
 
@@ -171,8 +168,6 @@ router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
   })
 );
 
-
-
 router.delete(
   "/question/:id(\\d+)",
   requireAuth,
@@ -190,6 +185,5 @@ router.delete(
     res.redirect('/home')
   })
 );
-
 
 module.exports = router

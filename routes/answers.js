@@ -22,42 +22,40 @@ const answerValidators = [
         .withMessage('Answer must be at least 15 characters long')
 ]
 
-
-
 router.get("/question/:id(\\d+)",
- requireAuth,
- asyncHandler(async(req, res) => {
-    const questionId = req.params.id
-    const question = await Question.findByPk(questionId, {
-      include: {
-        model:User
-      }
-    });
+    requireAuth,
+    asyncHandler(async (req, res) => {
+        const questionId = req.params.id
+        const question = await Question.findByPk(questionId, {
+            include: {
+                model: User
+            }
+        });
 
-    const answers = await Answer.findAll({
-      where: {
-        questionId
-      },
-      limit: 5,
-      order: [["createdAt","ASC"]],
-      include: {
-        model: User
-      }
-    });
+        const answers = await Answer.findAll({
+            where: {
+                questionId
+            },
+            limit: 5,
+            order: [["createdAt", "ASC"]],
+            include: {
+                model: User
+            }
+        });
 
-    const comments = await Comment.findAll({
-      include: {
-        model: User
-      }
-    })
+        const comments = await Comment.findAll({
+            include: {
+                model: User
+            }
+        })
 
-       res.render("question-detail", {
-         title: "Question Detail",
-         question,
-         answers,
-         comments
-       });
-}));
+        res.render("question-detail", {
+            title: "Question Detail",
+            question,
+            answers,
+            comments
+        });
+    }));
 
 //get answer form
 router.get('/question/:id(\\d+)/add', csrfProtection, asyncHandler(async (req, res) => {
@@ -122,14 +120,14 @@ router.post('/answer/:id(\\d+)/edit', requireAuth, csrfProtection,
         const editedAnswer = { body };
         const question = await db.Question.findByPk(answerToUpdate.questionId);
         const validatorErrors = validationResult(req);
-    
+
         if (validatorErrors.isEmpty()) {
             await answerToUpdate.update(editedAnswer);
             res.redirect(`/question/${answerToUpdate.questionId}`)
         } else {
             const errors = validatorErrors.array().map((error) => error.msg);
             const answer = { ...editedAnswer, id: answerId }
-            
+
             res.render('answer-edit', {
                 title: 'Edit Answer',
                 answer,

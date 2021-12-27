@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-
 const { asyncHandler } = require("./utils");
 const db = require("../db/models");
 const { Question, Topic, User } = db;
@@ -16,13 +15,13 @@ router.get(
       },
       order: [["createdAt", "ASC"]],
     });
-  
-  const questions = await Question.findAll({
-    order: [["createdAt", "DESC"]] 
-  })
 
-  const users = await User.findAll();
-  const topics = await Topic.findAll();
+    const questions = await Question.findAll({
+      order: [["createdAt", "DESC"]]
+    })
+
+    const users = await User.findAll();
+    const topics = await Topic.findAll();
 
     res.render("question-list", {
       topics,

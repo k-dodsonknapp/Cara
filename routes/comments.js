@@ -5,6 +5,7 @@ const { csrfProtection, asyncHandler } = require('./utils');
 const { check, validationResult } = require('express-validator');
 const router = express.Router();
 
+
 const checkPermissions = (comment, currentUser) => {
     if (comment.userId !== currentUser.id) {
         const err = new Error('Invaild operation.');
@@ -12,19 +13,6 @@ const checkPermissions = (comment, currentUser) => {
         throw err;
     }
 };
-
-//gets an answer with all comments
-// router.get('/answer/:id(\\d+)/comments', asyncHandler(async (req, res) => {
-//     const answersId = parseInt(req.params.id, 10);
-//     const comments = await db.Comment.findAll({
-//         where: {
-//             answersId
-//         }
-//     });
-
-//     console.log(comments)
-//     res.render('answer-detail', { comments })
-// }));
 
 const commentValidator = [
     check("body")
@@ -43,15 +31,13 @@ router.post('/answer/:id(\\d+)/add', csrfProtection, commentValidator, asyncHand
     const { body } = req.body;
     const answerId = parseInt(req.params.id, 10)
     const answer = await db.Answer.findByPk(answerId)
-    // checkPermissions(comment, res.locals.user);
-    // console.log(answer)
+
     const comment = db.Comment.build({
         userId: res.locals.user.id,
         answersId: answer.id,
         body,
     });
 
-    // console.log(comment)
     const validatorErrors = validationResult(req)
 
     if (validatorErrors.isEmpty()) {
@@ -68,7 +54,7 @@ router.post('/answer/:id(\\d+)/add', csrfProtection, commentValidator, asyncHand
     }
 }));
 
-//Get the comment by Id to edit
+//get the comment by id to edit
 router.get('/comments/:id(\\d+)/edit', requireAuth, csrfProtection,
     asyncHandler(async (req, res) => {
         const commentId = parseInt(req.params.id, 10);
@@ -83,7 +69,6 @@ router.get('/comments/:id(\\d+)/edit', requireAuth, csrfProtection,
         });
 
     }));
-
 
 router.post('/comments/:id(\\d+)/edit', requireAuth, csrfProtection,
     commentValidator, asyncHandler(async (req, res) => {
@@ -118,9 +103,8 @@ router.delete(
     asyncHandler(async (req, res, next) => {
         console.log("Delete Comment Route")
         const commentId = parseInt(req.params.id, 10);
-        // console.log(commentId);
         const comment = await db.Comment.findByPk(commentId);
-        // console.log(comment);
+
         checkPermissions(comment, res.locals.user);
         await comment.destroy();
         res.json({ message: `Deleted comment with id of ${req.params.id}.` });
