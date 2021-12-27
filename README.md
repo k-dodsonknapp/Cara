@@ -16,7 +16,26 @@
 Carra is an application where users can post questions about their vehicles and the community can share their knowledge by answering questions. Users are able to interact further through comments to form meaningful discussions. 
 * Link to live  [Carr](https://carra.herokuapp.com/) project. 
 
---Need to add Img--
+
+#### Carra Login page
+![carraLoginPage (2)](https://user-images.githubusercontent.com/85452797/147454949-a2bc41d8-1102-4429-ab8b-b5bb8bbcae08.png)
+
+
+#### Carra Sign up page
+![carraSignUpPage](https://user-images.githubusercontent.com/85452797/147451908-02f6f91d-f1a9-4a3e-98e7-9c9cec3f0e49.png)
+
+
+#### Carra Home page
+![carraHomePage](https://user-images.githubusercontent.com/85452797/147452010-47661dc2-67f5-47c6-977c-eb3352062f59.png)
+
+
+#### Question details page with an answer and a comment
+![questionDetailsPage](https://user-images.githubusercontent.com/85452797/147455673-e74d8a4d-4850-46fc-bc90-48882a292247.png)
+
+
+#### Topics page w/ questions related to topic
+![topics](https://user-images.githubusercontent.com/85452797/147452071-6f2d81d5-f470-4cce-839c-edb9120a3fc1.png)
+
 
 ## Wiki Documentation: 
 ***
@@ -84,4 +103,22 @@ To use the application in a development environment use ```npm start``` to start
 * For a while we struggled to make sure that the person logged in was the only one that could delete or update content that they had made. Ultimatley it came down to authorization of the user when logged in they were the only ones that could use the delete/edit buttons. 
 
 ## Images 
--   Code snippets to highlight the best code ----Need to add img---
+#### Event Listener for dynamically deleting content
+![eventListener](https://user-images.githubusercontent.com/85452797/147452111-3a263729-9a71-4b7f-9d7c-43c0d706f1bb.png)
+
+
+#### Pug form for the home page of Carra aka question list
+![questionListPug](https://user-images.githubusercontent.com/85452797/147452118-db5e7eb0-2d65-4199-b374-1da6410ca8c6.png)
+
+
+#### Code snippet of the route to post a new question 
+![postNewQuestion](https://user-images.githubusercontent.com/85452797/147454596-6364b043-1853-4812-aa80-e226db36e6cb.png)
+
+
+#### Code snippet of the route to edit an answer
+![submitEditAnswer](https://user-images.githubusercontent.com/85452797/147454603-5af1b1e5-cd40-44f8-8ce7-c82f7b2899e3.png)
+
+
+#### Code snippet of the route to get a form to post a new comment
+![getNewCommentForm](https://user-images.githubusercontent.com/85452797/147454618-28661dbb-3083-4de9-8533-13e7484e9235.png)
+
