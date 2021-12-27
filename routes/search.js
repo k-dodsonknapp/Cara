@@ -1,29 +1,53 @@
 const express = require('express')
-const db = require('../db/models')
+
+const { Question } = require("../db/models");
+const { Op } = require('sequelize');
+const { asyncHandler } = require("./utils");
 
 const router = express.Router();
 
-router.get('/search', function (req, res) {
-  const question = db.Question.findAll({
+async function search(word) {
+  const targetQuestions = await Question.findAll({
+    where: {
+      title: { [Op.iLike]: `%${word}%` }
+    },
+    limit: 5
+  });
+  return Array.from(targetQuestions)
+};
+
+router.get('/search', async(req, res) => {
+  const questions = Question.findAll({
     limit: 10
   });
-  
   return res.render('search-questions', {
-    title: 'Search',
-    question: question,
+    title,
+    questions
   });
 });
+
 
 router.post('/search', async (req, res) => {
-  const questions = await db.Question.findAll({
-    limit: 15,
+  const questions = await Question.findAll({
+    limit: 10,
   });
-
   return res.render('search-questions', {
     title: 'Questions found:',
-    questions: questions
+    questions
   });
 });
+
+router.all(
+  '/search/:search',
+  asyncHandler(async (req, res) => {
+    const searchResults = req.params.search;
+    const questions = await search(`%${searchResults}%`);
+    return res.render('search-questions', {
+      title: 'Questions found:',
+      questions
+    });
+  })
+);
 
 
 module.exports = router;

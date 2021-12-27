@@ -1,7 +1,25 @@
 extends home.pug
 
-include utils
+append head
+    link(rel="stylesheet" href="/stylesheets/search-result.css")
+
+include utils.pug
+
 
 block content
-  section(id="search-result-container")
-
+  div(class="container")
+    div(class='question-container')
+      table(class='question-table')
+        thead(class='thead-dark')
+          tr
+            th(scope='col' class="question-th")
+        tbody(class="question-row")
+              h2(class="title")= title
+              if questions
+                      div(class="search-result-questions")
+                          each question in questions
+                              div(class="question-box")
+                                  div
+                                      a.search-link(class="search-result-link" href=`/question/${question.id}`)
+                                          h3(class="question-box-title")= question.title
+    div(class="right-side")
