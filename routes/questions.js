@@ -94,7 +94,6 @@ router.post("/question/add",
 
     const validatorErrors = validationResult(req);
     const errors = validatorErrors.array().map((error) => error.msg);
-    console.log(errors)
 
     if (validatorErrors.isEmpty()) {
       await question.save();
@@ -134,7 +133,6 @@ router.get("/questions/:id(\\d+)/edit", // renders edit form
 );
 
 // POST THE EDIT MADE TO A QUESTION --> TESTED
-
 router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
   requireAuth,
   csrfProtection,
@@ -172,12 +170,8 @@ router.delete(
   "/question/:id(\\d+)",
   requireAuth,
   asyncHandler(async (req, res) => {
-
     const questionId = parseInt(req.params.id);
-    // console.log(questionId);
     const question = await Question.findByPk(questionId);
-    // console.log(question);
-
 
     await question.destroy();
 
