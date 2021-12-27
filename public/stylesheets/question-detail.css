@@ -300,7 +300,7 @@ h4.answer-author {
 a {
     text-decoration: none;
 }
- /* a.answer-button */
+
 a#adds-comment,
  a#edit-answer,
  button.answer-delete-button,
@@ -331,7 +331,8 @@ a#adds-comment,
 a.edit-question-btn,
 button.question-delete-button,
 .delete-button,
-a.edit-comment-btn  {
+a.edit-comment-btn,
+a.answer-button  {
     margin-left: 3px;
     font-size: 13px;
     text-decoration: none;
@@ -343,7 +344,6 @@ a.edit-comment-btn  {
     font-size: 14px;
 }
 
- 
 a.edit-question-btn:hover,
 button.question-delete-button,
 .delete-button:hover,
@@ -351,9 +351,3 @@ a.edit-comment-btn:hover {
     background-color:white;;
     color: gray;
 }
-
-/* .delete-button,
-.edit-comment-btn {
-    font-weight: 500
-} */
-
