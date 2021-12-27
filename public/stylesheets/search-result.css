@@ -17,7 +17,6 @@ h3{
 
 a:link {
   text-decoration: none;
-  color: black;
   font-size:15px;
 }
 .container {
@@ -25,7 +24,6 @@ a:link {
   display: block;
   margin-left: 40%;
   margin-top: 50px;
-  /* margin-right: 50%; */
   width: 100%;
   text-align:  center;
 }
