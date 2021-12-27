@@ -101,7 +101,6 @@ router.post('/comments/:id(\\d+)/edit', requireAuth, csrfProtection,
 router.delete(
     "/comment/:id(\\d+)",
     asyncHandler(async (req, res, next) => {
-        console.log("Delete Comment Route")
         const commentId = parseInt(req.params.id, 10);
         const comment = await db.Comment.findByPk(commentId);
 
