@@ -117,23 +117,24 @@ router.post('/answer/:id(\\d+)/edit', requireAuth, csrfProtection,
     answerValidators, asyncHandler(async (req, res) => {
         const answerId = parseInt(req.params.id, 10);
         const answerToUpdate = await db.Answer.findByPk(answerId);
-
         checkPermissions(answerToUpdate, res.locals.user);
-
         const { body } = req.body;
         const editedAnswer = { body };
-
+        const question = await db.Question.findByPk(answerToUpdate.questionId);
         const validatorErrors = validationResult(req);
-
+    
         if (validatorErrors.isEmpty()) {
             await answerToUpdate.update(editedAnswer);
             res.redirect(`/question/${answerToUpdate.questionId}`)
         } else {
             const errors = validatorErrors.array().map((error) => error.msg);
+            const answer = { ...editedAnswer, id: answerId }
+            
             res.render('answer-edit', {
                 title: 'Edit Answer',
-                answer: { ...editedAnswer, answerId },
+                answer,
                 errors,
+                question,
                 csrfToken: req.csrfToken(),
             });
         }

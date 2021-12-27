@@ -38,23 +38,18 @@ h5 {
 
 .left-container {
     margin-top: 80px;
-    /* border: 1px solid rgba(222,224,225, 80%); */
-    /* border-radius: 8px; */
-    /* grid-row-start: span 2; */
     height: 40%;
-    /* background-color: white; */
     margin-left: 10%;
-  }
+ }
 
 
 .middle-container {
-    /* border: 1px solid rgba(222,224,225, 80%); */
     margin-top: 86px;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
     border-radius: 4px;
-  }
+ }
 
 .content-container {
     border: 1px solid rgba(222,224,225, 0.8);
@@ -66,9 +61,6 @@ h5 {
 
 .right-container {
     margin-top: 80px;
-    /* border: 1px solid rgba(222,224,225, 80%); */
-    /* border-radius: 4px; */
-    /* background-color: white; */
 }
 
 textarea {
@@ -126,24 +118,20 @@ label {
     padding: 4% 2% 0 3%
 }
 
- a {
+a {
      text-decoration: none;
- }
-
-
-
+}
 
 div.anchor-div {
     padding-top: 5px;
 }
 
-
- button#answer {
+button#answer {
     margin-left: 3px;
     font-size: 13px;
     text-decoration: none;
     padding: 5px;
-    border-radius: 15px;
+    border-radius: 4px;
     color: gray;
     background-color:rgba(33,38,44,15%);
     border: 1px solid rgba(163,170,178,80%);
@@ -151,20 +139,24 @@ div.anchor-div {
     font-size: 14px;
 }
 
-
 button#answer:hover {
     background-color:white;;
     color: gray;
 
 }
+
 ul,
 p {
     background-color: white;
-    float: left;
+    display: flex;
+    justify-content: center;
 }
 
 .error-li {
     color: black;
     background-color: white;
-    float: left;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
+

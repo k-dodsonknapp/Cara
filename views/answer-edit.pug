@@ -7,7 +7,6 @@ append head
 include utils.pug
 
 block content
-    +validationErrorSummary(errors)
     div(class='main-container')
       div(class='left-container')
       div(class='middle-container')
@@ -15,10 +14,12 @@ block content
           form(action=`/answer/${answer.id}/edit` method='post')
               input(type='hidden' name='_csrf' value=csrfToken)
               h2(id='header') #{question.title}
+              +validationErrorSummary(errors)
+              h3
               +field( null, 'body', answer.body, 'textarea')
               div(class='answer-cancel-btn')
                 div(class='button-div')
-                  button(type='submit' id='answer' href=`/question/${question.id}/edit`) Submit
+                  button(type='submit' id='answer') Submit
                 div(class='anchor-div')
-                  a(href=`/question/${answer.questionId}` id='cancel') Cancel
+                  a(href=`/question/${question.id}` id='cancel') Cancel
       div(class='right-container')

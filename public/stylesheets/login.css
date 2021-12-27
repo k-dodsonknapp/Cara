@@ -40,6 +40,7 @@ h1 {
     font-weight: 200;
     font-size: 50px;
     text-align: center;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 h2 {
@@ -48,6 +49,9 @@ h2 {
     color: white;
     font-weight: 100;
     text-align: center;
+}
+p {
+    font-family: 'Titillium Web', sans-serif;
 }
 
 label {
@@ -132,18 +136,16 @@ button {
     color: white;
     border: none;
     outline: none;
-    width: 90%;
+    width: 85%;
 }
 
 button:hover {
     background-color: #1956C4;
-    width: 100%;
 }
 
 
 a:hover { 
     border-color: #1956C4;
-    width: 60%;
 }
 
 #demo-button {
@@ -168,7 +170,7 @@ a {
     border-radius: 2em;
     border: 3px solid white;
     text-align: center;
-    width: 50%;
+    width: 45%;
     color: white;
 }
 

@@ -72,7 +72,6 @@ router.post('/answer/:id(\\d+)/add', csrfProtection, commentValidator, asyncHand
 router.get('/comments/:id(\\d+)/edit', requireAuth, csrfProtection,
     asyncHandler(async (req, res) => {
         const commentId = parseInt(req.params.id, 10);
-        // console.log(commentId)
         const comment = await db.Comment.findByPk(commentId);
 
         checkPermissions(comment, res.locals.user);
@@ -107,7 +106,7 @@ router.post('/comments/:id(\\d+)/edit', requireAuth, csrfProtection,
             const errors = validatorErrors.array().map((error) => error.msg);
             res.render('comment-edit', {
                 title: 'Edit Comment',
-                comment: { ...editedComment, commentId },
+                comment: { ...editedComment, id: commentId },
                 errors,
                 csrfToken: req.csrfToken(),
             });
