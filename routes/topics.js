@@ -33,7 +33,6 @@ router.get(
       },
       order: [["createdAt", "ASC"]],
     });
-    console.log(answers)
     // checkPermissions(topic, res.locals.user)
 
     res.render("topic-questions", {
