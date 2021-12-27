@@ -116,9 +116,7 @@ label {
     background-color: white;
     display: flex;
     justify-content: center;
-    padding-left: 3%;
-    padding-right: 2%;
-    padding-top: 2%;
+    padding: 2% 2% 3%;
 }
 
 a {
@@ -152,13 +150,13 @@ button#answer:hover {
 ul,
 p {
     background-color: white;
-    float: left;
+    /* float: left; */
 }
 
 .error-li {
     color: black;
     background-color: white;
-    float: left;
+    /* float: left; */
 }
 
 ul {
@@ -168,3 +166,19 @@ ul {
 a#carra-logo {
     margin: 0 0 10% 75%;
 }
+
+
+.alert-danger {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.error-li {
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+}
+
+/* .alert {
+    border: black 3px solid;
+} */
