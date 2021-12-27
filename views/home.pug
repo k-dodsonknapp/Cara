@@ -10,6 +10,7 @@ html(lang="en")
         link(rel="preconnect" href="https://fonts.googleapis.com")
         link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
         link(href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600&display=swap" rel="stylesheet")
+        script(type="module" src="/javascripts/search.js" )
         a(href="/home" id="home-btn")
          title= "Carra"
 
@@ -17,24 +18,28 @@ html(lang="en")
         nav#nav-header
             ul(id="logo-title-div")
               a(id="carra-logo" class="carra-logo" href="/home") Carra
+
             ul(id="home-button-div" href="/home")
             a(href="/home" class="nav-btn")
               i(class="fas fa-home")
+
             ul(id="topics-button-div" href='/topic/1/questions')
               a(href='/topic/1/questions' class="nav-btn")
-                i(class="fa fa-users") 
+                i(class="fa fa-users")
+
             ul(id="answer-button-div" href="/question/add")
               a(href='/question/add' class= "nav-btn")
-                i(class="fas fa-keyboard") 
+                i(class="fas fa-keyboard")
+
             ul(id="search-container")
-              form(action="/search/" method="POST" class="search-form" id="search-form")
-              div(class="search")
+              form(action="/search/" method="POST" class="search-container" id="search-container")
                 input(type="text" name="text" class="search-bar" placeholder="Search")
-                button(type="submit" name="search-form" class="search-bar-submit-button" value="Search"): a(id="search-btn" href='/topic/1/questions')
+                button(type="submit" name="search-container" class="search-bar-submit-button" value="Search")
                   i(class="fa fa-search")
+
             if locals.authenticated
               ul(class="signed-in")
-                i(id="welcome-username") Welcome to your feed, #{user.username}!
+                i(id="welcome-username") Welcome home, #{user.username}!
                 button(type="submit" class="logout-button"): a(id="logout" href='/') Log out
         block content
 

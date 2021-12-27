@@ -147,18 +147,27 @@ p.author {
 div.left-container {
     /* background-color: none; */
     background-color: rgb(241,242,242);
-    margin-top: 19%;
+    margin-top: 25%;
     border: none;
     /* z-index: 0; */
-    position: static;
-
+    /* position: static; */
+    /* position: -webkit-sticky; */
+    position: sticky;
 }
 
 
 .topic-table {
     border: none;
+    /* position: -webkit-sticky;
+    position: sticky; */
 }
+.topic-th{
+    border-radius: 10px;
+    background-color: white;
+    font-size: 20px;
+    font-family: 'Titillium Web', sans-serif;
 
+ }
 
 input {
   color: black;
@@ -185,11 +194,11 @@ input {
   cursor: pointer;
 }
 .search {
-  border-radius: 5px 0 0 5px;
+  /* border-radius: 5px 0 0 5px; */
   background-color: rgb(39, 75, 117);
 }
 
-form#search-form {
+form#search-container {
     background-color: rgb(39, 75, 117);
 }
 

@@ -1,7 +1,7 @@
-const searchBox = document.getElementsById('search-box')
-const searchButton = document.getElementsByClassName('search-bar-submit-button')
-console.log(searchBox)
-searchBox.addEventListener('keyUp', async(e) => {
-  let target = e.target.value
-  searchButton.action = `/search/${target}`
+const searchBar = document.querySelector('.search-bar');
+const searchContainer = document.querySelector('.search-container');
+
+searchBar.addEventListener('input', async (event) => {
+  let targetVal = event.target.value.toLowerCase();
+  searchContainer.action = `/search/${targetVal}`
 })
