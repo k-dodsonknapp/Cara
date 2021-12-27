@@ -41,16 +41,15 @@ h5 {
     margin-top: 80px;
     height: 40%;
     margin-left: 10%;
-  }
-
+}
 
 .middle-container {
-    margin-top: 86px;
+    margin-top: 15%;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
     border-radius: 4px;
-  }
+}
 
 .content-container {
     border: 1px solid rgba(222,224,225, 0.8);
@@ -77,6 +76,7 @@ textarea {
 .form-group {
     background-color: white;
     margin-top: 0px
+    width: 100%;
 }
 
 label {
@@ -90,6 +90,7 @@ label {
     gap: 22px;
     padding-top: 4%;
     padding-bottom: 8%;
+    border-radius: 4px;
 }
 
 .button-div {
@@ -120,19 +121,17 @@ label {
     padding-top: 2%;
 }
 
- a {
+a {
      text-decoration: none;
- }
-
-
- 
+}
 
 div.anchor-div {
     padding-top: 5px;
+    padding: 2% 12% 0;
+    border-radius: 8px;
 }
 
-
- button#answer {
+button#answer {
     margin-left: 3px;
     font-size: 13px;
     text-decoration: none;
@@ -145,12 +144,11 @@ div.anchor-div {
     font-size: 14px;
 }
 
-
 button#answer:hover {
     background-color:white;;
     color: gray;
-    
 }
+
 ul,
 p {
     background-color: white;
@@ -161,4 +159,12 @@ p {
     color: black;
     background-color: white;
     float: left;
+}
+
+ul {
+    padding-left: 10%;
+}
+
+a#carra-logo {
+    margin: 0 0 10% 75%;
 }
