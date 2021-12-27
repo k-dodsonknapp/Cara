@@ -62,14 +62,11 @@ router.get('/comments/:id(\\d+)/edit', requireAuth, csrfProtection,
         const answer = await db.Answer.findByPk(comment.answersId);
         const question = await db.Question.findByPk(answer.questionId)
 
-
-
         checkPermissions(comment, res.locals.user);
 
         res.render('comment-edit', {
             title: 'Edit comment',
             comment,
-            answer,
             question,
             csrfToken: req.csrfToken(),
         });
@@ -98,6 +95,7 @@ router.post('/comments/:id(\\d+)/edit', requireAuth, csrfProtection,
             res.render('comment-edit', {
                 title: 'Edit Comment',
                 comment: { ...editedComment, id: commentId },
+                question,
                 errors,
                 csrfToken: req.csrfToken(),
             });
