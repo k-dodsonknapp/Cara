@@ -59,12 +59,18 @@ router.get('/comments/:id(\\d+)/edit', requireAuth, csrfProtection,
     asyncHandler(async (req, res) => {
         const commentId = parseInt(req.params.id, 10);
         const comment = await db.Comment.findByPk(commentId);
+        const answer = await db.Answer.findByPk(comment.answersId);
+        const question = await db.Question.findByPk(answer.questionId)
+
+
 
         checkPermissions(comment, res.locals.user);
 
         res.render('comment-edit', {
             title: 'Edit comment',
             comment,
+            answer,
+            question,
             csrfToken: req.csrfToken(),
         });
 
