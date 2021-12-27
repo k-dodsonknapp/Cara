@@ -67,10 +67,9 @@ router.get('/question/:id(\\d+)/add', csrfProtection, asyncHandler(async (req, r
 //add an answer to a specific question.
 router.post('/question/:id(\\d+)/add', answerValidators, csrfProtection, asyncHandler(async (req, res) => {
     const { body } = req.body
-    console.log(res.locals)
     const questionId = parseInt(req.params.id, 10)
     const question = await db.Question.findByPk(questionId)
-    console.log(res.locals.user.id)
+
     const answer = db.Answer.build({
         userId: res.locals.user.id,
         questionId: question.id,
@@ -146,7 +145,6 @@ router.delete('/answer/:id(\\d+)/delete',
         checkPermissions(answer, res.locals.user);
 
         await answer.destroy();
-        // res.redirect('/questions/:id(\\d+)/answers')
         res.json({ message: `Deleted Answer with id of ${req.params.id}.` });
     })
 )
