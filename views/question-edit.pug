@@ -6,11 +6,11 @@ append head
 include utils.pug
 
 block content
-  +validationErrorSummary(errors)
   div.main-container
     div.left-container
     div.middle-container
       div.content-container
+        +validationErrorSummary(errors)
         form(action=`/questions/${question.id}/edit` method='post')
           input(type='hidden' name='_csrf' value=csrfToken)
           +field("Edit Your Question", "title", question.title, fieldType = 'textarea')

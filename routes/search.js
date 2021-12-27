@@ -1,9 +1,9 @@
 const express = require('express')
 
+
 const { Question } = require("../db/models");
 const { Op } = require('sequelize');
 const { asyncHandler } = require("./utils");
-
 const router = express.Router();
 
 async function search(word) {
@@ -20,6 +20,7 @@ router.get('/search', async(req, res) => {
   const questions = Question.findAll({
     limit: 10
   });
+
   return res.render('search-questions', {
     title,
     questions
@@ -48,6 +49,5 @@ router.all(
     });
   })
 );
-
 
 module.exports = router;

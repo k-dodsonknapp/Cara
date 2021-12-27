@@ -7,7 +7,7 @@ const { loginUser, logoutUser } = require('../auth')
 const router = express.Router();
 
 /* GET users listing. */
-router.get('/users/register', csrfProtection, asyncHandler(async function(req, res, next) {
+router.get('/users/register', csrfProtection, asyncHandler(async function (req, res, next) {
   const user = await User.build();
   res.render('user-register', {
     title: 'register',

@@ -10,7 +10,7 @@ module.exports = {
       */
     return queryInterface.bulkInsert('Answers', [
       {
-        body: "I’ll start. My first car I ever drove was my dad’s 11 CTS-V automatic. I wasn’t into cars at all at the time, thought it was some dumb old man car. Had no idea I was in a fancy corvette with 500 hp to the rear wheels. Pretty sure it never spun out from the weight of my dad’s giant balls. Now I know what it is and I still can’t believe that’s what he decided to let a 16 year old learn to drive in",
+        body: "I’ll start. My first car I ever drove was my dad’s 11 CTS-V automatic. I wasn’t into cars at all at the time, thought it was an old car. Had no idea I was in a fancy corvette with 500 hp to the rear wheels. Now I know what it is and I still can’t believe that’s what he decided to let a 16 year old learn to drive in",
         userId: 3,
         questionId: 12,
         createdAt: new Date(),
@@ -31,7 +31,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        body: "Plenty of people do it on those roads but that's not a justification. I personally think what he does is slightly worse just because there is a profit incentive in it for him instead of just going out for fun. If he is going to be making money off potentially endangering the public, I do have a very slight problem with that. If he does ever run over a cyclist on a blind corner, it is going to be a nightmare of a defense for his attorneys given the literally weeks of video evidence establishing a pattern. The thing is, he knows his family can afford the best legal defense for him if that does happen so part of the hate is probably just douchey rich kid entitlement.",
+        body: "Plenty of people do it on those roads but that's not a justification. I personally think what he does is slightly worse just because there is a profit incentive in it for him instead of just going out for fun. If he is going to be making money off potentially endangering the public, I do have a very slight problem with that. If he does ever run over a cyclist on a blind corner, it is going to be a nightmare of a defense for his attorneys given the literally weeks of video evidence establishing a pattern. The thing is, he knows his family can afford the best legal defense.",
         userId: 2,
         questionId: 9,
         createdAt: new Date(),
@@ -45,7 +45,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        body: "This reminds me of the time, a few years ago, after I got my 2014 wrangler unlimited I went up to the San Bernardino mountains with a couple friends in my car to casually try out the 4x4. As I was driving up the trail I saw it widen into a bigger area before a steep incline, and a group of modified XJs were parked there. One guy was desperately trying to drive up the incline but kept sliding back down and everyone else was cheering him on and cracking up. Looked like a lot of fun. I asked if I could go ahead, and if they could spot me, because that guy sliding down the hill seemed kind of sketch and they said sure. ...And then my new and very unmodified wrangler toodled up the hill like it was a suburban neighborhood street.",
+        body: "This reminds me of the time, a few years ago, after I got my 2014 wrangler unlimited I went up to the San Bernardino mountains with a couple friends in my car to casually try out the 4x4. As I was driving up the trail I saw it widen into a bigger area before a steep incline, and a group of modified XJs were parked there. One guy was desperately trying to drive up the incline but kept sliding back down and everyone else was cheering him on. Looked like a lot of fun. I asked if I could go ahead, and if they could spot me, because that guy sliding down the hill seemed kind of sketch and they said sure. ...And then my new and very unmodified wrangler toodled up the hill like it was a suburban neighborhood street.",
         userId: 5,
         questionId: 7,
         createdAt: new Date(),
@@ -101,14 +101,14 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        body: "I loved when jackass specifically declined the insurance and took one to a demolition derby.",
+        body: "The insurance and took one to a demolition derby.",
         userId: 3,
         questionId: 14,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        body: "The Audi Q5 kicks ass on a little offroad trail. Has no trouble finding grip in sandy conditions, not sure how I know that though...",
+        body: "The Audi Q5 is great on a little offroad trail. Has no trouble finding grip in sandy conditions, not sure how I know that though...",
         userId: 2,
         questionId: 15,
         createdAt: new Date(),

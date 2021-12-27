@@ -94,14 +94,13 @@ router.post("/question/add",
 
     const validatorErrors = validationResult(req);
     const errors = validatorErrors.array().map((error) => error.msg);
-    console.log(errors)
 
     if (validatorErrors.isEmpty()) {
       await question.save();
       res.redirect("/home");
-    } 
+    }
     if (errors[0]) {
-    
+
       const allTopicsId = await Topic.findAll();
       res.render("question-add-form", {
         title: "Add Question",
@@ -133,10 +132,7 @@ router.get("/questions/:id(\\d+)/edit", // renders edit form
   })
 );
 
-
-
 // POST THE EDIT MADE TO A QUESTION --> TESTED
-
 router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
   requireAuth,
   csrfProtection,
@@ -144,17 +140,13 @@ router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
   asyncHandler(async (req, res) => {
     const questionId = parseInt(req.params.id, 10);
     const questionToUpdate = await Question.findByPk(questionId);
-    console.log(req.body)
 
     checkPermissions(questionToUpdate, res.locals.user);
-
 
     const { title, topicId, userId } = req.body;
 
     const editedQuestion = { title, topicsId: topicId, userId };
-    //  console.log(questionToUpdate)
-    //  console.log(editedQuestion)
-
+    const topicsIdArr = await Topic.findAll();
     const validatorErrors = validationResult(req);
 
     if (validatorErrors.isEmpty()) {
@@ -162,33 +154,24 @@ router.post("/questions/:id(\\d+)/edit", // post the changes on the edit form
       res.redirect("/home")
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
-      console.log(editedQuestion)
       res.render("question-edit", {
         title: "Edit Question",
         errors,
-
-        topicsId,
-        // question: { editedQuestion, id: questionId },
+        topicsIdArr,
+        question: { editedQuestion, id: questionId },
         editedQuestion,
-
         csrfToken: req.csrfToken(),
       });
     }
   })
 );
 
-
-
 router.delete(
   "/question/:id(\\d+)",
   requireAuth,
   asyncHandler(async (req, res) => {
-
     const questionId = parseInt(req.params.id);
-    // console.log(questionId);
     const question = await Question.findByPk(questionId);
-    // console.log(question);
-
 
     await question.destroy();
 
@@ -196,6 +179,5 @@ router.delete(
     res.redirect('/home')
   })
 );
-
 
 module.exports = router

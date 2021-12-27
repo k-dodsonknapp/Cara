@@ -10,7 +10,6 @@ body {
     height: 100%;
 }
 
-
 h4 {
     background-color: white;
 }
@@ -44,8 +43,7 @@ h5 {
     background-color: white;
     margin-left: 10%;
     z-index: -1;
-  }
-
+}
 
 .middle-container {
     margin-top: 80px;
@@ -53,7 +51,7 @@ h5 {
     justify-content: flex-start;
     flex-direction: column;
     border-radius: 4px;
-  }
+}
 
 .content-container {
     border: 1px solid rgba(222,224,225, 0.8);
@@ -142,7 +140,7 @@ form {
 
 .submit-btn {
     margin-right: 8px;
-    border-radius: 5px;
+    border-radius: 4px;
     font-size: 13px;
 }
 
@@ -157,18 +155,15 @@ select {
     border-radius: 3px;
 }
 
-
 a {
     text-decoration: none;
 }
-
-
 
 .submit-btn {
     text-decoration: none;
     padding: 5px;
     margin-right: 5px;
-    border-radius: 15px;
+    border-radius: 4px;
     color: gray;
     background-color:rgba(33,38,44,20%);
     border: 1px solid rgba(163,170,178,80%);
@@ -177,7 +172,6 @@ a {
 a.cancel-btn {
  margin-left: 4px;
 }
-
 
 .submit-btn:hover {
     background-color:rgba(255,255,255,70%);
@@ -191,4 +185,7 @@ p {
 .error-li {
     color: black;
     background-color: white;
+    display: flex;
+    justify-content: center;
+    padding: 0;
 }

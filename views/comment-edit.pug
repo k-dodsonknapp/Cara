@@ -5,15 +5,16 @@ append head
 include utils.pug
 
 block content
-  +validationErrorSummary(errors)
   div(class="main-container")
     div(class='left-container')
     div(class="middle-container")
       div(class='content-container')
         form(action=`/comments/${comment.id}/edit` method='post')
           input(type='hidden' name='_csrf' value=csrfToken)
+          h3
           +field("Edit Your Comment", "body", comment.body, fieldType = 'textarea')
+          +validationErrorSummary(errors)
           div(class='submit-cancel-btns')
             button(type='submit' class='submit-button') Submit
-            a(href='/home' class='cancel-button') Cancel
+            a(href=`/question/${question.id}` class='cancel-button') Cancel
     div(class="right-container")

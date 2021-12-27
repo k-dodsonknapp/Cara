@@ -112,3 +112,10 @@ textarea,
 .form-group{
     background-color: white;
 }
+
+p,
+li.error-li,
+ul.error-li {
+ background-color: white;
+ color: black;
+}

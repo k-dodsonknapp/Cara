@@ -115,15 +115,7 @@ h5 {
 
 .button-div {
     display: flex;
-
     flex-direction: column;
-    /* justify-content: center; */
-    /* background-color: white; */
-    /* padding-top: 0px; */
-    /* padding-bottom: 4.5%; */
-    /* padding-left: 2%; */
-    /* padding-left:20px; */
-    /* gap:2%; */
 }
 
 .edit-answer-div {
@@ -247,13 +239,7 @@ h4.answer-author {
 }
 
 .answer-button {
-    /* padding-top: 2%; */
-    /* background-color: white; */
-    /* text-decoration: none; */
-    /* color: gray; */
-    /* padding-right: 10%; */
 
-    /* align-content: center; */
     margin-left: 3px;
     font-size: 13px;
     text-decoration: none;
@@ -276,6 +262,7 @@ h4.answer-author {
     background-color: white;
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 5px;
 }
 
 .edit-question-btn {
@@ -299,7 +286,7 @@ h4.answer-author {
 a {
     text-decoration: none;
 }
- /* a.answer-button */
+
 a#adds-comment,
  a#edit-answer,
  button.answer-delete-button,
@@ -310,7 +297,7 @@ a#adds-comment,
     font-size: 13px;
     text-decoration: none;
     padding: 5px;
-    border-radius: 15px;
+    border-radius: 4px;
     color: gray;
     background-color:rgba(33,38,44,15%);
     border: 1px solid rgba(163,170,178,80%);
@@ -325,11 +312,28 @@ a#adds-comment,
  .edit-comment-btn:hover  {
     background-color:white;;
     color: gray;
-
 }
 
-
+a.edit-question-btn,
+button.question-delete-button,
 .delete-button,
-.edit-comment-btn {
-    font-weight: 500
+a.edit-comment-btn,
+a.answer-button  {
+    margin-left: 3px;
+    font-size: 13px;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 4px;
+    color: gray;
+    background-color:rgba(33,38,44,15%);
+    border: 1px solid rgba(163,170,178,80%);
+    font-size: 14px;
+}
+
+a.edit-question-btn:hover,
+button.question-delete-button,
+.delete-button:hover,
+a.edit-comment-btn:hover {
+    background-color:white;;
+    color: gray;
 }
