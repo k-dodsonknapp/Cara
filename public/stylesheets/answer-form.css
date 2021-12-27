@@ -153,11 +153,14 @@ button#answer:hover {
 ul,
 p {
     background-color: white;
-    float: left;
+    display: flex;
+    justify-content: center;
 }
 
 .error-li {
     color: black;
     background-color: white;
-    float: left;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
