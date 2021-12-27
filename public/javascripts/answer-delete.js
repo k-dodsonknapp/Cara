@@ -6,6 +6,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         button.addEventListener("click", async (e) => {
 
             e.stopPropagation();
+
             const res = await fetch(`/answer/${e.target.id.split("-")[1]}/delete`, {
                 method: "DELETE"
             });

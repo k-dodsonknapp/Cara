@@ -1,17 +1,14 @@
 window.addEventListener("DOMContentLoaded", event => {
 
-    // console.log('Comment JS loaded')
     const commentDeleteArr = document.querySelectorAll('.delete-button');
 
     commentDeleteArr.forEach(button => {
 
         button.addEventListener("click", async (e) => {
-        // const td = document.getElementsByTagName("td")
             e.stopPropagation();
             const res = await fetch(`/comment/${e.target.id.split('-')[1]}`, { method: "DELETE" })
-            console.log(res)
+
             if (res) {
-                // window.alert("Are you sure you want to delete your comment?")
                 e.target.parentNode.parentNode.remove()
             }
         });
@@ -28,7 +25,6 @@ window.addEventListener("DOMContentLoaded", event => {
             });
 
             if (res) {
-                // window.alert("Are you sure you want to delete your answer?")
                 e.target.parentNode.parentNode.parentNode.parentNode.remove();
             }
         });
@@ -39,12 +35,11 @@ window.addEventListener("DOMContentLoaded", event => {
     questionDeleteArr.forEach(button => {
 
         button.addEventListener("click", async (e) => {
-        // const td = document.getElementsByTagName("td")
+
             e.stopPropagation();
             const res = await fetch(`/question/${e.target.id.split('-')[1]}`, { method: "DELETE" })
-            console.log(res)
+
             if (res) {
-                window.alert("Are you sure you want to delete your question?")
                 e.target.parentNode.remove()
             }
         });

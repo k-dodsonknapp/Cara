@@ -1,7 +1,7 @@
 
 mixin validationErrorSummary(errors)
   if errors
-    div(class='alert alert-danger' role='alert')
+    div(class='alert-danger' role='alert')
       p The following error(s) occurred:
       ul(class="error-li")
         each error in errors
@@ -15,4 +15,3 @@ mixin field(labelText, fieldName, fieldValue, fieldType = 'text', placeholder = 
       textarea(id=fieldName name=fieldName rows='5')= fieldValue
     else
       input(type=fieldType id=fieldName name=fieldName value=fieldValue placeholder=placeholder)
-

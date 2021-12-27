@@ -12,7 +12,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
       });
 
       if (res) {
-        window.alert("Are you sure you want to delete your question?")
         e.target.parentNode.parentNode.remove();
       }
     });
