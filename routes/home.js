@@ -22,7 +22,7 @@ router.get(
 
     const users = await User.findAll();
     const topics = await Topic.findAll();
-
+    console.log("user",users)
     res.render("question-list", {
       topics,
       answers,

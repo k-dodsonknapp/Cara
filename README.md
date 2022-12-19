@@ -14,7 +14,7 @@
 ***
 # Carra 
 Carra is an application where users can post questions about their vehicles and the community can share their knowledge by answering questions. Users are able to interact further through comments to form meaningful discussions. 
-* Link to live  [Carr](https://carra.herokuapp.com/) project. 
+* Link to live  [Carra](https://carra.herokuapp.com/) project. 
 
 
 #### Carra Login page
